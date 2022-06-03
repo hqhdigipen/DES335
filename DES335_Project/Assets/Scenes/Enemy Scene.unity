@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 56484887}
   - component: {fileID: 56484886}
   - component: {fileID: 56484889}
+  - component: {fileID: 56484890}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -409,7 +410,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  elementType: 0
   healthBar: {fileID: 1983208884}
+--- !u!114 &56484890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56484885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c7938afb19c4cd41b4ddd9b17bb44f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Element_Type: 0
+  attackList:
+  - A1
+  - A2
+  - A3
+  - A4
 --- !u!1 &81771408
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,6 +804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  elementType: 0
   healthBar: {fileID: 938769849}
 --- !u!1 &485578991
 GameObject:
@@ -1367,7 +1388,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1597232167}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CombatMenuScript, Assembly-CSharp
         m_MethodName: AttackButton
         m_Mode: 1
@@ -2345,7 +2366,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1597232167}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CombatMenuScript, Assembly-CSharp
         m_MethodName: ItemButton
         m_Mode: 1
@@ -2783,7 +2804,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1597232168}
-  - component: {fileID: 1597232167}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2791,22 +2811,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1597232167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597232166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 106346045aa6d294ead36a16456dabf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointer: {fileID: 184713534}
-  CombatMenu: {fileID: 1687283948}
-  AttackMenu: {fileID: 971382604}
-  ItemMenu: {fileID: 485578991}
 --- !u!4 &1597232168
 Transform:
   m_ObjectHideFlags: 0
@@ -3894,6 +3898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  elementType: 0
   healthBar: {fileID: 1843894501}
 --- !u!61 &2011628635
 BoxCollider2D:
@@ -4148,7 +4153,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1597232167}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CombatMenuScript, Assembly-CSharp
         m_MethodName: Attack1Button
         m_Mode: 1
