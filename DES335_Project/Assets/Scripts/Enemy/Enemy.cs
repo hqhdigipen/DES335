@@ -2,14 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Enemy : MonoBehaviour
 {
-    public GameObject enemy1;
-    public GameObject enemy2;
+    public enum ENEMY_TYPE 
+    { 
+      FIRE, 
+      WATER, 
+      EARTH 
+    };
+    
+    public ENEMY_TYPE Element_Type;
 
-    //var AttackList = new List<string> { "Attack1", "Attack2", "Attack3", "Attack4" };
+    public List<string> attackList = new List<string>();
+    private void AttackStart()
+    {
 
-    //var random_attack = new Random();
-    //int i = random.Next(AttackList.Count);
-    //Debug.Log(AttackList[0]);
+       // CheckElement();
+        //List<string> AttackList = new List<string> { "Attack1", "Attack2", "Attack3", "Attack4" };
+        int i = Random.Range(0, attackList.Count);
+
+        Debug.Log("Attack is" + attackList[i]);
+    }
+
+    private void CheckElement() 
+    {
+        //if(ENEMY_TYPE.FIRE)
+
+    }
 }
