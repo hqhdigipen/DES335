@@ -425,11 +425,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Element_Type: 0
+  player: {fileID: 403361196}
   attackList:
   - A1
   - A2
   - A3
   - A4
+  DamageList: 
 --- !u!1 &81771408
 GameObject:
   m_ObjectHideFlags: 0
