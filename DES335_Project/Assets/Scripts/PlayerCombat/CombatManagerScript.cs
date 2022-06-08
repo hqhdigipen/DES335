@@ -70,42 +70,6 @@ public class CombatManagerScript : MonoBehaviour
                 currState = "Main";
             }
         }
-
-        if (currState == "Targeting")
-        {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-
-            if (hit.collider != null && hit.collider.transform.tag == "Enemy")
-            {
-                //Debug.Log("Target name: " + hit.collider.name);
-                pointer.transform.position = hit.collider.transform.position + new Vector3(0, (hit.collider.transform.GetComponent<SpriteRenderer>().sprite.bounds.size.y * 3.5f / 2) + (pointer.transform.GetComponent<SpriteRenderer>().sprite.bounds.size.y * 4.0f / 2), 0);
-            }
-
-            if (Input.GetMouseButtonDown(0) && hit.collider.transform.tag == "Enemy")
-            {
-                Debug.Log("Target name: " + hit.collider.name);
-                hit.collider.transform.GetComponent<CharScript>().TakeDamage(10, "Fire");
-                currState = "Main";
-            }
-        }
-
-        //if (currState == "FriendlyTargeting")
-        //{
-        //    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-
-        //    if (hit.collider != null && hit.collider.transform.tag == "Enemy")
-        //    {
-        //        //Debug.Log("Target name: " + hit.collider.name);
-        //        pointer.transform.position = hit.collider.transform.position + new Vector3(0, (hit.collider.transform.GetComponent<SpriteRenderer>().sprite.bounds.size.y * 3.5f / 2) + (pointer.transform.GetComponent<SpriteRenderer>().sprite.bounds.size.y * 4.0f / 2), 0);
-        //    }
-
-        //    if (Input.GetMouseButtonDown(0) && hit.collider.transform.tag == "Enemy")
-        //    {
-        //        Debug.Log("Target name: " + hit.collider.name);
-        //        hit.collider.transform.GetComponent<CharScript>().TakeDamage(10);
-        //        currState = "Main";
-        //    }
-        //}
     }
 
 
@@ -121,7 +85,7 @@ public class CombatManagerScript : MonoBehaviour
 
     public void Attack1Button()
     {
-        currState = "Targeting";      
+        currState = "Targeting";
     }
 
     public void UseItem(string ItemName)
@@ -165,4 +129,20 @@ public class CombatManagerScript : MonoBehaviour
         }
     }
 
+    public void AttackEenemy(GameObject enemy)
+    {
+        enemy.GetComponent<CharScript>().TakeDamage(20, "Fire");
+        StartCoroutine(shake(enemy, 1f));
+    }
+
+    //Shake function
+
+    IEnumerator shake(GameObject enemy, float waitTime)
+    {
+        Vector2 temp = enemy.GetComponent<RectTransform>().anchoredPosition;
+
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log("WaitAndPrint " + Time.time);
+        enemy.GetComponent<RectTransform>().anchoredPosition = temp;
+    }
 }
