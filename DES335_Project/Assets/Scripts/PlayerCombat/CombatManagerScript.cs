@@ -15,6 +15,9 @@ public class CombatManagerScript : MonoBehaviour
     public GameObject attackMenu;
     public GameObject itemMenu;
 
+    bool shakeEnemy;
+    GameObject targetEnemy;
+
     private void Start()
     {
         currState = "Main";
@@ -69,6 +72,16 @@ public class CombatManagerScript : MonoBehaviour
             {
                 currState = "Main";
             }
+        }
+
+        if (shakeEnemy == true)
+        {
+            //targetEnemy.GetComponent<RectTransform>().anchoredPosition = new Vector2(Mathf.Sin(Time.time * 3f) * 1f, 0);
+            Vector3 newPos = Random.insideUnitSphere * (Time.deltaTime * 5f);
+            newPos.y = targetEnemy.GetComponent<RectTransform>().anchoredPosition.y;
+            newPos.z = 0;
+
+            targetEnemy.GetComponent<RectTransform>().anchoredPosition = newPos;
         }
     }
 
@@ -131,8 +144,12 @@ public class CombatManagerScript : MonoBehaviour
 
     public void AttackEenemy(GameObject enemy)
     {
-        enemy.GetComponent<CharScript>().TakeDamage(20, "Fire");
-        StartCoroutine(shake(enemy, 1f));
+        if (currState == "Targeting")
+        {
+            enemy.GetComponent<CharScript>().TakeDamage(20, "Fire");
+            StartCoroutine(shake(enemy, 1f));
+            currState = "Main";
+        }
     }
 
     //Shake function
@@ -140,9 +157,13 @@ public class CombatManagerScript : MonoBehaviour
     IEnumerator shake(GameObject enemy, float waitTime)
     {
         Vector2 temp = enemy.GetComponent<RectTransform>().anchoredPosition;
-
+        targetEnemy = enemy;
+        if (shakeEnemy == false)
+        {
+            shakeEnemy = true;
+        }
         yield return new WaitForSeconds(waitTime);
-        Debug.Log("WaitAndPrint " + Time.time);
+        shakeEnemy = false;
         enemy.GetComponent<RectTransform>().anchoredPosition = temp;
     }
 }

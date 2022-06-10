@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
+  setCurrentHealth: 0
   elementType: 0
   healthBar: {fileID: 938769849}
 --- !u!1 &449238894
@@ -1656,7 +1656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
+  setCurrentHealth: 0
   elementType: 1
   healthBar: {fileID: 1983208884}
 --- !u!1 &938769844
@@ -1936,7 +1936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
+  setCurrentHealth: 0
   elementType: 2
   healthBar: {fileID: 1843894501}
 --- !u!1 &971382604

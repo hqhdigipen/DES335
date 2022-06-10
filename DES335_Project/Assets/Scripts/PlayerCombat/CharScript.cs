@@ -5,7 +5,8 @@ using UnityEngine;
 public class CharScript : MonoBehaviour
 {
     public int maxHealth = 100;
-    public int currentHealth;
+    public int setCurrentHealth;
+    int currentHealth;
 
     float typeAdvantageMod = 1.25f;
     float typeWeaknessMod = 0.75f;
@@ -17,8 +18,18 @@ public class CharScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
+        if (setCurrentHealth <= 0)
+        {
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+        }
+        else
+        {
+            currentHealth = setCurrentHealth;
+            healthBar.SetHealth(currentHealth);
+        }
     }
 
     // Update is called once per frame
@@ -75,6 +86,9 @@ public class CharScript : MonoBehaviour
                         currentHealth -= damage;
                         break;
                 }
+                break;
+            default:
+                currentHealth -= Mathf.FloorToInt(damage);
                 break;
 
         }
