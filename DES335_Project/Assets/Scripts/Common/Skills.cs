@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Element_Skill_Type : MonoBehaviour
+public class Skills : MonoBehaviour
 {
     public enum CHARACTER_ELEMENTS
     {
@@ -13,10 +13,10 @@ public class Element_Skill_Type : MonoBehaviour
 
     public enum SKILL_TYPE
     { 
-        NORMAL,
-        FIRE,
-        WATER,
-        EARTH,
+        Normal,
+        Fire,
+        Water,
+        Earth,
     }
 
     public enum DAMAGE_TYPE
@@ -31,7 +31,7 @@ public class Element_Skill_Type : MonoBehaviour
     {
         public string Name;
         public int Damage;
-        public SKILL_TYPE Skill_Type;
+        public SKILL_TYPE Skill_Element_Type;
         public DAMAGE_TYPE Skill_Damage_Type;
     }
 
