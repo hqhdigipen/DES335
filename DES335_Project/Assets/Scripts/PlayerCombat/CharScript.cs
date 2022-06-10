@@ -87,6 +87,9 @@ public class CharScript : MonoBehaviour
                         break;
                 }
                 break;
+            default:
+                currentHealth -= Mathf.FloorToInt(damage);
+                break;
 
         }
 

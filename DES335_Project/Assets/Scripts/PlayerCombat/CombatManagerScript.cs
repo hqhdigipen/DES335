@@ -144,8 +144,12 @@ public class CombatManagerScript : MonoBehaviour
 
     public void AttackEenemy(GameObject enemy)
     {
-        enemy.GetComponent<CharScript>().TakeDamage(20, "Fire");
-        StartCoroutine(shake(enemy, 1f));
+        if (currState == "Targeting")
+        {
+            enemy.GetComponent<CharScript>().TakeDamage(20, "Fire");
+            StartCoroutine(shake(enemy, 1f));
+            currState = "Main";
+        }
     }
 
     //Shake function
