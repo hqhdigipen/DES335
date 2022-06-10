@@ -3,15 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
-{  
+{
+    enum OPPONENT
+    { 
+        PLAYER,
+        COMPANION
+    }
+
     int i = 0;
+    int target = 0;
+    int opponent = 2;
+    int damage = 0;
+    string attack_element;
 
     public GameObject player;
+    public GameObject companion;
     public GameObject enemy;
     
     public void Start()
     {
         enemy = this.gameObject;
+        companion = GameObject.FindGameObjectWithTag("Companion");
     }   
 
     private void Update()
@@ -19,14 +31,10 @@ public class Enemy : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             RandomiseAttack();
-
-            int damage = enemy.GetComponent<Skills>().Skill_List[i].Damage;
-            string attack_element = enemy.GetComponent<Skills>().Skill_List[i].Skill_Element_Type.ToString();
-            player.GetComponent<CharScript>().TakeDamage(damage, attack_element);
-            Debug.Log("Enemy is using " + enemy.GetComponent<Skills>().Skill_List[i].Name + 
-                "(" + attack_element +") , -" + damage + " damage to Player");
-
-
+            
+            damage = enemy.GetComponent<Skills>().Skill_List[i].Damage;
+            attack_element = enemy.GetComponent<Skills>().Skill_List[i].Skill_Element_Type.ToString();
+            RandomiseTarget(damage, attack_element);
         }
     }
 
@@ -34,13 +42,23 @@ public class Enemy : MonoBehaviour
     {
         int num_of_skills = enemy.GetComponent<Skills>().Skill_List.Length;
         i = Random.Range(0, num_of_skills);
-        Debug.Log("Attack is" + enemy.GetComponent<Skills>().Skill_List[i].Name);
     }
 
-    private void RandomiseTarget()
+    private void RandomiseTarget(int damage, string attack_element)
     {
-       // if(player)
-        //    player.GetComponent<CharScript>().TakeDamage(DamageList[i], Element_Type.ToString());
+        target = Random.Range(0, opponent);
 
+        if (target == (int)OPPONENT.PLAYER)
+        {
+            player.GetComponent<CharScript>().TakeDamage(damage, attack_element);
+            Debug.Log("Enemy is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
+             "(" + attack_element + ") , -" + damage + " damage to Player");
+        }
+        else
+        {
+            companion.GetComponent<CharScript>().TakeDamage(damage, attack_element);
+            Debug.Log("Enemy is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
+             "(" + attack_element + ") , -" + damage + " damage to Companion");
+        }
     }
 }

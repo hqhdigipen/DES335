@@ -31,12 +31,13 @@ public class Skills : MonoBehaviour
     {
         public string Name;
         public int Damage;
+        public int MP;
         public SKILL_TYPE Skill_Element_Type;
         public DAMAGE_TYPE Skill_Damage_Type;
+
     }
 
     public CHARACTER_ELEMENTS Character_Element;
-    //public List<Skill> Skill_List = new List<Skill>();
     public Skill[] Skill_List = new Skill[4];
     void Start()
     {
