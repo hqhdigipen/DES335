@@ -3,23 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
-{
-    public enum ENEMY_TYPE 
-    { 
-      Fire, 
-      Water, 
-      Earth 
-    };
-    
-    public ENEMY_TYPE Element_Type;
-    public GameObject player;
+{  
     int i = 0;
 
-    public List<string> attackList = new List<string>();
-    public List<int> DamageList = new List<int>();
-    public void Enemy_Attack()
+    public GameObject player;
+    public GameObject enemy;
+    
+    public void Start()
     {
-       
+        enemy = this.gameObject;
     }   
 
     private void Update()
@@ -28,14 +20,27 @@ public class Enemy : MonoBehaviour
         {
             RandomiseAttack();
 
-            player.GetComponent<CharScript>().TakeDamage(DamageList[i], Element_Type.ToString());
-            Debug.Log("Enemy is using " + attackList[i] + " , -" + DamageList[i] + " damage to Player");
+            int damage = enemy.GetComponent<Skills>().Skill_List[i].Damage;
+            string attack_element = enemy.GetComponent<Skills>().Skill_List[i].Skill_Element_Type.ToString();
+            player.GetComponent<CharScript>().TakeDamage(damage, attack_element);
+            Debug.Log("Enemy is using " + enemy.GetComponent<Skills>().Skill_List[i].Name + 
+                "(" + attack_element +") , -" + damage + " damage to Player");
+
+
         }
     }
 
     private void RandomiseAttack()
     {
-        i = Random.Range(0, attackList.Count);
-        Debug.Log("Attack is" + attackList[i]);
+        int num_of_skills = enemy.GetComponent<Skills>().Skill_List.Length;
+        i = Random.Range(0, num_of_skills);
+        Debug.Log("Attack is" + enemy.GetComponent<Skills>().Skill_List[i].Name);
+    }
+
+    private void RandomiseTarget()
+    {
+       // if(player)
+        //    player.GetComponent<CharScript>().TakeDamage(DamageList[i], Element_Type.ToString());
+
     }
 }
