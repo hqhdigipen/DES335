@@ -1,27 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using TMPro;
 public class HubBehaviour : MonoBehaviour
 {
-    public GameObject generalStoreCanvas, blacksmithCanvas, motherTreeCanvas, hubCanvas;
+    public GameObject generalStoreCanvas, blacksmithCanvas, hubCanvas;
 
     public GameObject playerInfo, allyInfo;
+
+    public GameObject itemPanel;
+
+    public SliderBehaviour sliderScript;
+
+    int herbPrice =30, elixirPrice=50;
+
+    public TextMeshProUGUI itemName, itemInfo, itemCost;
+
 
     public void Start()
     {
         blacksmithCanvas.SetActive(false);
         generalStoreCanvas.SetActive(false);
-        motherTreeCanvas.SetActive(false);
         hubCanvas.SetActive(true);
 
         playerInfo.SetActive(true);
         allyInfo.SetActive(false);
+
+        sliderScript.GetComponent<SliderBehaviour>();
+      
     }
     public void Update()
     {
-       
+        switch (itemName.text) {
+            case "Herb":
+                    itemCost.text = (herbPrice * sliderScript.totalItem).ToString();
+                break;
+
+            case "Elixir":
+                itemCost.text = (elixirPrice * sliderScript.totalItem).ToString();
+                break;
+
+            default:
+                break;
+        }
+        
+    }
+
+    public void ClickHerbBtn() {
+        sliderScript.quantitySlider.value = 1;
+        itemPanel.SetActive(true);
+        itemName.text = "Herb";
+        itemInfo.text = "Heal 10 HP";
+    }
+
+    public void ClickElixirBtn()
+    {
+        sliderScript.quantitySlider.value = 1;
+        itemPanel.SetActive(true);
+        itemName.text = "Elixir";
+        itemInfo.text = "Heal 25 HP";
     }
 
     public void OpenBlacksmithCanvas()
@@ -31,11 +68,6 @@ public class HubBehaviour : MonoBehaviour
         hubCanvas.SetActive(false);
     }
 
-    public void OpenMotherTreeCanvas()
-    {
-        motherTreeCanvas.SetActive(true);
-        hubCanvas.SetActive(false);
-    }
 
     public void OpenGeneralStoreCanvas()
     {
@@ -45,10 +77,21 @@ public class HubBehaviour : MonoBehaviour
 
     public void CloseCanvas()
     {
-        if (blacksmithCanvas.activeSelf) {
+        if (blacksmithCanvas.activeSelf)
+        {
             blacksmithCanvas.SetActive(false);
             allyInfo.SetActive(false);
             playerInfo.SetActive(false);
+            hubCanvas.SetActive(true);
+        }
+        else {
+            generalStoreCanvas.SetActive(false);
+            itemPanel.SetActive(false);
+
+            sliderScript.quantitySlider.value = 1;
+            itemName.text = "";
+            itemInfo.text = "";
+
             hubCanvas.SetActive(true);
         }
        
