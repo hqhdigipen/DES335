@@ -34,8 +34,18 @@ public class Enemy : MonoBehaviour
             
             damage = enemy.GetComponent<Skills>().Skill_List[i].Damage;
             attack_element = enemy.GetComponent<Skills>().Skill_List[i].Skill_Element_Type.ToString();
+            enemy.GetComponent<Skills>().Skill_List[i].MP--;
             RandomiseTarget(damage, attack_element);
         }
+    }
+
+    public void Enemy_Attack()
+    {
+        
+    }
+    private void Heal()
+    {
+
     }
 
     private void RandomiseAttack()
@@ -52,13 +62,13 @@ public class Enemy : MonoBehaviour
         {
             player.GetComponent<CharScript>().TakeDamage(damage, attack_element);
             Debug.Log("Enemy is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
-             "(" + attack_element + ") , -" + damage + " damage to Player");
+             "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" + damage + " damage to Player");
         }
         else
         {
             companion.GetComponent<CharScript>().TakeDamage(damage, attack_element);
             Debug.Log("Enemy is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
-             "(" + attack_element + ") , -" + damage + " damage to Companion");
+             "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" + damage + " damage to Companion");
         }
     }
 }
