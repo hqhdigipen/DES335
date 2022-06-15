@@ -43,19 +43,18 @@ public class Enemy : MonoBehaviour
     }
     private void HealOrAttack()
     {
+        float hpPercentage = ((float)enemy.GetComponent<CharScript>().currentHealth 
+                              / (float)enemy.GetComponent<CharScript>().maxHealth)*100.0f;
+
+        Debug.Log("HP / Max HP : " + hpPercentage);
+
         if (healCounter == 0)
         {
             RandomiseAttack();
             return;
         }
 
-        int hpPercentage = (enemy.GetComponent<CharScript>().currentHealth 
-                              / enemy.GetComponent<CharScript>().maxHealth)*100;
-       
-        Debug.Log("HP / Max HP : " + (enemy.GetComponent<CharScript>().currentHealth 
-                              / enemy.GetComponent<CharScript>().maxHealth)*100);
-
-        if (hpPercentage < 25.0f)
+        if (hpPercentage <= 25.0f)
         {
             healProbability = 50.0f;
             float random = Random.Range(0.0f, 100.0f);
@@ -66,8 +65,8 @@ public class Enemy : MonoBehaviour
             else
                 RandomiseAttack(); 
         }
-        
-
+        else
+            RandomiseAttack();
     }
     private void Heal()
     {
