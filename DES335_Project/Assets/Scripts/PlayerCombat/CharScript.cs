@@ -6,7 +6,7 @@ public class CharScript : MonoBehaviour
 {
     public int maxHealth = 100;
     public int setCurrentHealth;
-    int currentHealth;
+    public int currentHealth;
 
     float typeAdvantageMod = 1.25f;
     float typeWeaknessMod = 0.75f;
@@ -86,6 +86,9 @@ public class CharScript : MonoBehaviour
                         currentHealth -= damage;
                         break;
                 }
+                break;
+            case "Normal":
+                currentHealth -= Mathf.FloorToInt(damage);
                 break;
             default:
                 currentHealth -= Mathf.FloorToInt(damage);
