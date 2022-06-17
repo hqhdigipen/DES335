@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 56484889}
   - component: {fileID: 56484890}
   - component: {fileID: 56484891}
+  - component: {fileID: 56484892}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -410,7 +411,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  setCurrentHealth: 50
+  setCurrentHealth: 25
+  currentHealth: 0
   elementType: 0
   healthBar: {fileID: 1983208884}
 --- !u!114 &56484890
@@ -426,6 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 403361196}
+  companion: {fileID: 0}
   enemy: {fileID: 0}
 --- !u!114 &56484891
 MonoBehaviour:
@@ -443,24 +446,37 @@ MonoBehaviour:
   Skill_List:
   - Name: S0
     Damage: 5
-    MP: 5
+    MP: 999
     Skill_Element_Type: 1
     Skill_Damage_Type: 0
   - Name: S1
     Damage: 10
-    MP: 5
+    MP: 2
     Skill_Element_Type: 1
     Skill_Damage_Type: 0
   - Name: S2
     Damage: 15
-    MP: 5
+    MP: 2
     Skill_Element_Type: 2
     Skill_Damage_Type: 0
   - Name: S3
     Damage: 20
-    MP: 5
+    MP: 2
     Skill_Element_Type: 3
     Skill_Damage_Type: 0
+--- !u!114 &56484892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56484885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf3505e2a5d7934795173ddcd25f9ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1983208885}
 --- !u!1 &81771408
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   setCurrentHealth: 0
+  currentHealth: 0
   elementType: 0
   healthBar: {fileID: 938769849}
 --- !u!1 &485578991
@@ -3763,6 +3780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   setCurrentHealth: 0
+  currentHealth: 0
   elementType: 0
   healthBar: {fileID: 2011823878}
 --- !u!114 &1972022017
@@ -4099,6 +4117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   setCurrentHealth: 0
+  currentHealth: 0
   elementType: 0
   healthBar: {fileID: 1843894501}
 --- !u!61 &2011628635

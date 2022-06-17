@@ -15,12 +15,17 @@ public class CombatManagerScript : MonoBehaviour
     public GameObject attackMenu;
     public GameObject itemMenu;
 
+    private int actionCounter;
+    private bool isPlayerTurn;
+
     bool shakeEnemy;
     GameObject targetEnemy;
 
     private void Start()
     {
         currState = "Main";
+        actionCounter = 0;
+        isPlayerTurn = true;
     }
 
     private void Update()
@@ -56,6 +61,13 @@ public class CombatManagerScript : MonoBehaviour
                 itemMenu.SetActive(false);
                 //friendlyPointer.SetActive(true);
                 break;
+
+            case "EnemyTurn":
+                itemMenu.SetActive(false);
+                attackMenu.SetActive(false);
+                combatMenu.SetActive(false);
+                pointer.SetActive(false);
+                break;
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -83,6 +95,14 @@ public class CombatManagerScript : MonoBehaviour
 
             targetEnemy.GetComponent<RectTransform>().anchoredPosition = newPos;
         }
+
+        if (actionCounter == 2)
+        {
+            if (isPlayerTurn == true)
+            {
+                currState = "EnemyTurn";
+            }
+        }
     }
 
 
@@ -99,6 +119,7 @@ public class CombatManagerScript : MonoBehaviour
     public void Attack1Button()
     {
         currState = "Targeting";
+        AddActionCounter(1);
     }
 
     public void UseItem(string ItemName)
@@ -146,7 +167,7 @@ public class CombatManagerScript : MonoBehaviour
     {
         if (currState == "Targeting")
         {
-            enemy.GetComponent<CharScript>().TakeDamage(20, "Fire");
+            enemy.GetComponent<CharScript>().TakeDamage(-5, "Fire");
             StartCoroutine(shake(enemy, 1f));
             currState = "Main";
         }
@@ -165,5 +186,17 @@ public class CombatManagerScript : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         shakeEnemy = false;
         enemy.GetComponent<RectTransform>().anchoredPosition = temp;
+    }
+
+    public void AddActionCounter(int actionWeight)
+    {
+        if (actionWeight != 0)
+        {
+            actionCounter += (actionWeight);
+        }
+        else
+        {
+            actionCounter++;
+        }
     }
 }
