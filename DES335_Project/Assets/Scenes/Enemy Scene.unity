@@ -446,22 +446,22 @@ MonoBehaviour:
   Skill_List:
   - Name: S0
     Damage: 5
-    MP: 5
+    MP: 999
     Skill_Element_Type: 1
     Skill_Damage_Type: 0
   - Name: S1
     Damage: 10
-    MP: 5
+    MP: 2
     Skill_Element_Type: 1
     Skill_Damage_Type: 0
   - Name: S2
     Damage: 15
-    MP: 5
+    MP: 2
     Skill_Element_Type: 2
     Skill_Damage_Type: 0
   - Name: S3
     Damage: 20
-    MP: 5
+    MP: 2
     Skill_Element_Type: 3
     Skill_Damage_Type: 0
 --- !u!114 &56484892

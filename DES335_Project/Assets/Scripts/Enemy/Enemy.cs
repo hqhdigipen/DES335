@@ -14,15 +14,15 @@ public class Enemy : MonoBehaviour
     int target = 0;
     int opponent = 2;
     int damage = 0;
-    //int num_enemies = 2;
+    int num_enemies = 2;
+    int target_remaining = 0;
     string attack_element;
 
     static int healCounter = 2;
     float healProbability = 0.0f;
+    bool enemy_win = false;
 
-    public GameObject player;
-    public GameObject companion;
-    public GameObject enemy;
+    public GameObject player, companion, enemy;
     
     public void Start()
     {
@@ -32,15 +32,17 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && !enemy_win)
         {
-            HealOrAttack();
+            if (num_enemies != 0)
+                HealOrAttack();
         }
     }
 
     public void Enemy_Attack()
     {
-        HealOrAttack();
+        if(!enemy_win & num_enemies != 0)
+            HealOrAttack();
     }
     private void HealOrAttack()
     {
@@ -51,7 +53,7 @@ public class Enemy : MonoBehaviour
 
         if (healCounter == 0)
         {
-            RandomiseAttack();
+            RandomiseSkill();
             return;
         }
 
@@ -63,11 +65,22 @@ public class Enemy : MonoBehaviour
 
             if (random <= healProbability)
                 Heal();
+            else if (num_enemies == 2)
+            {
+                RandomiseSkill();
+                RandomiseTarget();
+            }
             else
-                RandomiseAttack(); 
+                FixedTargetAttack();
         }
-        else
-            RandomiseAttack();
+        else if (num_enemies == 2)
+        {
+            RandomiseSkill();
+            RandomiseTarget();
+        }
+        else if (num_enemies == 1)
+            FixedTargetAttack();         
+
     }
     private void Heal()
     {
@@ -88,18 +101,61 @@ public class Enemy : MonoBehaviour
             Debug.Log("Heal Counter = 0");
     }
 
-    private void RandomiseAttack()
+    private void RandomiseSkill()
     {
         int num_of_skills = enemy.GetComponent<Skills>().Skill_List.Length;
         i = Random.Range(0, num_of_skills);
 
         damage = enemy.GetComponent<Skills>().Skill_List[i].Damage;
         attack_element = enemy.GetComponent<Skills>().Skill_List[i].Skill_Element_Type.ToString();
-        enemy.GetComponent<Skills>().Skill_List[i].MP--;
-        RandomiseTarget(damage, attack_element);
+
+        if (enemy.GetComponent<Skills>().Skill_List[i].MP > 0)
+        {
+            enemy.GetComponent<Skills>().Skill_List[i].MP--;
+        }
+        else
+        {
+            RandomiseSkill();
+        }
     }
 
-    private void RandomiseTarget(int damage, string attack_element)
+    private void FixedTargetAttack()
+    {
+        RandomiseSkill();
+
+        if (target_remaining == (int)OPPONENT.PLAYER)
+        {
+            player.GetComponent<CharScript>().TakeDamage(damage, attack_element);
+            enemy.GetComponent<Skills>().Skill_List[i].MP--;
+
+            Debug.Log("Player Left, Companion Dead. Enemy using" + enemy.GetComponent<Skills>().Skill_List[i].Name +
+            "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" +
+            damage + " damage to Player");
+
+            if (player.GetComponent<CharScript>().currentHealth <= 0)
+            {
+                num_enemies--;
+                Debug.Log("Enemies Win");
+            }
+        }
+        else if (target_remaining == (int)OPPONENT.COMPANION)
+        {
+            companion.GetComponent<CharScript>().TakeDamage(damage, attack_element);
+            enemy.GetComponent<Skills>().Skill_List[i].MP--;
+
+            Debug.Log("Companion Left, Player Dead. Enemy using" + enemy.GetComponent<Skills>().Skill_List[i].Name +
+           "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" +
+           damage + " damage to Companion");
+
+            if (companion.GetComponent<CharScript>().currentHealth <= 0)
+            {
+                enemy_win = true;
+                Debug.Log("Enemies Win");
+            }
+        }
+    }
+
+    private void RandomiseTarget()
     {
         target = Random.Range(0, opponent);
 
@@ -111,8 +167,13 @@ public class Enemy : MonoBehaviour
              "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" + 
              damage + " damage to Player");
 
-           // if(player.GetComponent<CharScript>().currentHealth <= 0)
-                
+            if (player.GetComponent<CharScript>().currentHealth <= 0)
+            {
+                target_remaining = (int)OPPONENT.COMPANION;
+                num_enemies--;
+
+                Debug.Log("Player Dead, number of enemies left: " + num_enemies);
+            }
         }
         else
         {
@@ -121,6 +182,14 @@ public class Enemy : MonoBehaviour
             Debug.Log("Enemy is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
              "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" + 
              damage + " damage to Companion");
+
+            if (companion.GetComponent<CharScript>().currentHealth <= 0)
+            {
+                target_remaining = (int)OPPONENT.PLAYER;
+                num_enemies--;
+
+                Debug.Log("Companion Dead, number of enemies left: " + num_enemies);
+            }
         }
     }
 }
