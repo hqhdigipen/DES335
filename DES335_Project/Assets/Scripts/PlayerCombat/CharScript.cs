@@ -35,10 +35,7 @@ public class CharScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(20, "Fire");
-        }
+
     }
 
     public void TakeDamage(int damage, string atkElement)
@@ -96,6 +93,11 @@ public class CharScript : MonoBehaviour
 
         }
 
+        healthBar.SetHealth(currentHealth);
+    }
+
+    public  void SetHPinUI()
+    {
         healthBar.SetHealth(currentHealth);
     }
 }

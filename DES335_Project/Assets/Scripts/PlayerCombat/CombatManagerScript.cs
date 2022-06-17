@@ -21,11 +21,19 @@ public class CombatManagerScript : MonoBehaviour
     bool shakeEnemy;
     GameObject targetEnemy;
 
+    private GameObject playerEntity, companionEntitiy, enemyEntity1, enemyEntity2;
+
     private void Start()
     {
         currState = "Main";
         actionCounter = 0;
         isPlayerTurn = true;
+
+        playerEntity = GameObject.FindGameObjectWithTag("Player");
+        companionEntitiy = GameObject.FindGameObjectWithTag("Companion");
+        enemyEntity1 = GameObject.FindGameObjectWithTag("Enemy");
+        enemyEntity2 = GameObject.FindGameObjectWithTag("Enemy2");
+
     }
 
     private void Update()
@@ -67,6 +75,7 @@ public class CombatManagerScript : MonoBehaviour
                 attackMenu.SetActive(false);
                 combatMenu.SetActive(false);
                 pointer.SetActive(false);
+                StartCoroutine(EnemyStart());               
                 break;
         }
 
@@ -95,14 +104,6 @@ public class CombatManagerScript : MonoBehaviour
 
             targetEnemy.GetComponent<RectTransform>().anchoredPosition = newPos;
         }
-
-        if (actionCounter == 2)
-        {
-            if (isPlayerTurn == true)
-            {
-                currState = "EnemyTurn";
-            }
-        }
     }
 
 
@@ -118,8 +119,7 @@ public class CombatManagerScript : MonoBehaviour
 
     public void Attack1Button()
     {
-        currState = "Targeting";
-        AddActionCounter(1);
+        currState = "Targeting";     
     }
 
     public void UseItem(string ItemName)
@@ -170,6 +170,7 @@ public class CombatManagerScript : MonoBehaviour
             enemy.GetComponent<CharScript>().TakeDamage(-5, "Fire");
             StartCoroutine(shake(enemy, 1f));
             currState = "Main";
+            AddActionCounter(1);
         }
     }
 
@@ -188,6 +189,33 @@ public class CombatManagerScript : MonoBehaviour
         enemy.GetComponent<RectTransform>().anchoredPosition = temp;
     }
 
+    private IEnumerator EnemyStart()
+    {
+        enemyEntity1.GetComponent<Enemy>().Enemy_Attack();
+
+        yield return waitForKeyPress(KeyCode.Space);
+
+        enemyEntity2.GetComponent<Enemy>().Enemy_Attack();
+
+        yield return waitForKeyPress(KeyCode.Space);
+
+        StopCoroutine(EnemyStart());
+
+    }
+
+    private IEnumerator waitForKeyPress(KeyCode key)
+    {
+        bool done = false;
+        while (!done) // essentially a "while true", but with a bool to break out naturally
+        {
+            if (Input.GetKeyDown(key))
+            {
+                done = true; // breaks the loop
+            }
+            yield return null; // wait until next frame, then continue execution from here (loop continues)
+        }
+    }
+
     public void AddActionCounter(int actionWeight)
     {
         if (actionWeight != 0)
@@ -197,6 +225,24 @@ public class CombatManagerScript : MonoBehaviour
         else
         {
             actionCounter++;
+        }
+
+
+        if (actionCounter == 2)
+        {
+            if (isPlayerTurn == true)
+            {
+                currState = "EnemyTurn";
+                isPlayerTurn = false;
+            }
+            else
+            {
+                currState = "Main";
+                isPlayerTurn = true;
+            }
+
+            actionCounter = 0;
+            Debug.Log("actionCounter: " + actionCounter);
         }
     }
 }
