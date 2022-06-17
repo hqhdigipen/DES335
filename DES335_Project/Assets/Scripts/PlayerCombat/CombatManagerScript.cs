@@ -100,7 +100,7 @@ public class CombatManagerScript : MonoBehaviour
         {
             if (isPlayerTurn == true)
             {
-
+                currState = "EnemyTurn";
             }
         }
     }
@@ -119,6 +119,7 @@ public class CombatManagerScript : MonoBehaviour
     public void Attack1Button()
     {
         currState = "Targeting";
+        AddActionCounter(1);
     }
 
     public void UseItem(string ItemName)
