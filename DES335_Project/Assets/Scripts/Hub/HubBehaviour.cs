@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 public class HubBehaviour : MonoBehaviour
 {
-    public GameObject generalStoreCanvas, blacksmithCanvas, hubCanvas;
+    public GameObject generalStoreCanvas, blacksmithCanvas, hubCanvas, profileCanvas;
 
     public GameObject playerInfo, allyInfo;
 
@@ -21,6 +21,7 @@ public class HubBehaviour : MonoBehaviour
     {
         blacksmithCanvas.SetActive(false);
         generalStoreCanvas.SetActive(false);
+        profileCanvas.SetActive(false);
         hubCanvas.SetActive(true);
 
         playerInfo.SetActive(true);
@@ -29,6 +30,7 @@ public class HubBehaviour : MonoBehaviour
         sliderScript.GetComponent<SliderBehaviour>();
       
     }
+
     public void Update()
     {
         switch (itemName.text) {
@@ -43,7 +45,6 @@ public class HubBehaviour : MonoBehaviour
             default:
                 break;
         }
-        
     }
 
     public void ClickHerbBtn() {
@@ -69,6 +70,11 @@ public class HubBehaviour : MonoBehaviour
     }
 
 
+    public void OpenProfile() {
+        hubCanvas.SetActive(false);
+        profileCanvas.SetActive(true);
+    }
+
     public void OpenGeneralStoreCanvas()
     {
         generalStoreCanvas.SetActive(true);
@@ -84,7 +90,8 @@ public class HubBehaviour : MonoBehaviour
             playerInfo.SetActive(false);
             hubCanvas.SetActive(true);
         }
-        else {
+        else if (generalStoreCanvas.activeSelf)
+        {
             generalStoreCanvas.SetActive(false);
             itemPanel.SetActive(false);
 
@@ -94,9 +101,12 @@ public class HubBehaviour : MonoBehaviour
 
             hubCanvas.SetActive(true);
         }
+        else {
+            hubCanvas.SetActive(true);
+            profileCanvas.SetActive(false);
+        }
        
     }
-
     public void OpenPlayerDetails() {
         playerInfo.SetActive(true);
         allyInfo.SetActive(false);
