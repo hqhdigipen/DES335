@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     int target = 0;
     int opponent = 2;
     int damage = 0;
+    //int num_enemies = 2;
     string attack_element;
 
     static int healCounter = 2;
@@ -39,7 +40,7 @@ public class Enemy : MonoBehaviour
 
     public void Enemy_Attack()
     {
-        
+        HealOrAttack();
     }
     private void HealOrAttack()
     {
@@ -79,9 +80,6 @@ public class Enemy : MonoBehaviour
 
             enemy.GetComponent<HealthBarScript>().SetHealth(enemy.GetComponent<CharScript>().currentHealth);
 
-            //enemy.GetComponent<CharScript>().TakeDamage (-(enemy.GetComponent<CharScript>().currentHealth + 
-            //  (enemy.GetComponent<CharScript>().maxHealth / 2)), "Fire");
-
             healCounter--;
 
             Debug.Log("Enemy HP after heal: " + enemy.GetComponent<CharScript>().currentHealth + ". Heal Counter: " + healCounter);
@@ -108,13 +106,18 @@ public class Enemy : MonoBehaviour
         if (target == (int)OPPONENT.PLAYER)
         {
             player.GetComponent<CharScript>().TakeDamage(damage, attack_element);
+            
             Debug.Log("Enemy is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
              "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" + 
              damage + " damage to Player");
+
+           // if(player.GetComponent<CharScript>().currentHealth <= 0)
+                
         }
         else
         {
             companion.GetComponent<CharScript>().TakeDamage(damage, attack_element);
+            
             Debug.Log("Enemy is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
              "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" + 
              damage + " damage to Companion");
