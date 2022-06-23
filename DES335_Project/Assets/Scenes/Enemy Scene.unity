@@ -772,6 +772,7 @@ GameObject:
   - component: {fileID: 403361199}
   - component: {fileID: 403361201}
   - component: {fileID: 403361198}
+  - component: {fileID: 403361202}
   m_Layer: 5
   m_Name: PlayerHP
   m_TagString: Player
@@ -836,7 +837,7 @@ MonoBehaviour:
     Skill_Damage_Type: 0
   companion: {fileID: 0}
   enemy: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 403361196}
 --- !u!114 &403361199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -892,6 +893,40 @@ MonoBehaviour:
   currentHealth: 0
   elementType: 0
   healthBar: {fileID: 938769849}
+--- !u!114 &403361202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403361196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f908d8e4383f364bb52075549fe7fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Character_Element: 0
+  Skill_List:
+  - Name: P1
+    Damage: 5
+    MP: 5
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  - Name: P2
+    Damage: 10
+    MP: 5
+    Skill_Element_Type: 1
+    Skill_Damage_Type: 0
+  - Name: P3
+    Damage: 15
+    MP: 5
+    Skill_Element_Type: 2
+    Skill_Damage_Type: 0
+  - Name: P4
+    Damage: 20
+    MP: 5
+    Skill_Element_Type: 3
+    Skill_Damage_Type: 0
 --- !u!1 &485578991
 GameObject:
   m_ObjectHideFlags: 0

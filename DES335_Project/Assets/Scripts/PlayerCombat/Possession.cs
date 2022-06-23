@@ -56,11 +56,17 @@ public class Possession : MonoBehaviour
             Possessed_Skill_List[i].Skill_Element_Type = (POSSESSED_SKILL_TYPE)(int)enemy.GetComponent<Skills>().Skill_List[i].Skill_Element_Type;
             Possessed_Skill_List[i].Skill_Damage_Type = (POSSESSED_DAMAGE_TYPE)(int)enemy.GetComponent<Skills>().Skill_List[i].Skill_Damage_Type;
 
-            Debug.Log("PS: " + Possessed_Skill_List[i].Name
-                + " Damage: " + Possessed_Skill_List[i].Damage
-                + " MP: " + Possessed_Skill_List[i].MP
-                + " Skill Type: " + Possessed_Skill_List[i].Skill_Element_Type
-                + "Damage Type: " + Possessed_Skill_List[i].Skill_Damage_Type); 
+            player.GetComponent<Skills>().Skill_List[i].Name = Possessed_Skill_List[i].Name;
+            player.GetComponent<Skills>().Skill_List[i].Damage = Possessed_Skill_List[i].Damage;
+            player.GetComponent<Skills>().Skill_List[i].MP = Possessed_Skill_List[i].MP;
+            player.GetComponent<Skills>().Skill_List[i].Skill_Element_Type = (Skills.SKILL_TYPE)Possessed_Skill_List[i].Skill_Element_Type;
+            player.GetComponent<Skills>().Skill_List[i].Skill_Damage_Type = (Skills.DAMAGE_TYPE)Possessed_Skill_List[i].Skill_Damage_Type;
+
+            Debug.Log("PS: " + player.GetComponent<Skills>().Skill_List[i].Name
+               + " Damage: " + player.GetComponent<Skills>().Skill_List[i].Damage
+               + " MP: " + player.GetComponent<Skills>().Skill_List[i].MP
+               + " Skill Type: " + player.GetComponent<Skills>().Skill_List[i].Skill_Element_Type
+               + "Damage Type: " + player.GetComponent<Skills>().Skill_List[i].Skill_Damage_Type);
         }
     }
 
