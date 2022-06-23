@@ -35,7 +35,10 @@ public class Enemy : MonoBehaviour
         enemy = this.gameObject;
         companion = GameObject.FindGameObjectWithTag("Companion");
         gameManager = GameObject.Find("GameManager");
-        actionLogTextBox = GameObject.Find("TextBox").GetComponent<Text>();
+        if (GameObject.Find("TextBox") != null)
+        {
+            actionLogTextBox = GameObject.Find("TextBox").GetComponent<Text>();
+        }
     }   
 
     private void Update()
@@ -105,7 +108,10 @@ public class Enemy : MonoBehaviour
            healCounter--;
 
             //Debug.Log("Enemy HP after heal: " + enemy.GetComponent<CharScript>().currentHealth + ". Heal Counter: " + healCounter);
-            actionLogTextBox.text = "Enemy HP after heal: " + enemy.GetComponent<CharScript>().currentHealth + ". Heal Counter: " + healCounter;
+            if (actionLogTextBox != null)
+            {
+                actionLogTextBox.text = "Enemy HP after heal: " + enemy.GetComponent<CharScript>().currentHealth + ". Heal Counter: " + healCounter;
+            }
         }
         else
         {
@@ -177,14 +183,16 @@ public class Enemy : MonoBehaviour
         if (target == (int)OPPONENT.PLAYER)
         {
             player.GetComponent<CharScript>().TakeDamage(damage, attack_element);
-            
+
             //Debug.Log("Enemy is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
             // "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" + 
             // damage + " damage to Player");
-
-            actionLogTextBox.text = enemy.transform.name + " is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
-             "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" +
-             damage + " damage to Player";
+            if (actionLogTextBox != null)
+            {
+                actionLogTextBox.text = enemy.transform.name + " is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
+                 "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" +
+                 damage + " damage to Player";
+            }
 
             if (player.GetComponent<CharScript>().currentHealth <= 0)
             {
@@ -213,9 +221,12 @@ public class Enemy : MonoBehaviour
             // "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" + 
             // damage + " damage to Companion");
 
-            actionLogTextBox.text = enemy.transform.name + " is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
+            if (actionLogTextBox != null)
+            {
+                actionLogTextBox.text = enemy.transform.name + " is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
              "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" +
              damage + " damage to Companion";
+            }
         }
 
         gameManager.GetComponent<CombatManagerScript>().AddActionCounter(1);
