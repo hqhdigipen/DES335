@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SliderBehaviour : MonoBehaviour
 {
     public TextMeshProUGUI itemQuantity;
-    public int totalItem;
+    public int totalItem=1;
     public Slider quantitySlider;
     // Start is called before the first frame update
     void Start()
