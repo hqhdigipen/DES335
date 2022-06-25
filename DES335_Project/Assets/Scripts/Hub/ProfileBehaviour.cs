@@ -6,7 +6,7 @@ public class ProfileBehaviour : MonoBehaviour
 {
     public int sfAmount;
 
-    public TextMeshProUGUI currSF, buySF, sellSF, upgradeSF;
+    public TextMeshProUGUI currSF, buySF, sellSF, upgradeSF, inventorySF;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,7 @@ public class ProfileBehaviour : MonoBehaviour
         currSF.text = sfAmount.ToString();
         buySF.text = sfAmount.ToString();
         sellSF.text = sfAmount.ToString();
+        inventorySF.text = sfAmount.ToString();
         upgradeSF.text = sfAmount.ToString();
     }
 }
