@@ -28,7 +28,7 @@ public class HubBehaviour : MonoBehaviour
 
     public GameObject notEnoughSF;
 
-    public GameObject allyWeaponPanel, allyArmorPanel, mainArmorPanel, mainWeaponPanel, noEquipmentMsg;
+    public GameObject allyWeaponPanel, allyArmorPanel, mainArmorPanel, mainWeaponPanel, noEquipmentMsg, witchPanel;
     public GameObject noWeaponBtn, noArmorBtn;
     public TextMeshProUGUI allyWeaponLv, allyArmorLv, mainArmorLv, mainWeaponLv;
     public TextMeshProUGUI allyWeaponPrice, allyArmorPrice, mainArmorPrice, mainWeaponPrice;
@@ -54,6 +54,7 @@ public class HubBehaviour : MonoBehaviour
         noArmorBtn.SetActive(true);
         noEquipmentMsg.SetActive(true);
         soulForce = profileScript.sfAmount;
+        witchPanel.SetActive(false);
         blacksmithCanvas.SetActive(false);
         generalStoreCanvas.SetActive(false);
         profileCanvas.SetActive(false);
@@ -287,6 +288,12 @@ public class HubBehaviour : MonoBehaviour
         upgradeAllyPanel.SetActive(false);
     }
 
+    public void WitchBtn()
+    {
+        witchPanel.SetActive(true);
+        hubCanvas.SetActive(false);
+    }
+
     public void AllyLevelBtn()
     {
         allyWeaponPanel.SetActive(false);
@@ -478,7 +485,12 @@ public class HubBehaviour : MonoBehaviour
 
             hubCanvas.SetActive(true);
         }
-        else {
+        else if (witchPanel.activeSelf) {
+            witchPanel.SetActive(false);
+            hubCanvas.SetActive(true);
+        }
+        else
+        {
             hubCanvas.SetActive(true);
             profileCanvas.SetActive(false);
         }

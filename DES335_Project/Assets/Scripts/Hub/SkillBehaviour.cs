@@ -8,11 +8,14 @@ public class SkillBehaviour : MonoBehaviour
 {
     public GameObject[] mainWeaponSkills, mainArmorSkills, allyWeaponSkills, allyArmorSkills;
     public TextMeshProUGUI[] skillNames;
+    public GameObject [] canvas;
+    GameObject [] skillDialogue = new GameObject[4];
+    GameObject[] weaponDialogue = new GameObject[4];
+    GameObject[] armorDialogue = new GameObject[4];
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -26,7 +29,12 @@ public class SkillBehaviour : MonoBehaviour
         switch (skillNames[0].text)
         {
             case "Banshee Wall":
-                mainWeaponSkills[0].SetActive(true);
+                //mainWeaponSkills[0].SetActive(true);
+                skillDialogue[0] = Instantiate(mainWeaponSkills[0]) as GameObject;
+                skillDialogue[1] = Instantiate(mainWeaponSkills[0]) as GameObject;
+                skillDialogue[0].transform.SetParent(canvas[0].transform, false);
+                skillDialogue[1].transform.SetParent(canvas[1].transform, false);
+                Debug.Log("Hover");
                 break;
 
         }
@@ -37,7 +45,10 @@ public class SkillBehaviour : MonoBehaviour
         switch (skillNames[0].text)
         {
             case "Banshee Wall":
-                mainWeaponSkills[0].SetActive(false);
+                //mainWeaponSkills[0].SetActive(false);
+                Destroy(skillDialogue[0].gameObject);
+                Destroy(skillDialogue[1].gameObject);
+                Debug.Log("Exit");
                 break;
 
         }
