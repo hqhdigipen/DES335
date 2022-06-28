@@ -33,12 +33,17 @@ public class HubBehaviour : MonoBehaviour
     public TextMeshProUGUI playerSkill1Price, playerSkill2Price, playerArmorPrice, playerWeaponPrice;
     public TextMeshProUGUI playerSkill1Des, playerSkill2Des, playerArmorDes, playerWeaponDes;
 
-    public TextMeshProUGUI currSF, buySF, sellSF, upgradeSF, inventorySF;
-    int sfAmount;
+    public TextMeshProUGUI cSF, bSF, sSF, upSF, invSF;
+    int soulForce;
+
+    public GameObject upgradeLvPanel;
+    public TextMeshProUGUI profileLv, upgradeLv, charLv, upgradeLvPrice;
+
+    int lvAmount;
 
     public void Start()
     {
-        sfAmount = profileScript.sfAmount;
+        soulForce = profileScript.sfAmount;
         blacksmithCanvas.SetActive(false);
         generalStoreCanvas.SetActive(false);
         profileCanvas.SetActive(false);
@@ -58,11 +63,13 @@ public class HubBehaviour : MonoBehaviour
     public void Update()
     {
        
-        currSF.text = sfAmount.ToString();
-        buySF.text = sfAmount.ToString();
-        sellSF.text = sfAmount.ToString();
-        inventorySF.text = sfAmount.ToString();
-        upgradeSF.text = sfAmount.ToString();
+        cSF.text = soulForce.ToString();
+        bSF.text = soulForce.ToString();
+        sSF.text = soulForce.ToString();
+        invSF.text = soulForce.ToString();
+        upSF.text = soulForce.ToString();
+
+
 
         switch (itemName.text) {
             case "Herb":
@@ -115,14 +122,18 @@ public class HubBehaviour : MonoBehaviour
             switch (itemName.text)
             {
                 case "Herb":
-                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(itemCost.text);
+                    Debug.Log("Amount: "+ profileScript.sfAmount + " Item Cost: "+ itemCost.text);
+                    profileScript.sfAmount= profileScript.sfAmount - int.Parse(itemCost.text);
+                    soulForce = profileScript.sfAmount;
                     itemAmountLabel[0].text = (int.Parse(itemAmountLabel[0].text) + sliderScript.totalItem).ToString();
                     itemPanel.SetActive(false);
 
                     break;
 
                 case "Elixir":
+                    Debug.Log("Amount: " + profileScript.sfAmount + " Item Cost: " + itemCost.text);
                     profileScript.sfAmount = profileScript.sfAmount - int.Parse(itemCost.text);
+                    soulForce = profileScript.sfAmount;
                     itemAmountLabel[1].text = (int.Parse(itemAmountLabel[1].text) + sliderScript.totalItem).ToString();
                     itemPanel.SetActive(false);
                     break;
@@ -146,6 +157,7 @@ public class HubBehaviour : MonoBehaviour
                 if (int.Parse(itemAmountLabel[0].text) > 0)
                 {
                     profileScript.sfAmount = profileScript.sfAmount + int.Parse(sellItemCost.text);
+                    soulForce = profileScript.sfAmount;
                     itemAmountLabel[0].text = (int.Parse(itemAmountLabel[0].text) - sellSliderScript.sellTotalItem).ToString();
                     inventoryPanel.SetActive(false);
                 }
@@ -155,6 +167,7 @@ public class HubBehaviour : MonoBehaviour
                     if (int.Parse(itemAmountLabel[1].text) > 0)
                     {
                         profileScript.sfAmount = profileScript.sfAmount + int.Parse(sellItemCost.text);
+                        soulForce = profileScript.sfAmount;
                         itemAmountLabel[1].text = (int.Parse(itemAmountLabel[1].text) - sellSliderScript.sellTotalItem).ToString();
                         inventoryPanel.SetActive(false);
                     }
@@ -248,7 +261,7 @@ public class HubBehaviour : MonoBehaviour
             if (int.Parse(profileScript.upgradeSF.text) > int.Parse(playerSkill1Price.text))
             {
                 if (int.Parse(profileScript.upgradeSF.text) - int.Parse(playerSkill1Price.text)>=0) {
-                    sfAmount = int.Parse(profileScript.upgradeSF.text) - int.Parse(playerSkill1Price.text);
+                    soulForce = int.Parse(profileScript.upgradeSF.text) - int.Parse(playerSkill1Price.text);
                     playerSkill1Price.text = (int.Parse(playerSkill1Price.text) * 2).ToString();
                     playerSkill1Lv.text = (int.Parse(playerSkill1Lv.text) + 1).ToString();
                 }
@@ -259,7 +272,7 @@ public class HubBehaviour : MonoBehaviour
             {
                 if (int.Parse(profileScript.upgradeSF.text) - int.Parse(playerSkill2Price.text) >= 0)
                 {
-                    sfAmount = int.Parse(profileScript.upgradeSF.text) - int.Parse(playerSkill2Price.text);
+                    soulForce = int.Parse(profileScript.upgradeSF.text) - int.Parse(playerSkill2Price.text);
                     playerSkill2Price.text = (int.Parse(playerSkill2Price.text) * 2).ToString();
                     playerSkill2Lv.text = (int.Parse(playerSkill2Lv.text) + 1).ToString();
                 }
@@ -270,7 +283,7 @@ public class HubBehaviour : MonoBehaviour
             {
                 if (int.Parse(profileScript.upgradeSF.text) - int.Parse(playerArmorPrice.text) >= 0)
                 {
-                    sfAmount = int.Parse(profileScript.upgradeSF.text) - int.Parse(playerArmorPrice.text);
+                    soulForce = int.Parse(profileScript.upgradeSF.text) - int.Parse(playerArmorPrice.text);
                     playerArmorPrice.text = (int.Parse(playerArmorPrice.text) * 2).ToString();
                     playerArmorLv.text = (int.Parse(playerArmorLv.text) + 1).ToString();
                 }
@@ -281,7 +294,7 @@ public class HubBehaviour : MonoBehaviour
             {
                 if (int.Parse(profileScript.upgradeSF.text) - int.Parse(playerWeaponPrice.text) >= 0)
                 {
-                    sfAmount = int.Parse(profileScript.upgradeSF.text) - int.Parse(playerWeaponPrice.text);
+                    soulForce = int.Parse(profileScript.upgradeSF.text) - int.Parse(playerWeaponPrice.text);
                     playerWeaponPrice.text = (int.Parse(playerWeaponPrice.text) * 2).ToString();
                     playerWeaponLv.text = (int.Parse(playerWeaponLv.text) + 1).ToString();
                 }
