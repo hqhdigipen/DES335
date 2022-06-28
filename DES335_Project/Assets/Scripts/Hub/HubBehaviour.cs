@@ -28,24 +28,31 @@ public class HubBehaviour : MonoBehaviour
 
     public GameObject notEnoughSF;
 
-    public GameObject playerSkill1Panel, playerSkill2Panel, playerArmorPanel, playerWeaponPanel;
-    public TextMeshProUGUI playerSkill1Lv, playerSkill2Lv, playerArmorLv, playerWeaponLv;
-    public TextMeshProUGUI playerSkill1Price, playerSkill2Price, playerArmorPrice, playerWeaponPrice;
-    public TextMeshProUGUI playerSkill1Des, playerSkill2Des, playerArmorDes, playerWeaponDes, upgradeLvDes;
-    public TextMeshProUGUI skill1Dmg, skill2Dmg, armorDef, weaponAttk;
+    public GameObject allyWeaponPanel, allyArmorPanel, mainArmorPanel, mainWeaponPanel, noEquipmentMsg;
+    public GameObject noWeaponBtn, noArmorBtn;
+    public TextMeshProUGUI allyWeaponLv, allyArmorLv, mainArmorLv, mainWeaponLv;
+    public TextMeshProUGUI allyWeaponPrice, allyArmorPrice, mainArmorPrice, mainWeaponPrice;
 
-    public TextMeshProUGUI[] nyxHP;
+    public TextMeshProUGUI[] nyxHP, allyHP;
 
     public TextMeshProUGUI cSF, bSF, sSF, upSF, invSF;
     int soulForce;
 
-    public GameObject upgradeLvPanel;
-    public TextMeshProUGUI profileLv, upgradeLv, charLv, upgradeLvPrice;
+    public GameObject upgradeMainPanel;
+    public TextMeshProUGUI profileMainLv, upgradeMain, mainLv, upgradeMainPrice;
 
-    int currLv;
+    public GameObject upgradeAllyPanel;
+    public TextMeshProUGUI profileAllyLv, upgradeAlly, allyLv, upgradeAllyPrice;
+
+    int mainCurrLv, allyCurrLv;
 
     public void Start()
     {
+        allyCurrLv = 1;
+        mainCurrLv = 1;
+        noWeaponBtn.SetActive(true);
+        noArmorBtn.SetActive(true);
+        noEquipmentMsg.SetActive(true);
         soulForce = profileScript.sfAmount;
         blacksmithCanvas.SetActive(false);
         generalStoreCanvas.SetActive(false);
@@ -65,8 +72,12 @@ public class HubBehaviour : MonoBehaviour
 
     public void Update()
     {
-        charLv.text = currLv.ToString();
-        profileLv.text = currLv.ToString();
+
+        allyLv.text = allyCurrLv.ToString();
+        profileAllyLv.text = allyCurrLv.ToString();
+
+        mainLv.text = mainCurrLv.ToString();
+        profileMainLv.text = mainCurrLv.ToString();
 
         cSF.text = soulForce.ToString();
         bSF.text = soulForce.ToString();
@@ -230,111 +241,146 @@ public class HubBehaviour : MonoBehaviour
         itemQuantity.text = "1";
     }
 
-    public void PlayerSkill1Btn() {
-        playerSkill1Panel.SetActive(true);
-        playerSkill2Panel.SetActive(false);
-        playerWeaponPanel.SetActive(false);
-        playerArmorPanel.SetActive(false);
-        upgradeLvPanel.SetActive(false);
+    public void AllyWeaponBtn() {
+        allyWeaponPanel.SetActive(true);
+        allyArmorPanel.SetActive(false);
+        mainWeaponPanel.SetActive(false);
+        mainArmorPanel.SetActive(false);
+        upgradeMainPanel.SetActive(false);
     }
 
-    public void PlayerSkill2Btn()
+    public void AllyArmorBtn()
     {
-        playerSkill1Panel.SetActive(false);
-        playerSkill2Panel.SetActive(true);
-        playerWeaponPanel.SetActive(false);
-        playerArmorPanel.SetActive(false);
-        upgradeLvPanel.SetActive(false);
+        allyWeaponPanel.SetActive(false);
+        allyArmorPanel.SetActive(true);
+        mainWeaponPanel.SetActive(false);
+        mainArmorPanel.SetActive(false);
+        upgradeMainPanel.SetActive(false);
     }
 
-    public void PlayerArmorBtn()
+    public void MainArmorBtn()
     {
-        playerSkill1Panel.SetActive(false);
-        playerSkill2Panel.SetActive(false);
-        playerWeaponPanel.SetActive(false);
-        playerArmorPanel.SetActive(true);
-        upgradeLvPanel.SetActive(false);
+        allyWeaponPanel.SetActive(false);
+        allyArmorPanel.SetActive(false);
+        mainWeaponPanel.SetActive(false);
+        mainArmorPanel.SetActive(true);
+        upgradeMainPanel.SetActive(false);
     }
 
-    public void PlayerWeaponBtn()
+    public void MainWeaponBtn()
     {
-        playerSkill1Panel.SetActive(false);
-        playerSkill2Panel.SetActive(false);
-        playerWeaponPanel.SetActive(true);
-        playerArmorPanel.SetActive(false);
-        upgradeLvPanel.SetActive(false);
+        allyWeaponPanel.SetActive(false);
+        allyArmorPanel.SetActive(false);
+        mainWeaponPanel.SetActive(true);
+        mainArmorPanel.SetActive(false);
+        upgradeMainPanel.SetActive(false);
     }
 
     public void PlayerLevelBtn()
     {
-        playerSkill1Panel.SetActive(false);
-        playerSkill2Panel.SetActive(false);
-        playerWeaponPanel.SetActive(false);
-        playerArmorPanel.SetActive(false);
-        upgradeLvPanel.SetActive(true);
+        allyWeaponPanel.SetActive(false);
+        allyArmorPanel.SetActive(false);
+        mainWeaponPanel.SetActive(false);
+        mainArmorPanel.SetActive(false);
+        upgradeMainPanel.SetActive(true);
+        noEquipmentMsg.SetActive(false);
+        upgradeAllyPanel.SetActive(false);
     }
 
+    public void AllyLevelBtn()
+    {
+        allyWeaponPanel.SetActive(false);
+        allyArmorPanel.SetActive(false);
+        mainWeaponPanel.SetActive(false);
+        mainArmorPanel.SetActive(false);
+        upgradeMainPanel.SetActive(false);
+        noEquipmentMsg.SetActive(false);
+        upgradeAllyPanel.SetActive(true);
+    }
+
+
     public void UpgradePlayer() {
-        if (playerSkill1Panel.activeSelf) {
-            if (profileScript.sfAmount > int.Parse(playerSkill1Price.text))
+        if (allyWeaponPanel.activeSelf) {
+            if (profileScript.sfAmount > int.Parse(allyWeaponPrice.text) && int.Parse(allyWeaponLv.text)<5)
             {
-                if (profileScript.sfAmount - int.Parse(playerSkill1Price.text) >= 0) {
-                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(playerSkill1Price.text);
+                if (profileScript.sfAmount - int.Parse(allyWeaponPrice.text) >= 0) {
+                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(allyWeaponPrice.text);
                     soulForce = profileScript.sfAmount;
-                    playerSkill1Price.text = (int.Parse(playerSkill1Price.text) * 2).ToString();
-                    playerSkill1Lv.text = (int.Parse(playerSkill1Lv.text) + 1).ToString();
-                    skill1Dmg.text = (int.Parse(skill1Dmg.text) + 5).ToString();
+                    allyWeaponPrice.text = (int.Parse(allyWeaponPrice.text) * 2).ToString();
+                    allyWeaponLv.text = (int.Parse(allyWeaponLv.text) + 1).ToString();
                 }
             }
 
-        } else if (playerSkill2Panel.activeSelf) {
-            if (profileScript.sfAmount > int.Parse(playerSkill2Price.text))
+        } else if (allyArmorPanel.activeSelf) {
+            if (profileScript.sfAmount > int.Parse(allyArmorPrice.text) && int.Parse(allyArmorLv.text) < 5)
             {
-                if (profileScript.sfAmount - int.Parse(playerSkill2Price.text) >= 0)
+                if (profileScript.sfAmount - int.Parse(allyArmorPrice.text) >= 0)
                 {
-                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(playerSkill2Price.text);
+                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(allyArmorPrice.text);
                     soulForce = profileScript.sfAmount;
-                    playerSkill2Price.text = (int.Parse(playerSkill2Price.text) * 2).ToString();
-                    playerSkill2Lv.text = (int.Parse(playerSkill2Lv.text) + 1).ToString();
-                    skill2Dmg.text = (int.Parse(skill2Dmg.text) + 5).ToString();
+                    allyArmorPrice.text = (int.Parse(allyArmorPrice.text) * 2).ToString();
+                    allyArmorLv.text = (int.Parse(allyArmorLv.text) + 1).ToString();
                 }
             }
 
-        } else if (playerArmorPanel.activeSelf) {
-            if (profileScript.sfAmount > int.Parse(playerArmorPrice.text))
+        } else if (mainArmorPanel.activeSelf) {
+            if (profileScript.sfAmount > int.Parse(mainArmorPrice.text) && int.Parse(mainArmorLv.text) < 5)
             {
-                if (profileScript.sfAmount - int.Parse(playerArmorPrice.text) >= 0)
+                if (profileScript.sfAmount - int.Parse(mainArmorPrice.text) >= 0)
                 {
-                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(playerArmorPrice.text);
+                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(mainArmorPrice.text);
                     soulForce = profileScript.sfAmount;
-                    playerArmorPrice.text = (int.Parse(playerArmorPrice.text) * 2).ToString();
-                    playerArmorLv.text = (int.Parse(playerArmorLv.text) + 1).ToString();
-                    armorDef.text = (int.Parse(armorDef.text) + 5).ToString();
+                    mainArmorPrice.text = (int.Parse(mainArmorPrice.text) * 2).ToString();
+                    mainArmorLv.text = (int.Parse(mainArmorLv.text) + 1).ToString();
                 }
             }
 
-        } else if (upgradeLvPanel.activeSelf) {
-            profileScript.sfAmount = profileScript.sfAmount - int.Parse(upgradeLvPrice.text);
-            soulForce = profileScript.sfAmount;
-            upgradeLvPrice.text = (int.Parse(upgradeLvPrice.text) * 2).ToString();
-            upgradeLv.text = (int.Parse(upgradeLv.text) + 1).ToString();
-            currLv = int.Parse(upgradeLv.text);
-            nyxHP[0].text = (int.Parse(nyxHP[0].text) + 10).ToString();
-            nyxHP[1].text = (int.Parse(nyxHP[1].text) + 10).ToString();
-            nyxHP[2].text = (int.Parse(nyxHP[2].text) + 10).ToString();
+        } else if (upgradeMainPanel.activeSelf) {
+            if (profileScript.sfAmount > int.Parse(upgradeMainPrice.text))
+            {
+                if (profileScript.sfAmount - int.Parse(upgradeMainPrice.text) >= 0)
+                {
+                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(upgradeMainPrice.text);
+                    soulForce = profileScript.sfAmount;
+                    upgradeMainPrice.text = (int.Parse(upgradeMainPrice.text) * 2).ToString();
+                    upgradeMain.text = (int.Parse(upgradeMain.text) + 1).ToString();
+                    mainCurrLv = int.Parse(upgradeMain.text);
+                    nyxHP[0].text = (int.Parse(nyxHP[0].text) + 10).ToString();
+                    nyxHP[1].text = (int.Parse(nyxHP[1].text) + 10).ToString();
+                    nyxHP[2].text = (int.Parse(nyxHP[2].text) + 10).ToString();
+                }
+            }
+
+        }
+        else if (upgradeAllyPanel.activeSelf)
+        {
+            if (profileScript.sfAmount > int.Parse(upgradeAllyPrice.text))
+            {
+                if (profileScript.sfAmount - int.Parse(upgradeAllyPrice.text) >= 0)
+                {
+                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(upgradeAllyPrice.text);
+                    soulForce = profileScript.sfAmount;
+                    upgradeAllyPrice.text = (int.Parse(upgradeAllyPrice.text) * 2).ToString();
+                    upgradeAlly.text = (int.Parse(upgradeAlly.text) + 1).ToString();
+                    allyCurrLv = int.Parse(upgradeAlly.text);
+                    allyHP[0].text = (int.Parse(allyHP[0].text) + 10).ToString();
+                    allyHP[1].text = (int.Parse(allyHP[1].text) + 10).ToString();
+                    allyHP[2].text = (int.Parse(allyHP[2].text) + 10).ToString();
+                }
+            }
 
         }
 
-        else {
-            if (profileScript.sfAmount > int.Parse(playerWeaponPrice.text))
+        else 
+        {
+            if (profileScript.sfAmount > int.Parse(mainWeaponPrice.text) && int.Parse(mainWeaponLv.text) < 5)
             {
-                if (profileScript.sfAmount - int.Parse(playerWeaponPrice.text) >= 0)
+                if (profileScript.sfAmount - int.Parse(mainWeaponPrice.text) >= 0)
                 {
-                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(playerWeaponPrice.text);
+                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(mainWeaponPrice.text);
                     soulForce = profileScript.sfAmount;
-                    playerWeaponPrice.text = (int.Parse(playerWeaponPrice.text) * 2).ToString();
-                    playerWeaponLv.text = (int.Parse(playerWeaponLv.text) + 1).ToString();
-                    weaponAttk.text = (int.Parse(weaponAttk.text) + 5).ToString();
+                    mainWeaponPrice.text = (int.Parse(mainWeaponPrice.text) * 2).ToString();
+                    mainWeaponLv.text = (int.Parse(mainWeaponLv.text) + 1).ToString();
                 }
             }
         }
@@ -406,12 +452,15 @@ public class HubBehaviour : MonoBehaviour
     {
         if (blacksmithCanvas.activeSelf)
         {
-
-            playerSkill1Panel.SetActive(false);
-            playerSkill2Panel.SetActive(false);
-            playerWeaponPanel.SetActive(false);
-            playerArmorPanel.SetActive(false);
-            upgradeLvPanel.SetActive(false);
+            noWeaponBtn.SetActive(true);
+            noArmorBtn.SetActive(true);
+            noEquipmentMsg.SetActive(true);
+            allyWeaponPanel.SetActive(false);
+            allyArmorPanel.SetActive(false);
+            mainWeaponPanel.SetActive(false);
+            mainArmorPanel.SetActive(false);
+            upgradeMainPanel.SetActive(false);
+            upgradeAllyPanel.SetActive(false);
 
             blacksmithCanvas.SetActive(false);
             allyInfo.SetActive(false);
@@ -444,10 +493,10 @@ public class HubBehaviour : MonoBehaviour
     {
         allyInfo.SetActive(true);
         playerInfo.SetActive(false);
-        playerSkill1Panel.SetActive(false);
-        playerSkill2Panel.SetActive(false);
-        playerWeaponPanel.SetActive(false);
-        playerArmorPanel.SetActive(false);
+        allyWeaponPanel.SetActive(false);
+        allyArmorPanel.SetActive(false);
+        mainWeaponPanel.SetActive(false);
+        mainArmorPanel.SetActive(false);
     }
 }
 
