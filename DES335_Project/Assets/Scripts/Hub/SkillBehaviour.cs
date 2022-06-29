@@ -6,12 +6,12 @@ using TMPro;
 
 public class SkillBehaviour : MonoBehaviour
 {
-    public GameObject[] mainWeaponSkills, mainArmorSkills, allyWeaponSkills, allyArmorSkills;
-    public TextMeshProUGUI[] skillNames;
+    public GameObject[] mainWeaponSkill, mainArmorSkill, allyWeaponSkill, allyArmorSkill;
+    public TextMeshProUGUI[] dialogueNames;
     public GameObject [] canvas;
-    GameObject [] skillDialogue = new GameObject[4];
-    GameObject[] weaponDialogue = new GameObject[4];
-    GameObject[] armorDialogue = new GameObject[4];
+    GameObject [] dialogue = new GameObject[4];
+
+    Color someColorValue;
 
     // Start is called before the first frame update
     void Start()
@@ -24,16 +24,37 @@ public class SkillBehaviour : MonoBehaviour
 
     }
 
+    IEnumerator CountdownVisible(int seconds)
+    {
+        int counter = seconds;
+        while (counter > 0)
+        {
+            yield return new WaitForSeconds(1);
+            counter--;
+        }
+        dialogue[0].SetActive(true);
+        dialogue[1].SetActive(true);
+        dialogue[2].SetActive(true);
+
+        StopCoroutine(CountdownVisible(1));
+    }
+
     public void Skill1Hover()
     {
-        switch (skillNames[0].text)
+        switch (dialogueNames[0].text)
         {
             case "Banshee Wall":
-                //mainWeaponSkills[0].SetActive(true);
-                skillDialogue[0] = Instantiate(mainWeaponSkills[0]) as GameObject;
-                skillDialogue[1] = Instantiate(mainWeaponSkills[0]) as GameObject;
-                skillDialogue[0].transform.SetParent(canvas[0].transform, false);
-                skillDialogue[1].transform.SetParent(canvas[1].transform, false);
+                Cursor.visible = false;
+                dialogue[0] = Instantiate(mainWeaponSkill[0]) as GameObject;
+                dialogue[1] = Instantiate(mainWeaponSkill[0]) as GameObject;
+                dialogue[2] = Instantiate(mainWeaponSkill[0]) as GameObject;
+                dialogue[0].transform.SetParent(canvas[0].transform, false);
+                dialogue[1].transform.SetParent(canvas[1].transform, false);
+                dialogue[2].transform.SetParent(canvas[2].transform, false);
+
+                dialogue[0].SetActive(true);
+                dialogue[1].SetActive(true);
+                dialogue[2].SetActive(true);
                 Debug.Log("Hover");
                 break;
 
@@ -42,12 +63,13 @@ public class SkillBehaviour : MonoBehaviour
 
     public void Skill1Exit()
     {
-        switch (skillNames[0].text)
+        switch (dialogueNames[0].text)
         {
             case "Banshee Wall":
-                //mainWeaponSkills[0].SetActive(false);
-                Destroy(skillDialogue[0].gameObject);
-                Destroy(skillDialogue[1].gameObject);
+                Cursor.visible = true;
+                Destroy(dialogue[0].gameObject);
+                Destroy(dialogue[1].gameObject);
+                Destroy(dialogue[2].gameObject);
                 Debug.Log("Exit");
                 break;
 
@@ -57,10 +79,20 @@ public class SkillBehaviour : MonoBehaviour
 
     public void Skill2Hover()
     {
-        switch (skillNames[1].text)
+        switch (dialogueNames[1].text)
         {
             case "Phantom Claw":
-                mainWeaponSkills[1].SetActive(true);
+                Cursor.visible = false;
+                dialogue[0] = Instantiate(mainWeaponSkill[1]) as GameObject;
+                dialogue[1] = Instantiate(mainWeaponSkill[1]) as GameObject;
+                dialogue[2] = Instantiate(mainWeaponSkill[1]) as GameObject;
+                dialogue[0].transform.SetParent(canvas[0].transform, false);
+                dialogue[1].transform.SetParent(canvas[1].transform, false);
+                dialogue[2].transform.SetParent(canvas[2].transform, false);
+                dialogue[0].SetActive(true);
+                dialogue[1].SetActive(true);
+                dialogue[2].SetActive(true);
+                Debug.Log("Hover");
                 break;
 
         }
@@ -68,10 +100,14 @@ public class SkillBehaviour : MonoBehaviour
 
     public void Skill2Exit()
     {
-        switch (skillNames[1].text)
+        switch (dialogueNames[1].text)
         {
             case "Phantom Claw":
-                mainWeaponSkills[1].SetActive(false);
+                Cursor.visible = true;
+                Destroy(dialogue[0].gameObject);
+                Destroy(dialogue[1].gameObject);
+                Destroy(dialogue[2].gameObject);
+                Debug.Log("Exit");
                 break;
 
         }
@@ -79,10 +115,20 @@ public class SkillBehaviour : MonoBehaviour
 
     public void Skill3Hover()
     {
-        switch (skillNames[2].text)
+        switch (dialogueNames[2].text)
         {
             case "Astral Plane":
-                mainWeaponSkills[2].SetActive(true);
+                Cursor.visible = false;
+                dialogue[0] = Instantiate(mainWeaponSkill[2]) as GameObject;
+                dialogue[1] = Instantiate(mainWeaponSkill[2]) as GameObject;
+                dialogue[2] = Instantiate(mainWeaponSkill[2]) as GameObject;
+                dialogue[0].transform.SetParent(canvas[0].transform, false);
+                dialogue[1].transform.SetParent(canvas[1].transform, false);
+                dialogue[2].transform.SetParent(canvas[2].transform, false);
+                dialogue[0].SetActive(true);
+                dialogue[1].SetActive(true);
+                dialogue[2].SetActive(true);
+                Debug.Log("Hover");
                 break;
 
         }
@@ -90,10 +136,14 @@ public class SkillBehaviour : MonoBehaviour
 
     public void Skill3Exit()
     {
-        switch (skillNames[2].text)
+        switch (dialogueNames[2].text)
         {
             case "Astral Plane":
-                mainWeaponSkills[2].SetActive(false);
+                Cursor.visible = true;
+                Destroy(dialogue[0].gameObject);
+                Destroy(dialogue[1].gameObject);
+                Destroy(dialogue[2].gameObject);
+                Debug.Log("Exit");
                 break;
 
         }
@@ -101,10 +151,20 @@ public class SkillBehaviour : MonoBehaviour
 
     public void Skill4Hover()
     {
-        switch (skillNames[3].text)
+        switch (dialogueNames[3].text)
         {
             case "Merciful Protection":
-                mainWeaponSkills[3].SetActive(true);
+                Cursor.visible = false;
+                dialogue[0] = Instantiate(mainWeaponSkill[3]) as GameObject;
+                dialogue[1] = Instantiate(mainWeaponSkill[3]) as GameObject;
+                dialogue[2] = Instantiate(mainWeaponSkill[3]) as GameObject;
+                dialogue[0].transform.SetParent(canvas[0].transform, false);
+                dialogue[1].transform.SetParent(canvas[1].transform, false);
+                dialogue[2].transform.SetParent(canvas[2].transform, false);
+                dialogue[0].SetActive(true);
+                dialogue[1].SetActive(true);
+                dialogue[2].SetActive(true);
+                Debug.Log("Hover");
                 break;
 
         }
@@ -112,10 +172,14 @@ public class SkillBehaviour : MonoBehaviour
 
     public void Skill4Exit()
     {
-        switch (skillNames[3].text)
+        switch (dialogueNames[3].text)
         {
             case "Merciful Protection":
-                mainWeaponSkills[3].SetActive(false);
+                Cursor.visible = true;
+                Destroy(dialogue[0].gameObject);
+                Destroy(dialogue[1].gameObject);
+                Destroy(dialogue[2].gameObject);
+                Debug.Log("Exit");
                 break;
 
         }
