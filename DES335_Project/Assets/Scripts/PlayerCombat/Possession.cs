@@ -58,7 +58,10 @@ public class Possession : MonoBehaviour
         enemy2 = GameObject.FindGameObjectWithTag("Enemy2");
         PossessButton = GameObject.Find("PossessButton");
 
-        PossessButton.SetActive(false);
+        if (PossessButton != null)
+        {
+            PossessButton.SetActive(false);
+        }
     }
     public void PossessEnemy()
     {
@@ -122,14 +125,20 @@ public class Possession : MonoBehaviour
             {
                 if((enemy.GetComponent<CharScript>().currentHealth / enemy.GetComponent<CharScript>().maxHealth)* 100 < 25)
                 {
-                    PossessButton.SetActive(true);
+                    if (PossessButton != null)
+                    {
+                        PossessButton.SetActive(true);
+                    }
                 }
             }
             else if (target_remaining == (int)OPPONENT.ENEMY2)
             {
                 if ((enemy2.GetComponent<CharScript>().currentHealth / enemy2.GetComponent<CharScript>().maxHealth) * 100 < 25)
                 {
-                    PossessButton.SetActive(true);
+                    if (PossessButton != null)
+                    {
+                        PossessButton.SetActive(true);
+                    }
                 }
             }
         }

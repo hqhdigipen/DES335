@@ -18,6 +18,12 @@ public class CombatManagerScript : MonoBehaviour
     private int actionCounter;
     private bool isPlayerTurn;
 
+    private bool playerMoved;
+    private bool companionMoved;
+    private bool enemy1Moved;
+    private bool enmey2Moved;
+    private string activeCharacter;
+
     bool shakeEnemy;
     GameObject targetEnemy;
 
@@ -26,7 +32,6 @@ public class CombatManagerScript : MonoBehaviour
     private void Start()
     {
         currState = "Main";
-        actionCounter = 0;
         isPlayerTurn = true;
 
         playerEntity = GameObject.FindGameObjectWithTag("Player");
@@ -34,6 +39,7 @@ public class CombatManagerScript : MonoBehaviour
         enemyEntity1 = GameObject.FindGameObjectWithTag("Enemy");
         enemyEntity2 = GameObject.FindGameObjectWithTag("Enemy2");
 
+        activeCharacter = "Player";
     }
 
     private void Update()
@@ -47,6 +53,7 @@ public class CombatManagerScript : MonoBehaviour
                 attackMenu.SetActive(false);
                 combatMenu.SetActive(true);
                 pointer.SetActive(false);
+                CheckActiveChar();
                 break;
 
             case "Attack":
@@ -163,14 +170,40 @@ public class CombatManagerScript : MonoBehaviour
         }
     }
 
-    public void AttackEenemy(GameObject enemy)
+    public void AttackEnemy(GameObject enemy)
     {
         if (currState == "Targeting")
         {
-            enemy.GetComponent<CharScript>().TakeDamage(-5, "Fire");
+            enemy.GetComponent<CharScript>().TakeDamage(5, "Fire");
             StartCoroutine(shake(enemy, 1f));
+            MarkAction(activeCharacter);
             currState = "Main";
-            AddActionCounter(1);
+        }
+    }
+
+    public void SwitchActiveCharacter(GameObject selected)
+    {
+        if (selected.transform.tag == "Player")
+        {
+            if (playerMoved != true)
+            {
+                activeCharacter = "Player";
+            }
+            else
+            {
+                activeCharacter = "Companion";
+            }
+        }
+        else if (selected.transform.tag == "Companion")
+        {
+            if (companionMoved != true)
+            {
+                activeCharacter = "Companion";
+            }
+            else
+            {
+                activeCharacter = "player";
+            }
         }
     }
 
@@ -216,33 +249,60 @@ public class CombatManagerScript : MonoBehaviour
         }
     }
 
-    public void AddActionCounter(int actionWeight)
+    
+    public void CheckActiveChar()
     {
-        if (actionWeight != 0)
+        if (activeCharacter == "Player")
         {
-            actionCounter += (actionWeight);
-        }
-        else
-        {
-            actionCounter++;
-        }
-
-
-        if (actionCounter == 2)
-        {
-            if (isPlayerTurn == true)
+            if (playerMoved != true)
             {
-                currState = "EnemyTurn";
-                isPlayerTurn = false;
+                playerEntity.GetComponent<Image>().color = Color.yellow;
+                companionEntitiy.GetComponent<Image>().color = Color.white;
             }
-            else
+            else if (companionMoved != true)
             {
-                currState = "Main";
-                isPlayerTurn = true;
+                activeCharacter = "Companion";
+                CheckActiveChar();
             }
+        }
 
-            actionCounter = 0;
-            Debug.Log("actionCounter: " + actionCounter);
+        if (activeCharacter == "Companion")
+        {
+            if (companionMoved != true)
+            {
+                companionEntitiy.GetComponent<Image>().color = Color.yellow;
+                playerEntity.GetComponent<Image>().color = Color.white;
+            }
+            else if (playerMoved != true)
+            {
+                activeCharacter = "Player";
+                CheckActiveChar();
+            }
+        }
+
+        if (playerMoved == true)
+        {
+            playerEntity.GetComponent<Image>().color = Color.gray;
+        }
+
+        if (companionMoved == true)
+        {
+            companionEntitiy.GetComponent<Image>().color = Color.gray;
+        }
+    }
+    
+    public void MarkAction(string currentActiveCharacter)
+    {
+        switch (currentActiveCharacter)
+        {
+            case "Player":
+                playerMoved = true;
+                CheckActiveChar();
+                break;
+            case "Companion":
+                companionMoved = true;
+                CheckActiveChar();
+                break;
         }
     }
 }

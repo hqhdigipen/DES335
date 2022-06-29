@@ -229,6 +229,6 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        gameManager.GetComponent<CombatManagerScript>().AddActionCounter(1);
+        //gameManager.GetComponent<CombatManagerScript>().AddActionCounter(1);
     }
 }
