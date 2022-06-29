@@ -20,7 +20,7 @@ public class CharScript : MonoBehaviour
     {
         healthBar.SetMaxHealth(maxHealth);
 
-        if (setCurrentHealth <= 0)
+        if (setCurrentHealth < 0)
         {
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
