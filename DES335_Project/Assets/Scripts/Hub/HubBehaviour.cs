@@ -143,6 +143,8 @@ public class HubBehaviour : MonoBehaviour
                     profileScript.sfAmount= profileScript.sfAmount - int.Parse(itemCost.text);
                     soulForce = profileScript.sfAmount;
                     itemAmountLabel[0].text = (int.Parse(itemAmountLabel[0].text) + sliderScript.totalItem).ToString();
+                    itemAmountLabel[2].text = (int.Parse(itemAmountLabel[2].text) + sliderScript.totalItem).ToString();
+                    itemAmountLabel[4].text = (int.Parse(itemAmountLabel[4].text) + sliderScript.totalItem).ToString();
                     itemPanel.SetActive(false);
 
                     break;
@@ -152,6 +154,8 @@ public class HubBehaviour : MonoBehaviour
                     profileScript.sfAmount = profileScript.sfAmount - int.Parse(itemCost.text);
                     soulForce = profileScript.sfAmount;
                     itemAmountLabel[1].text = (int.Parse(itemAmountLabel[1].text) + sliderScript.totalItem).ToString();
+                    itemAmountLabel[3].text = (int.Parse(itemAmountLabel[3].text) + sliderScript.totalItem).ToString();
+                    itemAmountLabel[5].text = (int.Parse(itemAmountLabel[5].text) + sliderScript.totalItem).ToString();
                     itemPanel.SetActive(false);
                     break;
 
@@ -176,6 +180,8 @@ public class HubBehaviour : MonoBehaviour
                     profileScript.sfAmount = profileScript.sfAmount + int.Parse(sellItemCost.text);
                     soulForce = profileScript.sfAmount;
                     itemAmountLabel[0].text = (int.Parse(itemAmountLabel[0].text) - sellSliderScript.sellTotalItem).ToString();
+                    itemAmountLabel[2].text = (int.Parse(itemAmountLabel[2].text) - sellSliderScript.sellTotalItem).ToString();
+                    itemAmountLabel[4].text = (int.Parse(itemAmountLabel[4].text) - sellSliderScript.sellTotalItem).ToString();
                     inventoryPanel.SetActive(false);
                 }
                break;
@@ -186,6 +192,8 @@ public class HubBehaviour : MonoBehaviour
                         profileScript.sfAmount = profileScript.sfAmount + int.Parse(sellItemCost.text);
                         soulForce = profileScript.sfAmount;
                         itemAmountLabel[1].text = (int.Parse(itemAmountLabel[1].text) - sellSliderScript.sellTotalItem).ToString();
+                        itemAmountLabel[3].text = (int.Parse(itemAmountLabel[3].text) - sellSliderScript.sellTotalItem).ToString();
+                        itemAmountLabel[5].text = (int.Parse(itemAmountLabel[5].text) - sellSliderScript.sellTotalItem).ToString();
                         inventoryPanel.SetActive(false);
                     }
                     break;
