@@ -6,7 +6,8 @@ using TMPro;
 
 public class SkillBehaviour : MonoBehaviour
 {
-    public GameObject[] dialogueSkill;
+    public GameObject[] dialogueDetails;
+    public TextMeshProUGUI[] weaponList, armorList;
     public TextMeshProUGUI[] weaponSkillList, armorSkillList;
     public GameObject [] canvas;
     List <GameObject> dialogue = new List<GameObject>();
@@ -16,7 +17,6 @@ public class SkillBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
     }
 
     // Update is called once per frame
@@ -25,7 +25,69 @@ public class SkillBehaviour : MonoBehaviour
         
     }
 
-   
+    public void HoverWeapon()
+    {
+        check = true;
+        foreach (TextMeshProUGUI t in weaponList)
+        {
+            if (check)
+            {
+                switch (t.text)
+                {
+                    case "Earth Orb":
+                        Cursor.visible = false;
+
+                        foreach (GameObject d in dialogueDetails)
+                        {
+                            if (d.name.Contains("Earth Orb"))
+                            {
+                                for (int i = 0; i < canvas.Length; i++)
+                                {
+                                    dialogue.Add(Instantiate(d) as GameObject);
+                                    dialogue[i].transform.SetParent(canvas[i].transform, false);
+                                    dialogue[i].SetActive(true);
+                                }
+                            }
+                        }
+                        Debug.Log("Earth Orb");
+                        check = false;
+                        break;
+                }
+            }
+        }
+    }
+
+    public void HoverArmor()
+    {
+        check = true;
+        foreach (TextMeshProUGUI t in weaponList)
+        {
+            if (check)
+            {
+                switch (t.text)
+                {
+                    case "Earth Cloak":
+                        Cursor.visible = false;
+
+                        foreach (GameObject d in dialogueDetails)
+                        {
+                            if (d.name.Contains("Earth Cloak"))
+                            {
+                                for (int i = 0; i < canvas.Length; i++)
+                                {
+                                    dialogue.Add(Instantiate(d) as GameObject);
+                                    dialogue[i].transform.SetParent(canvas[i].transform, false);
+                                    dialogue[i].SetActive(true);
+                                }
+                            }
+                        }
+                        Debug.Log("Earth Cloak");
+                        check = false;
+                        break;
+                }
+            }
+        }
+    }
 
     public void W1Hover()
     {
@@ -39,7 +101,7 @@ public class SkillBehaviour : MonoBehaviour
                     case "Banshee Wail":
                         Cursor.visible = false;
 
-                        foreach (GameObject d in dialogueSkill)
+                        foreach (GameObject d in dialogueDetails)
                         {
                             if (d.name.Contains("Banshee Wail"))
                             {
@@ -56,7 +118,7 @@ public class SkillBehaviour : MonoBehaviour
                         break;
                     case "Bash":
                         Cursor.visible = false;
-                        foreach (GameObject d in dialogueSkill)
+                        foreach (GameObject d in dialogueDetails)
                         {
                             if (d.name.Contains("Bash"))
                             {
@@ -88,7 +150,7 @@ public class SkillBehaviour : MonoBehaviour
                 {
                     case "Phantom Claw":
                         Cursor.visible = false;
-                        foreach (GameObject d in dialogueSkill)
+                        foreach (GameObject d in dialogueDetails)
                         {
                             if (d.name.Contains("Phantom Claw"))
                             {
@@ -105,7 +167,7 @@ public class SkillBehaviour : MonoBehaviour
                         break;
                     case "Vine Whip":
                         Cursor.visible = false;
-                        foreach (GameObject d in dialogueSkill)
+                        foreach (GameObject d in dialogueDetails)
                         {
                             if (d.name.Contains("Vine Whip"))
                             {
@@ -150,7 +212,7 @@ public class SkillBehaviour : MonoBehaviour
                 {
                     case "Astral Plane":
                         Cursor.visible = false;
-                        foreach (GameObject d in dialogueSkill)
+                        foreach (GameObject d in dialogueDetails)
                         {
                             if (d.name.Contains("Astral Plane"))
                             {
@@ -167,7 +229,7 @@ public class SkillBehaviour : MonoBehaviour
                         break;
                     case "Hibernation":
                         Cursor.visible = false;
-                        foreach (GameObject d in dialogueSkill)
+                        foreach (GameObject d in dialogueDetails)
                         {
                             if (d.name.Contains("Hibernation"))
                             {
@@ -201,7 +263,7 @@ public class SkillBehaviour : MonoBehaviour
                 {
                     case "Merciful Protection":
                         Cursor.visible = false;
-                        foreach (GameObject d in dialogueSkill)
+                        foreach (GameObject d in dialogueDetails)
                         {
                             if (d.name.Contains("Merciful Protection"))
                             {
@@ -218,7 +280,7 @@ public class SkillBehaviour : MonoBehaviour
                         break;
                     case "Toughen":
                         Cursor.visible = false;
-                        foreach (GameObject d in dialogueSkill)
+                        foreach (GameObject d in dialogueDetails)
                         {
                             if (d.name.Contains("Toughen"))
                             {

@@ -29,7 +29,6 @@ public class HubBehaviour : MonoBehaviour
     public GameObject notEnoughSF;
 
     public GameObject allyWeaponPanel, allyArmorPanel, mainArmorPanel, mainWeaponPanel, noEquipmentMsg, witchPanel;
-    public GameObject noWeaponBtn, noArmorBtn;
     public TextMeshProUGUI allyWeaponLv, allyArmorLv, mainArmorLv, mainWeaponLv;
     public TextMeshProUGUI allyWeaponPrice, allyArmorPrice, mainArmorPrice, mainWeaponPrice;
 
@@ -60,14 +59,28 @@ public class HubBehaviour : MonoBehaviour
 
     public List<GameObject> enemyList;
 
-    public GameObject noEnemyMsg;
+    public GameObject alreadySwitchMsg;
+
+    public GameObject noWeaponPanel, noArmorPanel;
+
+    string switchID="";
+    string absorbID = "0";
+
+    public GameObject switchAlly, switchNyx;
 
     public void Start()
     {
+        pgNum.text = 1.ToString();
+
+        foreach (GameObject enemy in enemyList)
+        {
+            enemy.SetActive(false);
+        }
+
+        enemyList[0].SetActive(true);
+
         allyCurrLv = 1;
         mainCurrLv = 1;
-        noWeaponBtn.SetActive(true);
-        noArmorBtn.SetActive(true);
         noEquipmentMsg.SetActive(true);
         soulForce = profileScript.sfAmount;
         witchPanel.SetActive(false);
@@ -100,16 +113,6 @@ public class HubBehaviour : MonoBehaviour
         sSF.text = soulForce.ToString();
         invSF.text = soulForce.ToString();
         upSF.text = soulForce.ToString();
-
-        foreach (GameObject enemy in enemyList) {
-            if (!enemy.activeSelf)
-            {
-                noEnemyMsg.SetActive(true);
-            }
-            else {
-                noEnemyMsg.SetActive(false);
-            }
-        }
 
         switch (itemName.text) {
             case "Herb":
@@ -154,64 +157,243 @@ public class HubBehaviour : MonoBehaviour
                 break;
         }
 
+        if (switchNyx.activeSelf)
+        {
+            if (switchID != "" && int.Parse(switchID) == int.Parse(pgNum.text) - 1)
+            {
+                alreadySwitchMsg.SetActive(true);
+            }
+            else
+            {
+                alreadySwitchMsg.SetActive(false);
+            }
+        }
+        else
+        {
+
+            if (absorbID != "" && int.Parse(absorbID) == int.Parse(pgNum.text) - 1)
+            {
+                alreadySwitchMsg.SetActive(true);
+            }
+            else
+            {
+                alreadySwitchMsg.SetActive(false);
+            }
+        }
+        if (playerInfo.activeSelf)
+        {
+            if (switchID == "")
+            {
+                noWeaponPanel.SetActive(true);
+                noArmorPanel.SetActive(true);
+                noEquipmentMsg.SetActive(true);
+
+            }
+            else
+            {
+                noWeaponPanel.SetActive(false);
+                noArmorPanel.SetActive(false);
+                noEquipmentMsg.SetActive(false);
+            }
+        }
+        else
+        {
+            if (absorbID == "")
+            {
+                noWeaponPanel.SetActive(true);
+                noArmorPanel.SetActive(true);
+                noEquipmentMsg.SetActive(true);
+            }
+            else
+            {
+                noWeaponPanel.SetActive(false);
+                noArmorPanel.SetActive(false);
+                noEquipmentMsg.SetActive(false);
+            }
+        }
+    }
+
+    public void SwitchToAllyBtn() {
+        switchAlly.SetActive(true);
+        switchNyx.SetActive(false);
+    }
+
+    public void SwitchToNyxBtn()
+    {
+        switchAlly.SetActive(false);
+        switchNyx.SetActive(true);
     }
 
     public void LeftBtn() {
         if (int.Parse(pgNum.text) - 1 > 0)
         {
+
             pgNum.text = (int.Parse(pgNum.text) - 1).ToString();
             enemyList[int.Parse(pgNum.text) - 1].SetActive(true);
             enemyList[int.Parse(pgNum.text)].SetActive(false);
+
         }
     }
 
     public void RightBtn() {
-        if (int.Parse(pgNum.text) + 1 <= int.Parse(maxPgNum.text))
+        if (int.Parse(pgNum.text)< int.Parse(maxPgNum.text))
         {
-            pgNum.text = (int.Parse(pgNum.text) + 1).ToString();
-
             enemyList[int.Parse(pgNum.text) - 1].SetActive(false);
             enemyList[int.Parse(pgNum.text)].SetActive(true);
+
+            pgNum.text = (int.Parse(pgNum.text) + 1).ToString();
         }
     }
 
-    public void SwitchSkillsBtn() {
-        foreach (GameObject enemy in enemyList) {
-            if (enemy.activeSelf)
+    public void SwitchBackBtn() {
+      
+            if (enemyList[int.Parse(pgNum.text)-1].activeSelf)
             {
-                foreach (TextMeshProUGUI weapon in cNyxWeapon)
+                if (switchNyx.activeSelf)
                 {
-                    weapon.text = cEnemyWeapon[0].text;
+                    switchID = "";
+                    foreach (TextMeshProUGUI weapon in cNyxWeapon)
+                    {
+                        weapon.text = "No Weapon";
+                    }
+                    foreach (TextMeshProUGUI armor in cNyxArmor)
+                    {
+                        armor.text = "No Armor";
+                    }
+
+                    foreach (TextMeshProUGUI skill in cNyxSkill1)
+                    {
+                        skill.text = "Banshee Wail";
+                    }
+
+                    foreach (TextMeshProUGUI skill in cNyxSkill2)
+                    {
+                        skill.text = "Phantom Claw";
+                    }
+
+                    foreach (TextMeshProUGUI skill in cNyxSkill3)
+                    {
+                        skill.text = "Astral Plane";
+                    }
+
+                    foreach (TextMeshProUGUI skill in cNyxSkill4)
+                    {
+                        skill.text = "Merciful Protection";
+                    }
+
+                    alreadySwitchMsg.SetActive(true);
                 }
-                foreach (TextMeshProUGUI armor in cNyxArmor)
+            else
+            {
+                absorbID = "";
+                foreach (TextMeshProUGUI weapon in cAllyWeapon)
                 {
-                    armor.text = cEnemyArmor[0].text;
+                    weapon.text = "No Weapon";
+                }
+                foreach (TextMeshProUGUI armor in cAllyArmor)
+                {
+                    armor.text = "No Armor";
                 }
 
-                foreach (TextMeshProUGUI skill in cNyxSkill1)
+                foreach (TextMeshProUGUI skill in cAllySkill1)
                 {
-                    skill.text = cEnemySkill1[0].text;
+                    skill.text = "Punch";
                 }
 
-                foreach (TextMeshProUGUI skill in cNyxSkill2)
+                foreach (TextMeshProUGUI skill in cAllySkill2)
                 {
-                    skill.text = cEnemySkill2[0].text;
+                    skill.text = "Dash";
                 }
 
-                foreach (TextMeshProUGUI skill in cNyxSkill3)
+                foreach (TextMeshProUGUI skill in cAllySkill3)
                 {
-                    skill.text = cEnemySkill3[0].text;
+                    skill.text = "Dust Storm";
                 }
 
-                foreach (TextMeshProUGUI skill in cNyxSkill4)
+                foreach (TextMeshProUGUI skill in cAllySkill4)
                 {
-                    skill.text = cEnemySkill4[0].text;
+                    skill.text = "Resistance";
                 }
-                maxPgNum.text = (int.Parse(maxPgNum.text)-1).ToString();
-                enemy.SetActive(false);
+                alreadySwitchMsg.SetActive(true);
+            }
+        }
+        
+    }
+
+    public void SwitchBtn() {
+
+            if (enemyList[int.Parse(pgNum.text) - 1].activeSelf)
+            {
+                if (switchNyx.activeSelf)
+                {
+                    switchID = (int.Parse(pgNum.text) - 1).ToString();
+                    foreach (TextMeshProUGUI weapon in cNyxWeapon)
+                    {
+                        weapon.text = cEnemyWeapon[int.Parse(pgNum.text) - 1].text;
+                    }
+                    foreach (TextMeshProUGUI armor in cNyxArmor)
+                    {
+                        armor.text = cEnemyArmor[int.Parse(pgNum.text) - 1].text;
+                    }
+
+                    foreach (TextMeshProUGUI skill in cNyxSkill1)
+                    {
+                        skill.text = cEnemySkill1[int.Parse(pgNum.text) - 1].text;
+                    }
+
+                    foreach (TextMeshProUGUI skill in cNyxSkill2)
+                    {
+                        skill.text = cEnemySkill2[int.Parse(pgNum.text) - 1].text;
+                    }
+
+                    foreach (TextMeshProUGUI skill in cNyxSkill3)
+                    {
+                        skill.text = cEnemySkill3[int.Parse(pgNum.text) - 1].text;
+                    }
+
+                    foreach (TextMeshProUGUI skill in cNyxSkill4)
+                    {
+                        skill.text = cEnemySkill4[int.Parse(pgNum.text) - 1].text;
+                    }
+
+                    alreadySwitchMsg.SetActive(true);
+
+                }
+                else {
+                    absorbID = (int.Parse(pgNum.text) - 1).ToString();
+                    foreach (TextMeshProUGUI weapon in cAllyWeapon)
+                    {
+                        weapon.text = cEnemyWeapon[int.Parse(pgNum.text) - 1].text;
+                    }
+                    foreach (TextMeshProUGUI armor in cAllyArmor)
+                    {
+                        armor.text = cEnemyArmor[int.Parse(pgNum.text) - 1].text;
+                    }
+
+                    foreach (TextMeshProUGUI skill in cAllySkill1)
+                    {
+                        skill.text = cEnemySkill1[int.Parse(pgNum.text) - 1].text;
+                    }
+
+                    foreach (TextMeshProUGUI skill in cAllySkill2)
+                    {
+                        skill.text = cEnemySkill2[int.Parse(pgNum.text) - 1].text;
+                    }
+
+                    foreach (TextMeshProUGUI skill in cAllySkill3)
+                    {
+                        skill.text = cEnemySkill3[int.Parse(pgNum.text) - 1].text;
+                    }
+
+                    foreach (TextMeshProUGUI skill in cAllySkill4)
+                    {
+                        skill.text = cEnemySkill4[int.Parse(pgNum.text) - 1].text;
+                    }
+                    alreadySwitchMsg.SetActive(true);
+                }
             }
             Debug.Log("This Works");
-        }
+        
     }
 
     public void BuyItemBtn() {
@@ -373,7 +555,6 @@ public class HubBehaviour : MonoBehaviour
         mainWeaponPanel.SetActive(false);
         mainArmorPanel.SetActive(false);
         upgradeMainPanel.SetActive(true);
-        noEquipmentMsg.SetActive(false);
         upgradeAllyPanel.SetActive(false);
     }
 
@@ -381,6 +562,8 @@ public class HubBehaviour : MonoBehaviour
     {
         witchPanel.SetActive(true);
         hubCanvas.SetActive(false);
+        switchAlly.SetActive(false);
+        switchNyx.SetActive(true);
     }
 
     public void AllyLevelBtn()
@@ -390,7 +573,6 @@ public class HubBehaviour : MonoBehaviour
         mainWeaponPanel.SetActive(false);
         mainArmorPanel.SetActive(false);
         upgradeMainPanel.SetActive(false);
-        noEquipmentMsg.SetActive(false);
         upgradeAllyPanel.SetActive(true);
     }
 
@@ -548,8 +730,6 @@ public class HubBehaviour : MonoBehaviour
     {
         if (blacksmithCanvas.activeSelf)
         {
-            noWeaponBtn.SetActive(true);
-            noArmorBtn.SetActive(true);
             noEquipmentMsg.SetActive(true);
             allyWeaponPanel.SetActive(false);
             allyArmorPanel.SetActive(false);
@@ -577,6 +757,15 @@ public class HubBehaviour : MonoBehaviour
         else if (witchPanel.activeSelf) {
             witchPanel.SetActive(false);
             hubCanvas.SetActive(true);
+
+            pgNum.text = 1.ToString();
+
+            foreach (GameObject enemy in enemyList)
+            {
+                enemy.SetActive(false);
+            }
+
+            enemyList[0].SetActive(true);
         }
         else
         {
