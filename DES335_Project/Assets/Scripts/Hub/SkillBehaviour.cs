@@ -6,182 +6,235 @@ using TMPro;
 
 public class SkillBehaviour : MonoBehaviour
 {
-    public GameObject[] mainWeaponSkill, mainArmorSkill, allyWeaponSkill, allyArmorSkill;
-    public TextMeshProUGUI[] dialogueNames;
+    public GameObject[] dialogueSkill;
+    public TextMeshProUGUI[] weaponSkillList, armorSkillList;
     public GameObject [] canvas;
-    GameObject [] dialogue = new GameObject[4];
+    List <GameObject> dialogue = new List<GameObject>();
 
-    Color someColorValue;
+    bool check;
 
     // Start is called before the first frame update
     void Start()
     {
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
-    IEnumerator CountdownVisible(int seconds)
+   
+
+    public void W1Hover()
     {
-        int counter = seconds;
-        while (counter > 0)
+        check = true;
+        foreach (TextMeshProUGUI t in weaponSkillList)
         {
-            yield return new WaitForSeconds(1);
-            counter--;
-        }
-        dialogue[0].SetActive(true);
-        dialogue[1].SetActive(true);
-        dialogue[2].SetActive(true);
+            if (check)
+            {
+                switch (t.text)
+                {
+                    case "Banshee Wail":
+                        Cursor.visible = false;
 
-        StopCoroutine(CountdownVisible(1));
-    }
+                        foreach (GameObject d in dialogueSkill)
+                        {
+                            if (d.name.Contains("Banshee Wail"))
+                            {
+                                for (int i = 0; i < canvas.Length; i++)
+                                {
+                                    dialogue.Add(Instantiate(d) as GameObject);
+                                    dialogue[i].transform.SetParent(canvas[i].transform, false);
+                                    dialogue[i].SetActive(true);
+                                }
+                            }
+                        }
+                        Debug.Log("Banshee Wail");
+                        check = false;
+                        break;
+                    case "Bash":
+                        Cursor.visible = false;
+                        foreach (GameObject d in dialogueSkill)
+                        {
+                            if (d.name.Contains("Bash"))
+                            {
+                                for (int i = 0; i < canvas.Length; i++)
+                                {
+                                    dialogue.Add(Instantiate(d) as GameObject);
+                                    dialogue[i].transform.SetParent(canvas[i].transform, false);
+                                    dialogue[i].SetActive(true);
+                                }
+                            }
+                        }
+                        check = false;
+                        Debug.Log("Bash");
+                        break;
 
-    public void Skill1Hover()
-    {
-        switch (dialogueNames[0].text)
-        {
-            case "Banshee Wall":
-                Cursor.visible = false;
-                dialogue[0] = Instantiate(mainWeaponSkill[0]) as GameObject;
-                dialogue[1] = Instantiate(mainWeaponSkill[0]) as GameObject;
-                dialogue[2] = Instantiate(mainWeaponSkill[0]) as GameObject;
-                dialogue[0].transform.SetParent(canvas[0].transform, false);
-                dialogue[1].transform.SetParent(canvas[1].transform, false);
-                dialogue[2].transform.SetParent(canvas[2].transform, false);
-
-                dialogue[0].SetActive(true);
-                dialogue[1].SetActive(true);
-                dialogue[2].SetActive(true);
-                Debug.Log("Hover");
-                break;
-
-        }
-    }
-
-    public void Skill1Exit()
-    {
-        switch (dialogueNames[0].text)
-        {
-            case "Banshee Wall":
-                Cursor.visible = true;
-                Destroy(dialogue[0].gameObject);
-                Destroy(dialogue[1].gameObject);
-                Destroy(dialogue[2].gameObject);
-                Debug.Log("Exit");
-                break;
-
-        }
-    }
-
-
-    public void Skill2Hover()
-    {
-        switch (dialogueNames[1].text)
-        {
-            case "Phantom Claw":
-                Cursor.visible = false;
-                dialogue[0] = Instantiate(mainWeaponSkill[1]) as GameObject;
-                dialogue[1] = Instantiate(mainWeaponSkill[1]) as GameObject;
-                dialogue[2] = Instantiate(mainWeaponSkill[1]) as GameObject;
-                dialogue[0].transform.SetParent(canvas[0].transform, false);
-                dialogue[1].transform.SetParent(canvas[1].transform, false);
-                dialogue[2].transform.SetParent(canvas[2].transform, false);
-                dialogue[0].SetActive(true);
-                dialogue[1].SetActive(true);
-                dialogue[2].SetActive(true);
-                Debug.Log("Hover");
-                break;
-
+                }
+            }
         }
     }
 
-    public void Skill2Exit()
+    public void W2Hover()
     {
-        switch (dialogueNames[1].text)
+        check = true;
+        foreach (TextMeshProUGUI t in weaponSkillList)
         {
-            case "Phantom Claw":
-                Cursor.visible = true;
-                Destroy(dialogue[0].gameObject);
-                Destroy(dialogue[1].gameObject);
-                Destroy(dialogue[2].gameObject);
-                Debug.Log("Exit");
-                break;
+            if (check)
+            {
+                switch (t.text)
+                {
+                    case "Phantom Claw":
+                        Cursor.visible = false;
+                        foreach (GameObject d in dialogueSkill)
+                        {
+                            if (d.name.Contains("Phantom Claw"))
+                            {
+                                for (int i = 0; i < canvas.Length; i++)
+                                {
+                                    dialogue.Add(Instantiate(d) as GameObject);
+                                    dialogue[i].transform.SetParent(canvas[i].transform, false);
+                                    dialogue[i].SetActive(true);
+                                }
+                            }
+                        }
+                        Debug.Log("Phantom Claw");
+                        check = false;
+                        break;
+                    case "Vine Whip":
+                        Cursor.visible = false;
+                        foreach (GameObject d in dialogueSkill)
+                        {
+                            if (d.name.Contains("Vine Whip"))
+                            {
+                                for (int i = 0; i < canvas.Length; i++)
+                                {
+                                    dialogue.Add(Instantiate(d) as GameObject);
+                                    dialogue[i].transform.SetParent(canvas[i].transform, false);
+                                    dialogue[i].SetActive(true);
+                                }
+                            }
+                        }
+                        Debug.Log("Vine Whip");
+                        check = false;
+                        break;
 
+                }
+            }
         }
     }
 
-    public void Skill3Hover()
+    public void ExitHover()
     {
-        switch (dialogueNames[2].text)
-        {
-            case "Astral Plane":
-                Cursor.visible = false;
-                dialogue[0] = Instantiate(mainWeaponSkill[2]) as GameObject;
-                dialogue[1] = Instantiate(mainWeaponSkill[2]) as GameObject;
-                dialogue[2] = Instantiate(mainWeaponSkill[2]) as GameObject;
-                dialogue[0].transform.SetParent(canvas[0].transform, false);
-                dialogue[1].transform.SetParent(canvas[1].transform, false);
-                dialogue[2].transform.SetParent(canvas[2].transform, false);
-                dialogue[0].SetActive(true);
-                dialogue[1].SetActive(true);
-                dialogue[2].SetActive(true);
-                Debug.Log("Hover");
-                break;
+        Cursor.visible = true;
+        
+        foreach (GameObject d in dialogue) {
+            Destroy(d.gameObject);
+        }
+        dialogue.Clear();
+    }
 
+
+
+
+    public void A1Hover()
+    {
+        check = true;
+        foreach (TextMeshProUGUI t in armorSkillList)
+        {
+            if (check)
+            {
+                switch (t.text)
+                {
+                    case "Astral Plane":
+                        Cursor.visible = false;
+                        foreach (GameObject d in dialogueSkill)
+                        {
+                            if (d.name.Contains("Astral Plane"))
+                            {
+                                for (int i = 0; i < canvas.Length; i++)
+                                {
+                                    dialogue.Add(Instantiate(d) as GameObject);
+                                    dialogue[i].transform.SetParent(canvas[i].transform, false);
+                                    dialogue[i].SetActive(true);
+                                }
+                            }
+                        }
+                        Debug.Log("Astral Plane");
+                        check = false;
+                        break;
+                    case "Hibernation":
+                        Cursor.visible = false;
+                        foreach (GameObject d in dialogueSkill)
+                        {
+                            if (d.name.Contains("Hibernation"))
+                            {
+                                for (int i = 0; i < canvas.Length; i++)
+                                {
+                                    dialogue.Add(Instantiate(d) as GameObject);
+                                    dialogue[i].transform.SetParent(canvas[i].transform, false);
+                                    dialogue[i].SetActive(true);
+                                }
+                            }
+                        }
+                        Debug.Log("Hibernation");
+                        check = false;
+                        break;
+
+                }
+            }
         }
     }
 
-    public void Skill3Exit()
+   
+
+    public void A2Hover()
     {
-        switch (dialogueNames[2].text)
+        check = true;
+        foreach (TextMeshProUGUI t in armorSkillList)
         {
-            case "Astral Plane":
-                Cursor.visible = true;
-                Destroy(dialogue[0].gameObject);
-                Destroy(dialogue[1].gameObject);
-                Destroy(dialogue[2].gameObject);
-                Debug.Log("Exit");
-                break;
-
-        }
-    }
-
-    public void Skill4Hover()
-    {
-        switch (dialogueNames[3].text)
-        {
-            case "Merciful Protection":
-                Cursor.visible = false;
-                dialogue[0] = Instantiate(mainWeaponSkill[3]) as GameObject;
-                dialogue[1] = Instantiate(mainWeaponSkill[3]) as GameObject;
-                dialogue[2] = Instantiate(mainWeaponSkill[3]) as GameObject;
-                dialogue[0].transform.SetParent(canvas[0].transform, false);
-                dialogue[1].transform.SetParent(canvas[1].transform, false);
-                dialogue[2].transform.SetParent(canvas[2].transform, false);
-                dialogue[0].SetActive(true);
-                dialogue[1].SetActive(true);
-                dialogue[2].SetActive(true);
-                Debug.Log("Hover");
-                break;
-
-        }
-    }
-
-    public void Skill4Exit()
-    {
-        switch (dialogueNames[3].text)
-        {
-            case "Merciful Protection":
-                Cursor.visible = true;
-                Destroy(dialogue[0].gameObject);
-                Destroy(dialogue[1].gameObject);
-                Destroy(dialogue[2].gameObject);
-                Debug.Log("Exit");
-                break;
-
+            if (check)
+            {
+                switch (t.text)
+                {
+                    case "Merciful Protection":
+                        Cursor.visible = false;
+                        foreach (GameObject d in dialogueSkill)
+                        {
+                            if (d.name.Contains("Merciful Protection"))
+                            {
+                                for (int i = 0; i < canvas.Length; i++)
+                                {
+                                    dialogue.Add(Instantiate(d) as GameObject);
+                                    dialogue[i].transform.SetParent(canvas[i].transform, false);
+                                    dialogue[i].SetActive(true);
+                                }
+                            }
+                        }
+                        Debug.Log("Merciful Protection");
+                        check = false;
+                        break;
+                    case "Toughen":
+                        Cursor.visible = false;
+                        foreach (GameObject d in dialogueSkill)
+                        {
+                            if (d.name.Contains("Toughen"))
+                            {
+                                for (int i = 0; i < canvas.Length; i++)
+                                {
+                                    dialogue.Add(Instantiate(d) as GameObject);
+                                    dialogue[i].transform.SetParent(canvas[i].transform, false);
+                                    dialogue[i].SetActive(true);
+                                }
+                            }
+                        }
+                        Debug.Log("Toughen");
+                        check = false;
+                        break;
+                }
+            }
         }
     }
 

@@ -46,6 +46,22 @@ public class HubBehaviour : MonoBehaviour
 
     int mainCurrLv, allyCurrLv;
 
+    public TextMeshProUGUI[] cNyxWeapon, cNyxArmor;
+    public TextMeshProUGUI[] cAllyWeapon, cAllyArmor;
+    public TextMeshProUGUI[] cEnemyWeapon, cEnemyArmor;
+
+    public List <TextMeshProUGUI> cNyxSkill1, cNyxSkill2, cNyxSkill3, cNyxSkill4;
+
+    public List<TextMeshProUGUI> cAllySkill1, cAllySkill2, cAllySkill3, cAllySkill4;
+
+    public List <TextMeshProUGUI> cEnemySkill1, cEnemySkill2, cEnemySkill3, cEnemySkill4;
+
+    public TextMeshProUGUI pgNum, maxPgNum;
+
+    public List<GameObject> enemyList;
+
+    public GameObject noEnemyMsg;
+
     public void Start()
     {
         allyCurrLv = 1;
@@ -73,7 +89,6 @@ public class HubBehaviour : MonoBehaviour
 
     public void Update()
     {
-
         allyLv.text = allyCurrLv.ToString();
         profileAllyLv.text = allyCurrLv.ToString();
 
@@ -86,7 +101,15 @@ public class HubBehaviour : MonoBehaviour
         invSF.text = soulForce.ToString();
         upSF.text = soulForce.ToString();
 
-
+        foreach (GameObject enemy in enemyList) {
+            if (!enemy.activeSelf)
+            {
+                noEnemyMsg.SetActive(true);
+            }
+            else {
+                noEnemyMsg.SetActive(false);
+            }
+        }
 
         switch (itemName.text) {
             case "Herb":
@@ -131,6 +154,64 @@ public class HubBehaviour : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void LeftBtn() {
+        if (int.Parse(pgNum.text) - 1 > 0)
+        {
+            pgNum.text = (int.Parse(pgNum.text) - 1).ToString();
+            enemyList[int.Parse(pgNum.text) - 1].SetActive(true);
+            enemyList[int.Parse(pgNum.text)].SetActive(false);
+        }
+    }
+
+    public void RightBtn() {
+        if (int.Parse(pgNum.text) + 1 <= int.Parse(maxPgNum.text))
+        {
+            pgNum.text = (int.Parse(pgNum.text) + 1).ToString();
+
+            enemyList[int.Parse(pgNum.text) - 1].SetActive(false);
+            enemyList[int.Parse(pgNum.text)].SetActive(true);
+        }
+    }
+
+    public void SwitchSkillsBtn() {
+        foreach (GameObject enemy in enemyList) {
+            if (enemy.activeSelf)
+            {
+                foreach (TextMeshProUGUI weapon in cNyxWeapon)
+                {
+                    weapon.text = cEnemyWeapon[0].text;
+                }
+                foreach (TextMeshProUGUI armor in cNyxArmor)
+                {
+                    armor.text = cEnemyArmor[0].text;
+                }
+
+                foreach (TextMeshProUGUI skill in cNyxSkill1)
+                {
+                    skill.text = cEnemySkill1[0].text;
+                }
+
+                foreach (TextMeshProUGUI skill in cNyxSkill2)
+                {
+                    skill.text = cEnemySkill2[0].text;
+                }
+
+                foreach (TextMeshProUGUI skill in cNyxSkill3)
+                {
+                    skill.text = cEnemySkill3[0].text;
+                }
+
+                foreach (TextMeshProUGUI skill in cNyxSkill4)
+                {
+                    skill.text = cEnemySkill4[0].text;
+                }
+                maxPgNum.text = (int.Parse(maxPgNum.text)-1).ToString();
+                enemy.SetActive(false);
+            }
+            Debug.Log("This Works");
+        }
     }
 
     public void BuyItemBtn() {
