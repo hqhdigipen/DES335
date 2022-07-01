@@ -77,6 +77,10 @@ public class CombatManagerScript : MonoBehaviour
                 break;
 
             case "E_Announcer":
+                itemMenu.SetActive(false);
+                attackMenu.SetActive(false);
+                combatMenu.SetActive(false);
+                pointer.SetActive(false);
                 if (announcer != null)
                 {
                     announcer.SetActive(true);
