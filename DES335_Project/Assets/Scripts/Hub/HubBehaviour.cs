@@ -169,6 +169,16 @@ public class HubBehaviour : MonoBehaviour
                 alreadySwitchMsg.SetActive(false);
             }
         }
+        else {
+            if (switchID != "" && int.Parse(switchID) == int.Parse(pgNum.text) - 1 || absorbID != "" && int.Parse(absorbID) == int.Parse(pgNum.text) - 1)
+            {
+                alreadySwitchMsg.SetActive(true);
+            }
+            else
+            {
+                alreadySwitchMsg.SetActive(false);
+            }
+        }
   
         if (playerInfo.activeSelf)
         {
@@ -271,7 +281,7 @@ public class HubBehaviour : MonoBehaviour
                     skill.text = "Merciful Protection";
                 }
 
-                alreadySwitchMsg.SetActive(true);
+                alreadySwitchMsg.SetActive(false);
             }
             else if (switchAlly.activeSelf && absorbID != "")
             {
@@ -304,7 +314,7 @@ public class HubBehaviour : MonoBehaviour
                 {
                     skill.text = "Resistance";
                 }
-                alreadySwitchMsg.SetActive(true);
+                alreadySwitchMsg.SetActive(false);
             }
             else {
                 Debug.Log("You did not switch skill with this enemy");
