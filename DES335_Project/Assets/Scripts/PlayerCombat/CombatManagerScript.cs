@@ -14,6 +14,7 @@ public class CombatManagerScript : MonoBehaviour
     public GameObject combatMenu;
     public GameObject attackMenu;
     public GameObject itemMenu;
+    public Text attack1Text, attack2Text, attack3Text, attack4Text;
 
     private int actionCounter;
     private bool isPlayerTurn;
@@ -28,7 +29,7 @@ public class CombatManagerScript : MonoBehaviour
     bool shakeEnemy;
     GameObject targetEnemy;
 
-    private GameObject playerEntity, companionEntitiy, enemyEntity1, enemyEntity2;
+    private GameObject playerEntity, companionEntity, enemyEntity1, enemyEntity2;
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class CombatManagerScript : MonoBehaviour
 
         announcer = GameObject.Find("TurnAnnouncer");
         playerEntity = GameObject.FindGameObjectWithTag("Player");
-        companionEntitiy = GameObject.FindGameObjectWithTag("Companion");
+        companionEntity = GameObject.FindGameObjectWithTag("Companion");
         enemyEntity1 = GameObject.FindGameObjectWithTag("Enemy");
         enemyEntity2 = GameObject.FindGameObjectWithTag("Enemy2");
 
@@ -105,6 +106,7 @@ public class CombatManagerScript : MonoBehaviour
                 attackMenu.SetActive(true);
                 combatMenu.SetActive(false);
                 pointer.SetActive(false);
+                CheckActiveChar();
                 break;
 
             case "Item":
@@ -174,6 +176,24 @@ public class CombatManagerScript : MonoBehaviour
             newPos.z = 0;
 
             targetEnemy.GetComponent<RectTransform>().anchoredPosition = newPos;
+        }
+
+        if (currState == "Attack")
+        {
+            if (activeCharacter == "Player")
+            {
+                attack1Text.text = playerEntity.GetComponent<Skills>().Skill_List[0].Name;
+                attack2Text.text = playerEntity.GetComponent<Skills>().Skill_List[1].Name;
+                attack3Text.text = playerEntity.GetComponent<Skills>().Skill_List[2].Name;
+                attack4Text.text = playerEntity.GetComponent<Skills>().Skill_List[3].Name;
+            }
+            else if (activeCharacter == "Companion")
+            {
+                attack1Text.text = companionEntity.GetComponent<Skills>().Skill_List[0].Name;
+                attack2Text.text = companionEntity.GetComponent<Skills>().Skill_List[1].Name;
+                attack3Text.text = companionEntity.GetComponent<Skills>().Skill_List[2].Name;
+                attack4Text.text = companionEntity.GetComponent<Skills>().Skill_List[3].Name;
+            }
         }
     }
 
@@ -322,7 +342,7 @@ public class CombatManagerScript : MonoBehaviour
             if (playerMoved != true)
             {
                 playerEntity.GetComponent<Image>().color = Color.yellow;
-                companionEntitiy.GetComponent<Image>().color = Color.white;
+                companionEntity.GetComponent<Image>().color = Color.white;
             }
             else if (companionMoved != true)
             {
@@ -335,7 +355,7 @@ public class CombatManagerScript : MonoBehaviour
         {
             if (companionMoved != true)
             {
-                companionEntitiy.GetComponent<Image>().color = Color.yellow;
+                companionEntity.GetComponent<Image>().color = Color.yellow;
                 playerEntity.GetComponent<Image>().color = Color.white;
             }
             else if (playerMoved != true)
@@ -352,7 +372,7 @@ public class CombatManagerScript : MonoBehaviour
 
         if (companionMoved == true)
         {
-            companionEntitiy.GetComponent<Image>().color = Color.gray;
+            companionEntity.GetComponent<Image>().color = Color.gray;
         }
 
         if (playerMoved == true && companionMoved == true)

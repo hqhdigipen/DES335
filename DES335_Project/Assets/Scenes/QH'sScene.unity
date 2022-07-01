@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 271821658}
   - component: {fileID: 271821657}
   m_Layer: 5
-  m_Name: Text
+  m_Name: A4Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,22 +889,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character_Element: 0
   Skill_List:
-  - Name: Hello
+  - Name: Bash
     Damage: 5
     MP: 5
     Skill_Element_Type: 0
     Skill_Damage_Type: 0
-  - Name: world
+  - Name: Flame Blade
     Damage: 10
     MP: 5
     Skill_Element_Type: 1
     Skill_Damage_Type: 0
-  - Name: My
+  - Name: Flame Cloak
     Damage: 15
     MP: 5
     Skill_Element_Type: 2
     Skill_Damage_Type: 0
-  - Name: Name
+  - Name: Fame Dance
     Damage: 20
     MP: 5
     Skill_Element_Type: 3
@@ -1505,7 +1505,7 @@ GameObject:
   - component: {fileID: 714384453}
   - component: {fileID: 714384452}
   m_Layer: 5
-  m_Name: Text
+  m_Name: A2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2070,7 +2070,7 @@ MonoBehaviour:
   maxHealth: 100
   setCurrentHealth: 100
   currentHealth: 0
-  elementType: 1
+  elementType: 2
   healthBar: {fileID: 1983208884}
 --- !u!114 &796629881
 MonoBehaviour:
@@ -3170,6 +3170,7 @@ GameObject:
   - component: {fileID: 1182214124}
   - component: {fileID: 1182214123}
   - component: {fileID: 1182214122}
+  - component: {fileID: 1182214126}
   m_Layer: 5
   m_Name: CompanionHP
   m_TagString: Companion
@@ -3314,6 +3315,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182214120}
   m_CullTransparentMesh: 1
+--- !u!114 &1182214126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182214120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f908d8e4383f364bb52075549fe7fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Character_Element: 0
+  Skill_List:
+  - Name: Slam
+    Damage: 5
+    MP: 5
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  - Name: Flame Rush
+    Damage: 10
+    MP: 5
+    Skill_Element_Type: 1
+    Skill_Damage_Type: 0
+  - Name: Flame Blessing
+    Damage: 15
+    MP: 5
+    Skill_Element_Type: 2
+    Skill_Damage_Type: 0
+  - Name: Fame Rain
+    Damage: 20
+    MP: 5
+    Skill_Element_Type: 3
+    Skill_Damage_Type: 0
 --- !u!1 &1221728709
 GameObject:
   m_ObjectHideFlags: 0
@@ -3767,7 +3802,7 @@ GameObject:
   - component: {fileID: 1459157741}
   - component: {fileID: 1459157740}
   m_Layer: 5
-  m_Name: Text
+  m_Name: A1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4200,7 +4235,7 @@ GameObject:
   - component: {fileID: 1582599274}
   - component: {fileID: 1582599273}
   m_Layer: 5
-  m_Name: Text
+  m_Name: A3Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4301,6 +4336,10 @@ MonoBehaviour:
   combatMenu: {fileID: 1687283948}
   attackMenu: {fileID: 971382604}
   itemMenu: {fileID: 485578991}
+  attack1Text: {fileID: 1459157740}
+  attack2Text: {fileID: 714384452}
+  attack3Text: {fileID: 1582599273}
+  attack4Text: {fileID: 271821657}
 --- !u!4 &1597232168
 Transform:
   m_ObjectHideFlags: 0
