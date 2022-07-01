@@ -68,6 +68,7 @@ public class HubBehaviour : MonoBehaviour
 
     public GameObject switchAlly, switchNyx;
 
+
     public void Start()
     {
         pgNum.text = 1.ToString();
