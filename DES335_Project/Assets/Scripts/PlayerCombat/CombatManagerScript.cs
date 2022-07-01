@@ -14,32 +14,37 @@ public class CombatManagerScript : MonoBehaviour
     public GameObject combatMenu;
     public GameObject attackMenu;
     public GameObject itemMenu;
+    public Text attack1Text, attack2Text, attack3Text, attack4Text;
 
     private int actionCounter;
     private bool isPlayerTurn;
 
+    private GameObject announcer;
     private bool playerMoved;
     private bool companionMoved;
     private bool enemy1Moved;
-    private bool enmey2Moved;
+    private bool enemy2Moved;
     private string activeCharacter;
 
     bool shakeEnemy;
     GameObject targetEnemy;
 
-    private GameObject playerEntity, companionEntitiy, enemyEntity1, enemyEntity2;
+    private GameObject playerEntity, companionEntity, enemyEntity1, enemyEntity2;
 
     private void Start()
     {
-        currState = "Main";
+        currState = "P_Announcer";
         isPlayerTurn = true;
 
+        announcer = GameObject.Find("TurnAnnouncer");
         playerEntity = GameObject.FindGameObjectWithTag("Player");
-        companionEntitiy = GameObject.FindGameObjectWithTag("Companion");
+        companionEntity = GameObject.FindGameObjectWithTag("Companion");
         enemyEntity1 = GameObject.FindGameObjectWithTag("Enemy");
         enemyEntity2 = GameObject.FindGameObjectWithTag("Enemy2");
 
         activeCharacter = "Player";
+        playerMoved = false;
+        companionMoved = false;
     }
 
     private void Update()
@@ -48,6 +53,51 @@ public class CombatManagerScript : MonoBehaviour
 
         switch (currState)
         {
+            case "P_Announcer":
+                itemMenu.SetActive(false);
+                attackMenu.SetActive(false);
+                combatMenu.SetActive(false);
+                pointer.SetActive(false);
+
+                if (announcer != null)
+                {
+                    announcer.SetActive(true);
+                    announcer.transform.GetChild(0).gameObject.SetActive(true);
+                    announcer.transform.GetChild(1).gameObject.SetActive(false);
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        announcer.SetActive(false);
+                        currState = "Main";
+                    }
+                }
+                else
+                {
+                    currState = "Main";
+                }
+                break;
+
+            case "E_Announcer":
+                itemMenu.SetActive(false);
+                attackMenu.SetActive(false);
+                combatMenu.SetActive(false);
+                pointer.SetActive(false);
+                if (announcer != null)
+                {
+                    announcer.SetActive(true);
+                    announcer.transform.GetChild(0).gameObject.SetActive(false);
+                    announcer.transform.GetChild(1).gameObject.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        announcer.SetActive(false);
+                        currState = "EnemyTurn";
+                    }
+                }
+                else
+                {
+                    currState = "Main";
+                }
+                break;
+
             case "Main":
                 itemMenu.SetActive(false);
                 attackMenu.SetActive(false);
@@ -60,6 +110,7 @@ public class CombatManagerScript : MonoBehaviour
                 attackMenu.SetActive(true);
                 combatMenu.SetActive(false);
                 pointer.SetActive(false);
+                CheckActiveChar();
                 break;
 
             case "Item":
@@ -82,7 +133,26 @@ public class CombatManagerScript : MonoBehaviour
                 attackMenu.SetActive(false);
                 combatMenu.SetActive(false);
                 pointer.SetActive(false);
-                StartCoroutine(EnemyStart());               
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (enemy1Moved == false)
+                    {
+                        enemyEntity1.GetComponent<Enemy>().Enemy_Attack();
+                        enemy1Moved = true;
+                    }
+                    else if (enemy2Moved == false)
+                    {
+                        enemyEntity2.GetComponent<Enemy>().Enemy_Attack();
+                        enemy2Moved = true;
+                    }
+
+                    if (enemy1Moved == true && enemy2Moved == true)
+                    {
+                        playerMoved = false;
+                        companionMoved = false;
+                        currState = "P_Announcer";
+                    }
+                }
                 break;
         }
 
@@ -110,6 +180,24 @@ public class CombatManagerScript : MonoBehaviour
             newPos.z = 0;
 
             targetEnemy.GetComponent<RectTransform>().anchoredPosition = newPos;
+        }
+
+        if (currState == "Attack")
+        {
+            if (activeCharacter == "Player")
+            {
+                attack1Text.text = playerEntity.GetComponent<Skills>().Skill_List[0].Name;
+                attack2Text.text = playerEntity.GetComponent<Skills>().Skill_List[1].Name;
+                attack3Text.text = playerEntity.GetComponent<Skills>().Skill_List[2].Name;
+                attack4Text.text = playerEntity.GetComponent<Skills>().Skill_List[3].Name;
+            }
+            else if (activeCharacter == "Companion")
+            {
+                attack1Text.text = companionEntity.GetComponent<Skills>().Skill_List[0].Name;
+                attack2Text.text = companionEntity.GetComponent<Skills>().Skill_List[1].Name;
+                attack3Text.text = companionEntity.GetComponent<Skills>().Skill_List[2].Name;
+                attack4Text.text = companionEntity.GetComponent<Skills>().Skill_List[3].Name;
+            }
         }
     }
 
@@ -222,18 +310,19 @@ public class CombatManagerScript : MonoBehaviour
         enemy.GetComponent<RectTransform>().anchoredPosition = temp;
     }
 
-    private IEnumerator EnemyStart()
+    private IEnumerator EnemyStart(KeyCode keyCode)
     {
-        enemyEntity1.GetComponent<Enemy>().Enemy_Attack();
+        while (!Input.GetKeyDown(keyCode))
+        {
+            enemyEntity1.GetComponent<Enemy>().Enemy_Attack();
 
-        yield return waitForKeyPress(KeyCode.Space);
+            yield return waitForKeyPress(KeyCode.Space);
 
-        enemyEntity2.GetComponent<Enemy>().Enemy_Attack();
+            enemyEntity2.GetComponent<Enemy>().Enemy_Attack();
 
-        yield return waitForKeyPress(KeyCode.Space);
-
-        StopCoroutine(EnemyStart());
-
+            yield return waitForKeyPress(KeyCode.Space);
+            yield return null;
+        }
     }
 
     private IEnumerator waitForKeyPress(KeyCode key)
@@ -257,7 +346,7 @@ public class CombatManagerScript : MonoBehaviour
             if (playerMoved != true)
             {
                 playerEntity.GetComponent<Image>().color = Color.yellow;
-                companionEntitiy.GetComponent<Image>().color = Color.white;
+                companionEntity.GetComponent<Image>().color = Color.white;
             }
             else if (companionMoved != true)
             {
@@ -270,7 +359,7 @@ public class CombatManagerScript : MonoBehaviour
         {
             if (companionMoved != true)
             {
-                companionEntitiy.GetComponent<Image>().color = Color.yellow;
+                companionEntity.GetComponent<Image>().color = Color.yellow;
                 playerEntity.GetComponent<Image>().color = Color.white;
             }
             else if (playerMoved != true)
@@ -287,7 +376,14 @@ public class CombatManagerScript : MonoBehaviour
 
         if (companionMoved == true)
         {
-            companionEntitiy.GetComponent<Image>().color = Color.gray;
+            companionEntity.GetComponent<Image>().color = Color.gray;
+        }
+
+        if (playerMoved == true && companionMoved == true)
+        {
+            enemy1Moved = false;
+            enemy2Moved = false;
+            currState = "E_Announcer";
         }
     }
     

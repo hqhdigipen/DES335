@@ -406,6 +406,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81771408}
   m_CullTransparentMesh: 1
+--- !u!1 &86644612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 86644613}
+  - component: {fileID: 86644615}
+  - component: {fileID: 86644614}
+  m_Layer: 5
+  m_Name: TurnAnnouncer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &86644613
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86644612}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 303376124}
+  - {fileID: 1629372459}
+  m_Father: {fileID: 518946358}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 300, y: 150}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &86644614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86644612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &86644615
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86644612}
+  m_CullTransparentMesh: 1
 --- !u!1 &109374903
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,7 +570,7 @@ GameObject:
   - component: {fileID: 271821658}
   - component: {fileID: 271821657}
   m_Layer: 5
-  m_Name: Text
+  m_Name: A4Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -559,6 +636,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271821655}
+  m_CullTransparentMesh: 1
+--- !u!1 &303376123
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 303376124}
+  - component: {fileID: 303376126}
+  - component: {fileID: 303376125}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &303376124
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303376123}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 86644613}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 206.75, y: 62.85}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &303376125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303376123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Player Turn
+--- !u!222 &303376126
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303376123}
   m_CullTransparentMesh: 1
 --- !u!1 &403361196
 GameObject:
@@ -733,22 +889,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character_Element: 0
   Skill_List:
-  - Name: Hello
+  - Name: Bash
     Damage: 5
     MP: 5
     Skill_Element_Type: 0
     Skill_Damage_Type: 0
-  - Name: world
+  - Name: Flame Blade
     Damage: 10
     MP: 5
     Skill_Element_Type: 1
     Skill_Damage_Type: 0
-  - Name: My
+  - Name: Flame Cloak
     Damage: 15
     MP: 5
     Skill_Element_Type: 2
     Skill_Damage_Type: 0
-  - Name: Name
+  - Name: Fame Dance
     Damage: 20
     MP: 5
     Skill_Element_Type: 3
@@ -1091,6 +1247,7 @@ RectTransform:
   - {fileID: 485578992}
   - {fileID: 940581571}
   - {fileID: 1506243411}
+  - {fileID: 86644613}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1212,8 +1369,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 250}
+  m_AnchoredPosition: {x: 0.88, y: -0.000022888}
+  m_SizeDelta: {x: 400.96, y: 153.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &674894753
 MonoBehaviour:
@@ -1348,7 +1505,7 @@ GameObject:
   - component: {fileID: 714384453}
   - component: {fileID: 714384452}
   m_Layer: 5
-  m_Name: Text
+  m_Name: A2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1911,9 +2068,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  setCurrentHealth: 20
+  setCurrentHealth: 100
   currentHealth: 0
-  elementType: 1
+  elementType: 2
   healthBar: {fileID: 1983208884}
 --- !u!114 &796629881
 MonoBehaviour:
@@ -2141,8 +2298,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -624, y: 381}
-  m_SizeDelta: {x: 610, y: 260}
+  m_AnchoredPosition: {x: -735.87, y: 446.05}
+  m_SizeDelta: {x: 426.26, y: 165.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &940581572
 MonoBehaviour:
@@ -2335,7 +2492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  setCurrentHealth: 0
+  setCurrentHealth: 100
   currentHealth: 0
   elementType: 2
   healthBar: {fileID: 1843894501}
@@ -3013,6 +3170,7 @@ GameObject:
   - component: {fileID: 1182214124}
   - component: {fileID: 1182214123}
   - component: {fileID: 1182214122}
+  - component: {fileID: 1182214126}
   m_Layer: 5
   m_Name: CompanionHP
   m_TagString: Companion
@@ -3157,6 +3315,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182214120}
   m_CullTransparentMesh: 1
+--- !u!114 &1182214126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182214120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f908d8e4383f364bb52075549fe7fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Character_Element: 0
+  Skill_List:
+  - Name: Slam
+    Damage: 5
+    MP: 5
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  - Name: Flame Rush
+    Damage: 10
+    MP: 5
+    Skill_Element_Type: 1
+    Skill_Damage_Type: 0
+  - Name: Flame Blessing
+    Damage: 15
+    MP: 5
+    Skill_Element_Type: 2
+    Skill_Damage_Type: 0
+  - Name: Fame Rain
+    Damage: 20
+    MP: 5
+    Skill_Element_Type: 3
+    Skill_Damage_Type: 0
 --- !u!1 &1221728709
 GameObject:
   m_ObjectHideFlags: 0
@@ -3610,7 +3802,7 @@ GameObject:
   - component: {fileID: 1459157741}
   - component: {fileID: 1459157740}
   m_Layer: 5
-  m_Name: Text
+  m_Name: A1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3868,7 +4060,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -195.84344, y: 409.95087}
+  m_AnchoredPosition: {x: -419, y: 443.11}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1506243412
@@ -4043,7 +4235,7 @@ GameObject:
   - component: {fileID: 1582599274}
   - component: {fileID: 1582599273}
   m_Layer: 5
-  m_Name: Text
+  m_Name: A3Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4144,6 +4336,10 @@ MonoBehaviour:
   combatMenu: {fileID: 1687283948}
   attackMenu: {fileID: 971382604}
   itemMenu: {fileID: 485578991}
+  attack1Text: {fileID: 1459157740}
+  attack2Text: {fileID: 714384452}
+  attack3Text: {fileID: 1582599273}
+  attack4Text: {fileID: 271821657}
 --- !u!4 &1597232168
 Transform:
   m_ObjectHideFlags: 0
@@ -4236,6 +4432,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607895009}
+  m_CullTransparentMesh: 1
+--- !u!1 &1629372458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1629372459}
+  - component: {fileID: 1629372461}
+  - component: {fileID: 1629372460}
+  m_Layer: 5
+  m_Name: Enemt Turn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1629372459
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629372458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 86644613}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 206.75, y: 62.85}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1629372460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629372458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Enemy Turn
+--- !u!222 &1629372461
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629372458}
   m_CullTransparentMesh: 1
 --- !u!1 &1687283948
 GameObject:
