@@ -53,6 +53,11 @@ public class CombatManagerScript : MonoBehaviour
         switch (currState)
         {
             case "P_Announcer":
+                itemMenu.SetActive(false);
+                attackMenu.SetActive(false);
+                combatMenu.SetActive(false);
+                pointer.SetActive(false);
+
                 if (announcer != null)
                 {
                     announcer.SetActive(true);
