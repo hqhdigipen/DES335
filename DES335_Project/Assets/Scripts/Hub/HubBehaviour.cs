@@ -239,41 +239,41 @@ public class HubBehaviour : MonoBehaviour
       
             if (enemyList[int.Parse(pgNum.text)-1].activeSelf)
             {
-                if (switchNyx.activeSelf)
+            if (switchNyx.activeSelf && switchID != "")
+            {
+                switchID = "";
+                foreach (TextMeshProUGUI weapon in cNyxWeapon)
                 {
-                    switchID = "";
-                    foreach (TextMeshProUGUI weapon in cNyxWeapon)
-                    {
-                        weapon.text = "No Weapon";
-                    }
-                    foreach (TextMeshProUGUI armor in cNyxArmor)
-                    {
-                        armor.text = "No Armor";
-                    }
-
-                    foreach (TextMeshProUGUI skill in cNyxSkill1)
-                    {
-                        skill.text = "Banshee Wail";
-                    }
-
-                    foreach (TextMeshProUGUI skill in cNyxSkill2)
-                    {
-                        skill.text = "Phantom Claw";
-                    }
-
-                    foreach (TextMeshProUGUI skill in cNyxSkill3)
-                    {
-                        skill.text = "Astral Plane";
-                    }
-
-                    foreach (TextMeshProUGUI skill in cNyxSkill4)
-                    {
-                        skill.text = "Merciful Protection";
-                    }
-
-                    alreadySwitchMsg.SetActive(true);
+                    weapon.text = "No Weapon";
                 }
-            else
+                foreach (TextMeshProUGUI armor in cNyxArmor)
+                {
+                    armor.text = "No Armor";
+                }
+
+                foreach (TextMeshProUGUI skill in cNyxSkill1)
+                {
+                    skill.text = "Banshee Wail";
+                }
+
+                foreach (TextMeshProUGUI skill in cNyxSkill2)
+                {
+                    skill.text = "Phantom Claw";
+                }
+
+                foreach (TextMeshProUGUI skill in cNyxSkill3)
+                {
+                    skill.text = "Astral Plane";
+                }
+
+                foreach (TextMeshProUGUI skill in cNyxSkill4)
+                {
+                    skill.text = "Merciful Protection";
+                }
+
+                alreadySwitchMsg.SetActive(true);
+            }
+            else if (switchAlly.activeSelf && absorbID != "")
             {
                 absorbID = "";
                 foreach (TextMeshProUGUI weapon in cAllyWeapon)
@@ -305,6 +305,9 @@ public class HubBehaviour : MonoBehaviour
                     skill.text = "Resistance";
                 }
                 alreadySwitchMsg.SetActive(true);
+            }
+            else {
+                Debug.Log("You did not switch skill with this enemy");
             }
         }
         
