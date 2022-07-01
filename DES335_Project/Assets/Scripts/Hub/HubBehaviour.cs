@@ -127,7 +127,7 @@ public class HubBehaviour : MonoBehaviour
                 break;
 
             case "Elixir":
-                if (sliderScript.totalItem <= 1){
+                if (sliderScript.totalItem <= 1) {
                     itemCost.text = elixirPrice.ToString();
                 }
 
@@ -143,15 +143,15 @@ public class HubBehaviour : MonoBehaviour
         switch (sellItemName.text)
         {
             case "Herb":
-                    sellItemCost.text = (herbPrice * sellSliderScript.sellTotalItem).ToString();
-                    sellSliderScript.sellQuantitySlider.maxValue = int.Parse(itemAmountLabel[0].text);
-                    
+                sellItemCost.text = (herbPrice * sellSliderScript.sellTotalItem).ToString();
+                sellSliderScript.sellQuantitySlider.maxValue = int.Parse(itemAmountLabel[0].text);
+
                 break;
 
             case "Elixir":
-                    sellItemCost.text = (elixirPrice * sellSliderScript.sellTotalItem).ToString();
-                    sellSliderScript.sellQuantitySlider.maxValue = int.Parse(itemAmountLabel[1].text);
-                    
+                sellItemCost.text = (elixirPrice * sellSliderScript.sellTotalItem).ToString();
+                sellSliderScript.sellQuantitySlider.maxValue = int.Parse(itemAmountLabel[1].text);
+
                 break;
 
             default:
@@ -160,7 +160,7 @@ public class HubBehaviour : MonoBehaviour
 
         if (switchNyx.activeSelf)
         {
-            if (switchID != "" && int.Parse(switchID) == int.Parse(pgNum.text) - 1)
+            if (switchID != "" && int.Parse(switchID) == int.Parse(pgNum.text) - 1 || absorbID != "" && int.Parse(absorbID) == int.Parse(pgNum.text) - 1)
             {
                 alreadySwitchMsg.SetActive(true);
             }
@@ -169,18 +169,7 @@ public class HubBehaviour : MonoBehaviour
                 alreadySwitchMsg.SetActive(false);
             }
         }
-        else
-        {
-
-            if (absorbID != "" && int.Parse(absorbID) == int.Parse(pgNum.text) - 1)
-            {
-                alreadySwitchMsg.SetActive(true);
-            }
-            else
-            {
-                alreadySwitchMsg.SetActive(false);
-            }
-        }
+  
         if (playerInfo.activeSelf)
         {
             if (switchID == "")
