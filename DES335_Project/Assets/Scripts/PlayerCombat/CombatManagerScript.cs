@@ -21,7 +21,7 @@ public class CombatManagerScript : MonoBehaviour
     private bool playerMoved;
     private bool companionMoved;
     private bool enemy1Moved;
-    private bool enmey2Moved;
+    private bool enemy2Moved;
     private string activeCharacter;
 
     bool shakeEnemy;
@@ -40,6 +40,8 @@ public class CombatManagerScript : MonoBehaviour
         enemyEntity2 = GameObject.FindGameObjectWithTag("Enemy2");
 
         activeCharacter = "Player";
+        playerMoved = false;
+        companionMoved = false;
     }
 
     private void Update()
@@ -82,7 +84,26 @@ public class CombatManagerScript : MonoBehaviour
                 attackMenu.SetActive(false);
                 combatMenu.SetActive(false);
                 pointer.SetActive(false);
-                StartCoroutine(EnemyStart());               
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (enemy1Moved == false)
+                    {
+                        enemyEntity1.GetComponent<Enemy>().Enemy_Attack();
+                        enemy1Moved = true;
+                    }
+                    else if (enemy2Moved == false)
+                    {
+                        enemyEntity2.GetComponent<Enemy>().Enemy_Attack();
+                        enemy2Moved = true;
+                    }
+
+                    if (enemy1Moved == true && enemy2Moved == true)
+                    {
+                        playerMoved = false;
+                        companionMoved = false;
+                        currState = "Main";
+                    }
+                }
                 break;
         }
 
@@ -222,18 +243,19 @@ public class CombatManagerScript : MonoBehaviour
         enemy.GetComponent<RectTransform>().anchoredPosition = temp;
     }
 
-    private IEnumerator EnemyStart()
+    private IEnumerator EnemyStart(KeyCode keyCode)
     {
-        enemyEntity1.GetComponent<Enemy>().Enemy_Attack();
+        while (!Input.GetKeyDown(keyCode))
+        {
+            enemyEntity1.GetComponent<Enemy>().Enemy_Attack();
 
-        yield return waitForKeyPress(KeyCode.Space);
+            yield return waitForKeyPress(KeyCode.Space);
 
-        enemyEntity2.GetComponent<Enemy>().Enemy_Attack();
+            enemyEntity2.GetComponent<Enemy>().Enemy_Attack();
 
-        yield return waitForKeyPress(KeyCode.Space);
-
-        StopCoroutine(EnemyStart());
-
+            yield return waitForKeyPress(KeyCode.Space);
+            yield return null;
+        }
     }
 
     private IEnumerator waitForKeyPress(KeyCode key)
@@ -288,6 +310,13 @@ public class CombatManagerScript : MonoBehaviour
         if (companionMoved == true)
         {
             companionEntitiy.GetComponent<Image>().color = Color.gray;
+        }
+
+        if (playerMoved == true && companionMoved == true)
+        {
+            enemy1Moved = false;
+            enemy2Moved = false;
+            currState = "EnemyTurn";
         }
     }
     
