@@ -18,6 +18,7 @@ public class CombatManagerScript : MonoBehaviour
     private int actionCounter;
     private bool isPlayerTurn;
 
+    private GameObject announcer;
     private bool playerMoved;
     private bool companionMoved;
     private bool enemy1Moved;
@@ -31,9 +32,10 @@ public class CombatManagerScript : MonoBehaviour
 
     private void Start()
     {
-        currState = "Main";
+        currState = "P_Announcer";
         isPlayerTurn = true;
 
+        announcer = GameObject.Find("TurnAnnouncer");
         playerEntity = GameObject.FindGameObjectWithTag("Player");
         companionEntitiy = GameObject.FindGameObjectWithTag("Companion");
         enemyEntity1 = GameObject.FindGameObjectWithTag("Enemy");
@@ -50,6 +52,42 @@ public class CombatManagerScript : MonoBehaviour
 
         switch (currState)
         {
+            case "P_Announcer":
+                if (announcer != null)
+                {
+                    announcer.SetActive(true);
+                    announcer.transform.GetChild(0).gameObject.SetActive(true);
+                    announcer.transform.GetChild(1).gameObject.SetActive(false);
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        announcer.SetActive(false);
+                        currState = "Main";
+                    }
+                }
+                else
+                {
+                    currState = "Main";
+                }
+                break;
+
+            case "E_Announcer":
+                if (announcer != null)
+                {
+                    announcer.SetActive(true);
+                    announcer.transform.GetChild(0).gameObject.SetActive(false);
+                    announcer.transform.GetChild(1).gameObject.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        announcer.SetActive(false);
+                        currState = "EnemyTurn";
+                    }
+                }
+                else
+                {
+                    currState = "Main";
+                }
+                break;
+
             case "Main":
                 itemMenu.SetActive(false);
                 attackMenu.SetActive(false);
@@ -101,7 +139,7 @@ public class CombatManagerScript : MonoBehaviour
                     {
                         playerMoved = false;
                         companionMoved = false;
-                        currState = "Main";
+                        currState = "P_Announcer";
                     }
                 }
                 break;
@@ -316,7 +354,7 @@ public class CombatManagerScript : MonoBehaviour
         {
             enemy1Moved = false;
             enemy2Moved = false;
-            currState = "EnemyTurn";
+            currState = "E_Announcer";
         }
     }
     
