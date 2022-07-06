@@ -25,6 +25,8 @@ public class CombatManagerScript : MonoBehaviour
     private bool enemy1Moved;
     private bool enemy2Moved;
     private string activeCharacter;
+    private int activeAttack;
+    private Text actionLogTextBox;
 
     bool shakeEnemy;
     GameObject targetEnemy;
@@ -42,9 +44,17 @@ public class CombatManagerScript : MonoBehaviour
         enemyEntity1 = GameObject.FindGameObjectWithTag("Enemy");
         enemyEntity2 = GameObject.FindGameObjectWithTag("Enemy2");
 
+        if (GameObject.Find("TextBox") != null)
+        {
+            actionLogTextBox = GameObject.Find("TextBox").GetComponent<Text>();
+        }
+
         activeCharacter = "Player";
+        activeAttack = 0;
         playerMoved = false;
         companionMoved = false;
+        enemy1Moved = true;
+        enemy2Moved = true;
     }
 
     private void Update()
@@ -182,7 +192,7 @@ public class CombatManagerScript : MonoBehaviour
             targetEnemy.GetComponent<RectTransform>().anchoredPosition = newPos;
         }
 
-        if (currState == "Attack")
+        if (currState == "Attack") // Display Skill into the Attack Menu
         {
             if (activeCharacter == "Player")
             {
@@ -212,8 +222,9 @@ public class CombatManagerScript : MonoBehaviour
         currState = "Item";
     }
 
-    public void Attack1Button()
+    public void AttackSelected(int slotNumber)
     {
+        activeAttack = slotNumber;
         currState = "Targeting";     
     }
 
@@ -259,10 +270,55 @@ public class CombatManagerScript : MonoBehaviour
     }
 
     public void AttackEnemy(GameObject enemy)
-    {
+    { 
         if (currState == "Targeting")
         {
-            enemy.GetComponent<CharScript>().TakeDamage(5, "Fire");
+            switch (activeCharacter)
+            {
+                case "Player":
+                    switch(activeAttack)
+                    {
+                        case 0:
+                            enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[0].Damage, playerEntity.GetComponent<Skills>().Skill_List[0].Skill_Element_Type.ToString()) ;
+                            break;
+                        case 1:
+                            enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[1].Damage, playerEntity.GetComponent<Skills>().Skill_List[1].Skill_Element_Type.ToString());
+                            break;
+                        case 2:
+                            enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[2].Damage, playerEntity.GetComponent<Skills>().Skill_List[2].Skill_Element_Type.ToString());
+                            break;
+                        case 3:
+                            enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[3].Damage, playerEntity.GetComponent<Skills>().Skill_List[3].Skill_Element_Type.ToString());
+                            break;
+                    }
+
+                    actionLogTextBox.text = activeCharacter + " is using " + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Name +
+                 "(" + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Skill_Element_Type.ToString() + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].MP + "/5) , -" +
+                 playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage + " damage to " + enemy.transform.name;
+                    break;
+                case "Companion":
+                    switch (activeAttack)
+                    {
+                        case 0:
+                            enemy.GetComponent<CharScript>().TakeDamage(companionEntity.GetComponent<Skills>().Skill_List[0].Damage, companionEntity.GetComponent<Skills>().Skill_List[0].Skill_Element_Type.ToString());
+                            break;
+                        case 1:
+                            enemy.GetComponent<CharScript>().TakeDamage(companionEntity.GetComponent<Skills>().Skill_List[1].Damage, companionEntity.GetComponent<Skills>().Skill_List[1].Skill_Element_Type.ToString());
+                            break;
+                        case 2:
+                            enemy.GetComponent<CharScript>().TakeDamage(companionEntity.GetComponent<Skills>().Skill_List[2].Damage, companionEntity.GetComponent<Skills>().Skill_List[2].Skill_Element_Type.ToString());
+                            break;
+                        case 3:
+                            enemy.GetComponent<CharScript>().TakeDamage(companionEntity.GetComponent<Skills>().Skill_List[3].Damage, companionEntity.GetComponent<Skills>().Skill_List[3].Skill_Element_Type.ToString());
+                            break;
+                    }
+                    actionLogTextBox.text = activeCharacter + " is using " + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Name +
+                 "(" + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Skill_Element_Type.ToString() + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].MP + "/5) , -" +
+                 companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage + " damage to " + enemy.transform.name;
+                    break;
+            }
+
+            //enemy.GetComponent<CharScript>().TakeDamage(5, "Fire");
             StartCoroutine(shake(enemy, 1f));
             MarkAction(activeCharacter);
             currState = "Main";
@@ -381,8 +437,15 @@ public class CombatManagerScript : MonoBehaviour
 
         if (playerMoved == true && companionMoved == true)
         {
-            enemy1Moved = false;
-            enemy2Moved = false;
+            if (enemyEntity1.GetComponent<CharScript>().currentHealth > 0)
+            { 
+                enemy1Moved = false;
+            }
+
+            if (enemyEntity2.GetComponent<CharScript>().currentHealth > 0)
+            {
+                enemy2Moved = false;
+            }
             currState = "E_Announcer";
         }
     }

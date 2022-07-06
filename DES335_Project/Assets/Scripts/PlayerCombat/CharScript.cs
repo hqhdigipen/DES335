@@ -54,6 +54,9 @@ public class CharScript : MonoBehaviour
                     case "Earth":
                         currentHealth -= Mathf.FloorToInt(damage * typeWeaknessMod);
                         break;
+                    case "Normal":
+                        currentHealth -= damage;
+                        break;
                 }
                 break;
             case "Water":
@@ -67,6 +70,9 @@ public class CharScript : MonoBehaviour
                         break;
                     case "Earth":
                         currentHealth -= Mathf.FloorToInt(damage * typeAdvantageMod);
+                        break;
+                    case "Normal":
+                        currentHealth -= damage;
                         break;
                 }
                 break;
@@ -82,15 +88,28 @@ public class CharScript : MonoBehaviour
                     case "Earth":
                         currentHealth -= damage;
                         break;
+                    case "Normal":
+                        currentHealth -= damage;
+                        break;
                 }
                 break;
             case "Normal":
-                currentHealth -= Mathf.FloorToInt(damage);
+                switch (atkElement)
+                {
+                    case "Fire":
+                        currentHealth -= damage;
+                        break;
+                    case "Water":
+                        currentHealth -= damage;
+                        break;
+                    case "Earth":
+                        currentHealth -= damage;
+                        break;
+                    case "Normal":
+                        currentHealth -= damage;
+                        break;
+                }
                 break;
-            default:
-                currentHealth -= Mathf.FloorToInt(damage);
-                break;
-
         }
 
         healthBar.SetHealth(currentHealth);
