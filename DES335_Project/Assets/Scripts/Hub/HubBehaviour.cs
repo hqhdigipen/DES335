@@ -88,7 +88,7 @@ public class HubBehaviour : MonoBehaviour
         blacksmithCanvas.SetActive(false);
         generalStoreCanvas.SetActive(false);
         profileCanvas.SetActive(false);
-        hubCanvas.SetActive(true);
+        //hubCanvas.SetActive(true);
 
         playerInfo.SetActive(true);
         allyInfo.SetActive(false);

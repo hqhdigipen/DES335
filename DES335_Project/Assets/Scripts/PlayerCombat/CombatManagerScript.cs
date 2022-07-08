@@ -319,7 +319,7 @@ public class CombatManagerScript : MonoBehaviour
             }
 
             //enemy.GetComponent<CharScript>().TakeDamage(5, "Fire");
-            StartCoroutine(shake(enemy, 1f));
+            StartCoroutine(shake(enemy, 0.1f));
             MarkAction(activeCharacter);
             currState = "Main";
         }
@@ -357,12 +357,14 @@ public class CombatManagerScript : MonoBehaviour
     {
         Vector2 temp = enemy.GetComponent<RectTransform>().anchoredPosition;
         targetEnemy = enemy;
-        if (shakeEnemy == false)
+        for (int g = 0; g < 10; g++)
         {
-            shakeEnemy = true;
+            Vector3 newPos = Random.insideUnitSphere * (Time.deltaTime * 5f);
+            newPos.y = targetEnemy.GetComponent<RectTransform>().anchoredPosition.y;
+            newPos.z = 0;
+            targetEnemy.GetComponent<RectTransform>().anchoredPosition = newPos;
+            yield return new WaitForSeconds(waitTime);
         }
-        yield return new WaitForSeconds(waitTime);
-        shakeEnemy = false;
         enemy.GetComponent<RectTransform>().anchoredPosition = temp;
     }
 
