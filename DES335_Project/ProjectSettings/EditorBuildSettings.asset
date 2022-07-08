@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QH'sScene.unity
     guid: 4aacc87f4a75d564ab36f8e40786db06
+  - enabled: 1
+    path: Assets/Scenes/WinLose.unity
+    guid: cbfa855ebb9e8884db6d09ae3d26dfa9
   m_configObjects: {}
