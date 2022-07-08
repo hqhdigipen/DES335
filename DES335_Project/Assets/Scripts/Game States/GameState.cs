@@ -40,12 +40,18 @@ public class GameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            player.GetComponent<CharScript>().TakeDamage(100, "Normal");
+            companion.GetComponent<CharScript>().TakeDamage(100, "Normal");
+        }
+
         if (enemy != null && enemy2 != null)
         {
             if (enemy.GetComponent<CharScript>().currentHealth <= 0 && enemy2.GetComponent<CharScript>().currentHealth <= 0)
             {
                 g_state = (int)GameState.state.WIN;
-                Application.LoadLevel("WinLose");
+                Application.LoadLevel("Victory");
 
             }
         }
@@ -55,6 +61,8 @@ public class GameState : MonoBehaviour
             if (player.GetComponent<CharScript>().currentHealth <= 0 && companion.GetComponent<CharScript>().currentHealth <= 0)
             {
                 g_state = (int)GameState.state.LOSE;
+                Application.LoadLevel("Lose");
+
             }
         }
 
