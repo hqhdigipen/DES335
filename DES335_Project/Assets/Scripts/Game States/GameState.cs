@@ -5,20 +5,31 @@ using UnityEngine;
 public class GameState : MonoBehaviour
 {
     private enum state
-    { 
-        MAIN_MENU, 
+    {
+        MAIN_MENU,
         HUB,
         COMBAT,
         WIN,
         LOSE,
     }
 
-    int g_state = 0; 
+    private enum Route
+    {
+        Route_1 = 1,
+        Route_2,
+        Route_3,
+        Route_4,
+    }
+
+
+    int g_state = 0;
+    static int route = 1;
 
     GameObject companion, enemy, enemy2, player;
     public GameObject VictoryButton, BackButton;
-   
-// Start is called before the first frame update
+
+
+    // Start is called before the first frame update
     void Start()
     {
         enemy = GameObject.FindGameObjectWithTag("Enemy");
@@ -51,8 +62,10 @@ public class GameState : MonoBehaviour
             if (enemy.GetComponent<CharScript>().currentHealth <= 0 && enemy2.GetComponent<CharScript>().currentHealth <= 0)
             {
                 g_state = (int)GameState.state.WIN;
-                Application.LoadLevel("Victory");
-
+                if(route != (int)(Route.Route_4))
+                    Application.LoadLevel("Victory");
+                else
+                    Application.LoadLevel("Level_Complete");
             }
         }
 
@@ -66,7 +79,7 @@ public class GameState : MonoBehaviour
             }
         }
 
-        if(g_state == (int)GameState.state.MAIN_MENU)
+        if (g_state == (int)GameState.state.MAIN_MENU)
         {
 
         }
@@ -99,8 +112,15 @@ public class GameState : MonoBehaviour
     public void ContinueButtonPressed()
     {
         Debug.Log("Continue Button Pressed");
-    }
 
+        if (route == (int)Route.Route_1)
+            Application.LoadLevel("Route_2_3");
+        else if (route == (int)Route.Route_2 || route == (int)Route.Route_3)
+            Application.LoadLevel("Route_4");
+
+        Debug.Log("Route: " + route);
+
+    }
     void BackPopUp()
     {
         if (BackButton != null)
@@ -109,12 +129,43 @@ public class GameState : MonoBehaviour
         }
     }
 
-    public void BackButtonPressed()
+    public void BackToHubButtonPressed()
     {
-        Debug.Log("Back Button Pressed");
+        Debug.Log("BackToHub Button Pressed");
         g_state = (int)GameState.state.HUB;
 
         Application.LoadLevel("Hub");
 
+    }
+
+    public void route2Pressed()
+    {
+        Debug.Log("Route 2 Pressed");
+        Application.LoadLevel("QH'sScene");
+        route = (int)Route.Route_2;
+        Debug.Log("Route: " + route);
+
+    }
+
+    public void route3Pressed()
+    {
+        Debug.Log("Route 3 Pressed");
+        Application.LoadLevel("QH'sScene");
+        route = (int)Route.Route_3;
+        Debug.Log("Route: " + route);
+    }
+
+    public void route4Pressed()
+    {
+        Debug.Log("Route 4 Pressed");
+        Application.LoadLevel("QH'sScene");
+        route = (int)Route.Route_4;
+        Debug.Log("Route: " + route);
+    }
+
+    public void BackButtonPressed()
+    {
+        if (route != (int)Route.Route_4)
+            Application.LoadLevel("Victory");
     }
 }
