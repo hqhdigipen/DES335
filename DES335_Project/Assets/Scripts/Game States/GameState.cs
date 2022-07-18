@@ -1,7 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< Updated upstream
 using UnityEngine.SceneManagement;
+=======
+using UnityEngine.UI;
+
+
+>>>>>>> Stashed changes
 public class GameState : MonoBehaviour
 {
     private enum state
@@ -23,13 +29,11 @@ public class GameState : MonoBehaviour
         Route_4,
     }
 
-
-    int g_state = 0;
-    static int route = 1;
+    public int g_state = 0;
+    static public int route = 1;
 
     GameObject companion, enemy, enemy2, player;
     public GameObject VictoryButton, BackButton;
-
 
     // Start is called before the first frame update
     void Start()
@@ -53,10 +57,17 @@ public class GameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Z))
         {
             player.GetComponent<CharScript>().TakeDamage(100, "Normal");
             companion.GetComponent<CharScript>().TakeDamage(100, "Normal");
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            enemy.GetComponent<CharScript>().TakeDamage(100, "Normal");
+            enemy2.GetComponent<CharScript>().TakeDamage(100, "Normal");
         }
 
         if (enemy != null && enemy2 != null)
@@ -64,8 +75,16 @@ public class GameState : MonoBehaviour
             if (enemy.GetComponent<CharScript>().currentHealth <= 0 && enemy2.GetComponent<CharScript>().currentHealth <= 0)
             {
                 g_state = (int)GameState.state.WIN;
+<<<<<<< Updated upstream
                 if(route != (int)(Route.Route_4))
                     SceneManager.LoadScene("Victory");
+=======
+                if (route != (int)(Route.Route_4))
+                {
+                   // SF_Text.text = SF_List[1].ToString();
+                    Application.LoadLevel("Victory");
+                }
+>>>>>>> Stashed changes
                 else
                     SceneManager.LoadScene("Level_Complete");
             }

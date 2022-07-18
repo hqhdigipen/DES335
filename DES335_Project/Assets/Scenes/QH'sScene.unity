@@ -4625,6 +4625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VictoryButton: {fileID: 0}
   BackButton: {fileID: 0}
+  SF_Text: {fileID: 0}
 --- !u!1 &1607895009
 GameObject:
   m_ObjectHideFlags: 0
