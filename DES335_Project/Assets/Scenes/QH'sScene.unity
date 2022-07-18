@@ -818,6 +818,7 @@ GameObject:
   - component: {fileID: 403361201}
   - component: {fileID: 403361198}
   - component: {fileID: 403361202}
+  - component: {fileID: 403361203}
   m_Layer: 5
   m_Name: PlayerHP
   m_TagString: Player
@@ -996,6 +997,45 @@ MonoBehaviour:
     MP: 5
     Skill_Element_Type: 2
     Skill_Damage_Type: 0
+--- !u!114 &403361203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403361196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf74a52ace29bf4bb184bf46de74bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Possess_Character_Element: 0
+  Possessed_Skill_List:
+  - Name: 
+    Damage: 0
+    MP: 0
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  - Name: 
+    Damage: 0
+    MP: 0
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  - Name: 
+    Damage: 0
+    MP: 0
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  - Name: 
+    Damage: 0
+    MP: 0
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  PossessButton: {fileID: 0}
+  companion: {fileID: 0}
+  enemy: {fileID: 0}
+  enemy2: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &449238894
 GameObject:
   m_ObjectHideFlags: 0
@@ -4253,12 +4293,12 @@ GameObject:
   - component: {fileID: 1506243413}
   - component: {fileID: 1506243412}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PossessButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1506243411
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4323,7 +4363,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 403361203}
         m_TargetAssemblyTypeName: Possession, Assembly-CSharp
         m_MethodName: PossessEnemy
         m_Mode: 1

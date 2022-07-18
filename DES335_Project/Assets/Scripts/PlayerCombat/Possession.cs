@@ -74,6 +74,8 @@ public class Possession : MonoBehaviour
                 Possessed_Skill_List[i].MP = enemy.GetComponent<Skills>().Skill_List[i].MP;
                 Possessed_Skill_List[i].Skill_Element_Type = (POSSESSED_SKILL_TYPE)(int)enemy.GetComponent<Skills>().Skill_List[i].Skill_Element_Type;
                 Possessed_Skill_List[i].Skill_Damage_Type = (POSSESSED_DAMAGE_TYPE)(int)enemy.GetComponent<Skills>().Skill_List[i].Skill_Damage_Type;
+
+                enemy.GetComponent<CharScript>().currentHealth = 0;
             }
             else if(target_remaining == (int)OPPONENT.ENEMY2)
             {
@@ -82,6 +84,8 @@ public class Possession : MonoBehaviour
                 Possessed_Skill_List[i].MP = enemy2.GetComponent<Skills>().Skill_List[i].MP;
                 Possessed_Skill_List[i].Skill_Element_Type = (POSSESSED_SKILL_TYPE)(int)enemy2.GetComponent<Skills>().Skill_List[i].Skill_Element_Type;
                 Possessed_Skill_List[i].Skill_Damage_Type = (POSSESSED_DAMAGE_TYPE)(int)enemy2.GetComponent<Skills>().Skill_List[i].Skill_Damage_Type;
+
+                enemy2.GetComponent<CharScript>().currentHealth = 0;
             }
 
             player.GetComponent<Skills>().Skill_List[i].Name = Possessed_Skill_List[i].Name;
@@ -101,29 +105,31 @@ public class Possession : MonoBehaviour
     void PossessButtonPopUp()
     {
         if (enemy.GetComponent<CharScript>().currentHealth <= 0)
-        {
-            numOfEnemy--;
+        {          
             target_remaining = (int)OPPONENT.ENEMY2;
 
+            if(numOfEnemy == 2)
+                numOfEnemy = 1;
+            
             Debug.Log("Enemy2 Left, Enemy Dead");
-
         }
 
         if (enemy2.GetComponent<CharScript>().currentHealth <= 0)
         {
-            numOfEnemy--;
+            if (numOfEnemy == 2)
+                numOfEnemy = 1;
+            
             target_remaining = (int)OPPONENT.ENEMY;
-
             Debug.Log("Enemy Left, Enemy2 Dead");
         }
 
-        //Debug.Log("number of enemies left: " + numOfEnemy);
+      //  Debug.Log("number of enemies left: " + numOfEnemy);
 
         if (numOfEnemy == 1)
         {
-            if(target_remaining == (int)OPPONENT.ENEMY)
+            if (target_remaining == (int)OPPONENT.ENEMY)
             {
-                if((enemy.GetComponent<CharScript>().currentHealth / enemy.GetComponent<CharScript>().maxHealth)* 100 < 25)
+                if ((enemy.GetComponent<CharScript>().currentHealth / enemy.GetComponent<CharScript>().maxHealth) * 100 < 25)
                 {
                     if (PossessButton != null)
                     {
