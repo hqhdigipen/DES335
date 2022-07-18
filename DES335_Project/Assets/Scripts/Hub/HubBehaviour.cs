@@ -68,6 +68,8 @@ public class HubBehaviour : MonoBehaviour
 
     public GameObject switchAlly, switchNyx;
 
+    bool checkLvUpgradeBtn;
+
 
     public void Start()
     {
@@ -182,7 +184,7 @@ public class HubBehaviour : MonoBehaviour
   
         if (playerInfo.activeSelf)
         {
-            if (switchID == "")
+            if (switchID == "" && !checkLvUpgradeBtn)
             {
                 noWeaponPanel.SetActive(true);
                 noArmorPanel.SetActive(true);
@@ -198,7 +200,7 @@ public class HubBehaviour : MonoBehaviour
         }
         else
         {
-            if (absorbID == "")
+            if (absorbID == "" && !checkLvUpgradeBtn)
             {
                 noWeaponPanel.SetActive(true);
                 noArmorPanel.SetActive(true);
@@ -535,6 +537,7 @@ public class HubBehaviour : MonoBehaviour
 
     public void MainArmorBtn()
     {
+        checkLvUpgradeBtn = false;
         allyWeaponPanel.SetActive(false);
         allyArmorPanel.SetActive(false);
         mainWeaponPanel.SetActive(false);
@@ -544,6 +547,7 @@ public class HubBehaviour : MonoBehaviour
 
     public void MainWeaponBtn()
     {
+        checkLvUpgradeBtn = false;
         allyWeaponPanel.SetActive(false);
         allyArmorPanel.SetActive(false);
         mainWeaponPanel.SetActive(true);
@@ -553,6 +557,7 @@ public class HubBehaviour : MonoBehaviour
 
     public void PlayerLevelBtn()
     {
+        checkLvUpgradeBtn = true;
         allyWeaponPanel.SetActive(false);
         allyArmorPanel.SetActive(false);
         mainWeaponPanel.SetActive(false);
@@ -617,7 +622,7 @@ public class HubBehaviour : MonoBehaviour
             }
 
         } else if (upgradeMainPanel.activeSelf) {
-            if (profileScript.sfAmount > int.Parse(upgradeMainPrice.text))
+            if (profileScript.sfAmount > int.Parse(upgradeMainPrice.text) && mainCurrLv < 5)
             {
                 if (profileScript.sfAmount - int.Parse(upgradeMainPrice.text) >= 0)
                 {
@@ -635,7 +640,7 @@ public class HubBehaviour : MonoBehaviour
         }
         else if (upgradeAllyPanel.activeSelf)
         {
-            if (profileScript.sfAmount > int.Parse(upgradeAllyPrice.text))
+            if (profileScript.sfAmount > int.Parse(upgradeAllyPrice.text) && int.Parse(upgradeAlly.text)<5)
             {
                 if (profileScript.sfAmount - int.Parse(upgradeAllyPrice.text) >= 0)
                 {
