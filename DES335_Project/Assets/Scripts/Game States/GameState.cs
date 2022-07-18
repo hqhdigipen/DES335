@@ -7,10 +7,12 @@ public class GameState : MonoBehaviour
     private enum state
     {
         MAIN_MENU,
+        INSTRUCTIONS,
+        CREDITS,
         HUB,
         COMBAT,
         WIN,
-        LOSE,
+        LOSE
     }
 
     private enum Route
@@ -167,5 +169,36 @@ public class GameState : MonoBehaviour
     {
         if (route != (int)Route.Route_4)
             Application.LoadLevel("Victory");
+    }
+
+    public void StartGameButtonPressed()
+    {
+        g_state = (int)GameState.state.HUB;
+        Application.LoadLevel("Hub");
+    }
+
+    public void InstructionsButtonPressed()
+    {
+        g_state = (int)GameState.state.INSTRUCTIONS;
+        Application.LoadLevel("Instructions");
+    }
+
+    public void CreditsButtonPressed()
+    {
+        g_state = (int)GameState.state.CREDITS;
+        Application.LoadLevel("Credits");
+    }
+
+    public void BacktoMainMenuButtonPressed()
+    {
+        g_state = (int)GameState.state.MAIN_MENU;
+        Application.LoadLevel("MainMenu");
+    }
+
+    public void ExitButtonPressed()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
+        Debug.Log("Quit");
     }
 }
