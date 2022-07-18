@@ -1,13 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< Updated upstream
-using UnityEngine.SceneManagement;
-=======
-using UnityEngine.UI;
 
-
->>>>>>> Stashed changes
 public class GameState : MonoBehaviour
 {
     private enum state
@@ -75,18 +69,13 @@ public class GameState : MonoBehaviour
             if (enemy.GetComponent<CharScript>().currentHealth <= 0 && enemy2.GetComponent<CharScript>().currentHealth <= 0)
             {
                 g_state = (int)GameState.state.WIN;
-<<<<<<< Updated upstream
-                if(route != (int)(Route.Route_4))
-                    SceneManager.LoadScene("Victory");
-=======
+
                 if (route != (int)(Route.Route_4))
                 {
-                   // SF_Text.text = SF_List[1].ToString();
                     Application.LoadLevel("Victory");
                 }
->>>>>>> Stashed changes
                 else
-                    SceneManager.LoadScene("Level_Complete");
+                    Application.LoadLevel("Level_Complete");
             }
         }
 
@@ -95,7 +84,7 @@ public class GameState : MonoBehaviour
             if (player.GetComponent<CharScript>().currentHealth <= 0 && companion.GetComponent<CharScript>().currentHealth <= 0)
             {
                 g_state = (int)GameState.state.LOSE;
-                SceneManager.LoadScene("Lose");
+                Application.LoadLevel("Lose");
 
             }
         }
@@ -135,9 +124,9 @@ public class GameState : MonoBehaviour
         Debug.Log("Continue Button Pressed");
 
         if (route == (int)Route.Route_1)
-            SceneManager.LoadScene("Route_2_3");
+            Application.LoadLevel("Route_2_3");
         else if (route == (int)Route.Route_2 || route == (int)Route.Route_3)
-            SceneManager.LoadScene("Route_4");
+            Application.LoadLevel("Route_4");
 
         Debug.Log("Route: " + route);
 
@@ -155,14 +144,14 @@ public class GameState : MonoBehaviour
         Debug.Log("BackToHub Button Pressed");
         g_state = (int)GameState.state.HUB;
 
-        SceneManager.LoadScene("Hub");
+        Application.LoadLevel("Hub");
 
     }
 
     public void route2Pressed()
     {
         Debug.Log("Route 2 Pressed");
-        SceneManager.LoadScene("QH'sScene");
+        Application.LoadLevel("QH'sScene");
         route = (int)Route.Route_2;
         Debug.Log("Route: " + route);
 
@@ -171,7 +160,7 @@ public class GameState : MonoBehaviour
     public void route3Pressed()
     {
         Debug.Log("Route 3 Pressed");
-        SceneManager.LoadScene("QH'sScene");
+        Application.LoadLevel("QH'sScene");
         route = (int)Route.Route_3;
         Debug.Log("Route: " + route);
     }
@@ -179,7 +168,7 @@ public class GameState : MonoBehaviour
     public void route4Pressed()
     {
         Debug.Log("Route 4 Pressed");
-        SceneManager.LoadScene("QH'sScene");
+        Application.LoadLevel("QH'sScene");
         route = (int)Route.Route_4;
         Debug.Log("Route: " + route);
     }
@@ -187,31 +176,31 @@ public class GameState : MonoBehaviour
     public void BackButtonPressed()
     {
         if (route != (int)Route.Route_4)
-            SceneManager.LoadScene("Victory");
+            Application.LoadLevel("Victory");
     }
 
     public void StartGameButtonPressed()
     {
         g_state = (int)GameState.state.HUB;
-        SceneManager.LoadScene("Hub");
+        Application.LoadLevel("Hub");
     }
 
     public void InstructionsButtonPressed()
     {
         g_state = (int)GameState.state.INSTRUCTIONS;
-        SceneManager.LoadScene("Instructions");
+        Application.LoadLevel("Instructions");
     }
 
     public void CreditsButtonPressed()
     {
         g_state = (int)GameState.state.CREDITS;
-        SceneManager.LoadScene("Credits");
+        Application.LoadLevel("Credits");
     }
 
     public void BacktoMainMenuButtonPressed()
     {
         g_state = (int)GameState.state.MAIN_MENU;
-        SceneManager.LoadScene("MainMenu");
+        Application.LoadLevel("MainMenu");
 
     }
 
