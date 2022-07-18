@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneBehaviour : MonoBehaviour
 {
+
+    public GameObject disulas, rualie, map;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,10 +16,9 @@ public class SceneBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    public GameObject disulas, rualie, map;
+
     public void RualieHover()
     {
         rualie.SetActive(true);

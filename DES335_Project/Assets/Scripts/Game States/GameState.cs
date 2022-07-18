@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameState : MonoBehaviour
 {
     private enum state
@@ -65,9 +65,9 @@ public class GameState : MonoBehaviour
             {
                 g_state = (int)GameState.state.WIN;
                 if(route != (int)(Route.Route_4))
-                    Application.LoadLevel("Victory");
+                    SceneManager.LoadScene("Victory");
                 else
-                    Application.LoadLevel("Level_Complete");
+                    SceneManager.LoadScene("Level_Complete");
             }
         }
 
@@ -76,7 +76,7 @@ public class GameState : MonoBehaviour
             if (player.GetComponent<CharScript>().currentHealth <= 0 && companion.GetComponent<CharScript>().currentHealth <= 0)
             {
                 g_state = (int)GameState.state.LOSE;
-                Application.LoadLevel("Lose");
+                SceneManager.LoadScene("Lose");
 
             }
         }
@@ -116,9 +116,9 @@ public class GameState : MonoBehaviour
         Debug.Log("Continue Button Pressed");
 
         if (route == (int)Route.Route_1)
-            Application.LoadLevel("Route_2_3");
+            SceneManager.LoadScene("Route_2_3");
         else if (route == (int)Route.Route_2 || route == (int)Route.Route_3)
-            Application.LoadLevel("Route_4");
+            SceneManager.LoadScene("Route_4");
 
         Debug.Log("Route: " + route);
 
@@ -136,14 +136,14 @@ public class GameState : MonoBehaviour
         Debug.Log("BackToHub Button Pressed");
         g_state = (int)GameState.state.HUB;
 
-        Application.LoadLevel("Hub");
+        SceneManager.LoadScene("Hub");
 
     }
 
     public void route2Pressed()
     {
         Debug.Log("Route 2 Pressed");
-        Application.LoadLevel("QH'sScene");
+        SceneManager.LoadScene("QH'sScene");
         route = (int)Route.Route_2;
         Debug.Log("Route: " + route);
 
@@ -152,7 +152,7 @@ public class GameState : MonoBehaviour
     public void route3Pressed()
     {
         Debug.Log("Route 3 Pressed");
-        Application.LoadLevel("QH'sScene");
+        SceneManager.LoadScene("QH'sScene");
         route = (int)Route.Route_3;
         Debug.Log("Route: " + route);
     }
@@ -160,7 +160,7 @@ public class GameState : MonoBehaviour
     public void route4Pressed()
     {
         Debug.Log("Route 4 Pressed");
-        Application.LoadLevel("QH'sScene");
+        SceneManager.LoadScene("QH'sScene");
         route = (int)Route.Route_4;
         Debug.Log("Route: " + route);
     }
@@ -168,31 +168,32 @@ public class GameState : MonoBehaviour
     public void BackButtonPressed()
     {
         if (route != (int)Route.Route_4)
-            Application.LoadLevel("Victory");
+            SceneManager.LoadScene("Victory");
     }
 
     public void StartGameButtonPressed()
     {
         g_state = (int)GameState.state.HUB;
-        Application.LoadLevel("Hub");
+        SceneManager.LoadScene("Hub");
     }
 
     public void InstructionsButtonPressed()
     {
         g_state = (int)GameState.state.INSTRUCTIONS;
-        Application.LoadLevel("Instructions");
+        SceneManager.LoadScene("Instructions");
     }
 
     public void CreditsButtonPressed()
     {
         g_state = (int)GameState.state.CREDITS;
-        Application.LoadLevel("Credits");
+        SceneManager.LoadScene("Credits");
     }
 
     public void BacktoMainMenuButtonPressed()
     {
         g_state = (int)GameState.state.MAIN_MENU;
-        Application.LoadLevel("MainMenu");
+        SceneManager.LoadScene("MainMenu");
+
     }
 
     public void ExitButtonPressed()

@@ -490,7 +490,7 @@ public class HubBehaviour : MonoBehaviour
     }
 
 
-    public void ClickSellHerbBtn()
+        public void ClickSellHerbBtn()
     {
         if (int.Parse(itemAmountLabel[0].text) > 0)
         {
