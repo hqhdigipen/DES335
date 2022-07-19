@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 153, y: -50}
+  m_AnchoredPosition: {x: 165, y: -50}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &343484734
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 1098100166}
   - component: {fileID: 1098100165}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Received SF Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -532,7 +532,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You Received       SF.
+  m_Text: '  You received       SF.'
 --- !u!222 &1098100166
 CanvasRenderer:
   m_ObjectHideFlags: 0
