@@ -76,7 +76,9 @@ public class GameState : MonoBehaviour
                     SceneManager.LoadScene("Victory");
                 }
                 else
+                {
                     SceneManager.LoadScene("Level_Complete");
+                }
             }
         }
 

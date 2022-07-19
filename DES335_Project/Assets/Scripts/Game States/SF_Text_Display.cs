@@ -10,7 +10,8 @@ public class SF_Text_Display : MonoBehaviour
                                        300, 350, 350, 400};
 
     public int SF = 0;
-    public Text SF_Text;
+    public int level = 0;
+    public Text SF_Text, level_Text;
     private GameObject gameManager;
 
     // Start is called before the first frame update
@@ -23,12 +24,18 @@ public class SF_Text_Display : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("routeTest:" + GameState.route);
+        //Debug.Log("routeTest:" + GameState.route);
 
         for (int i = 0; i < 4; i++)
         {
             if (GameState.route == i + 1)
                 SF_Text.text = SF_List[i].ToString();
+        }
+
+        if (GameState.route == 4)
+        {
+            level = 1;
+            level_Text.text = level.ToString();
         }
     }
 }
