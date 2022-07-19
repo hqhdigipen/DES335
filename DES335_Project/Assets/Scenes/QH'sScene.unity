@@ -819,6 +819,7 @@ GameObject:
   - component: {fileID: 403361198}
   - component: {fileID: 403361202}
   - component: {fileID: 403361203}
+  - component: {fileID: 403361204}
   m_Layer: 5
   m_Name: PlayerHP
   m_TagString: Player
@@ -1036,6 +1037,18 @@ MonoBehaviour:
   enemy: {fileID: 0}
   enemy2: {fileID: 0}
   player: {fileID: 0}
+--- !u!114 &403361204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403361196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4649261b79436754098a6cc83dd82f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &449238894
 GameObject:
   m_ObjectHideFlags: 0
@@ -4623,9 +4636,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30feba1153eb45942be57d06d12dbea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  g_state: 0
   VictoryButton: {fileID: 0}
   BackButton: {fileID: 0}
-  SF_Text: {fileID: 0}
 --- !u!1 &1607895009
 GameObject:
   m_ObjectHideFlags: 0

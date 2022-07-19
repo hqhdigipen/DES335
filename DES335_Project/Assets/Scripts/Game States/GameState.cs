@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
-    private enum state
+    public enum state
     {
         MAIN_MENU,
         INSTRUCTIONS,
@@ -16,7 +16,7 @@ public class GameState : MonoBehaviour
         LOSE
     }
 
-    private enum Route
+    public enum Route
     {
         Route_1 = 1,
         Route_2,
@@ -92,25 +92,11 @@ public class GameState : MonoBehaviour
             }
         }
 
-        if (g_state == (int)GameState.state.MAIN_MENU)
+        if (g_state == (int)GameState.state.WIN)
         {
+           Inventory.added = false;
 
-        }
-        else if (g_state == (int)GameState.state.HUB)
-        {
-
-        }
-        else if (g_state == (int)GameState.state.COMBAT)
-        {
-
-        }
-        else if (g_state == (int)GameState.state.WIN)
-        {
             ContinuePopUp();
-        }
-        else if (g_state == (int)GameState.state.LOSE)
-        {
-
         }
     }
 
@@ -127,9 +113,13 @@ public class GameState : MonoBehaviour
         Debug.Log("Continue Button Pressed");
 
         if (route == (int)Route.Route_1)
+        {
             SceneManager.LoadScene("Route_2_3");
+        }
         else if (route == (int)Route.Route_2 || route == (int)Route.Route_3)
+        {
             SceneManager.LoadScene("Route_4");
+        }
 
         Debug.Log("Route: " + route);
 

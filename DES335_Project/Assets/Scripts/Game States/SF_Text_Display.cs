@@ -11,7 +11,8 @@ public class SF_Text_Display : MonoBehaviour
 
     public int SF = 0;
     public int level = 0;
-    public Text SF_Text, level_Text;
+    public static int total_SF = 0;
+    public Text SF_Text, level_Text, total_SF_Text;
     private GameObject gameManager;
 
     // Start is called before the first frame update
@@ -24,12 +25,14 @@ public class SF_Text_Display : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("routeTest:" + GameState.route);
 
         for (int i = 0; i < 4; i++)
         {
             if (GameState.route == i + 1)
+            {
                 SF_Text.text = SF_List[i].ToString();
+                //Debug.Log("routeTest:" + GameState.route);
+            }
         }
 
         if (GameState.route == 4)
@@ -37,5 +40,9 @@ public class SF_Text_Display : MonoBehaviour
             level = 1;
             level_Text.text = level.ToString();
         }
+
+        total_SF = Inventory.inventorySF;
+        total_SF_Text.text = total_SF.ToString();
+
     }
 }
