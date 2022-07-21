@@ -293,8 +293,22 @@ public class CombatManagerScript : MonoBehaviour
 
     public void ItemSelected(int itemNumber)
     {
-        currState = "FriendlyTargeting";
-        activeItem = itemNumber;
+        if (itemNumber == 0)
+        {
+            if (Inventory.inventHerb > 0)
+            {
+                currState = "FriendlyTargeting";
+                activeItem = itemNumber;
+            }
+        }
+        else if (itemNumber == 1)
+        {
+            if (Inventory.inventElixir > 0)
+            {
+                currState = "FriendlyTargeting";
+                activeItem = itemNumber;
+            }
+        }
     }
 
     public void EnableEnemyPointer(GameObject EnemySprite)

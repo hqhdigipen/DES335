@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ItemMenuScript : MonoBehaviour
 {
     private Text textBox;
+    public Text herbCount, elixirCount;
+    public GameObject herbBtn, elixirBtn;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +19,18 @@ public class ItemMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        herbCount.text = Inventory.inventHerb.ToString();
+        elixirCount.text = Inventory.inventElixir.ToString();
+
+        if (Inventory.inventHerb <= 0)
+        {
+            herbBtn.GetComponent<Image>().color = Color.gray;
+        }
+
+        if (Inventory.inventElixir <= 0)
+        {
+            elixirBtn.GetComponent<Image>().color = Color.gray;
+        }
     }
 
     public void DisplayHerbInfo()

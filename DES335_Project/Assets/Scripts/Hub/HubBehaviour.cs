@@ -425,6 +425,7 @@ public class HubBehaviour : MonoBehaviour
                 case "Herb":
                     Debug.Log("Amount: "+ Inventory.inventorySF + " Item Cost: "+ itemCost.text);
                     Inventory.inventorySF = Inventory.inventorySF - int.Parse(itemCost.text);
+                    Inventory.inventHerb = Inventory.inventHerb + sliderScript.totalItem;
                     soulForce = Inventory.inventorySF;
                     itemAmountLabel[0].text = (int.Parse(itemAmountLabel[0].text) + sliderScript.totalItem).ToString();
                     itemAmountLabel[2].text = (int.Parse(itemAmountLabel[2].text) + sliderScript.totalItem).ToString();
@@ -436,6 +437,7 @@ public class HubBehaviour : MonoBehaviour
                 case "Elixir":
                     Debug.Log("Amount: " + Inventory.inventorySF + " Item Cost: " + itemCost.text);
                     Inventory.inventorySF = Inventory.inventorySF - int.Parse(itemCost.text);
+                    Inventory.inventElixir = Inventory.inventElixir + sliderScript.totalItem;
                     soulForce = Inventory.inventorySF;
                     itemAmountLabel[1].text = (int.Parse(itemAmountLabel[1].text) + sliderScript.totalItem).ToString();
                     itemAmountLabel[3].text = (int.Parse(itemAmountLabel[3].text) + sliderScript.totalItem).ToString();
@@ -506,7 +508,7 @@ public class HubBehaviour : MonoBehaviour
     }
 
 
-        public void ClickSellHerbBtn()
+    public void ClickSellHerbBtn()
     {
         if (int.Parse(itemAmountLabel[0].text) > 0)
         {
