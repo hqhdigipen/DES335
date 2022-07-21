@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharScript : MonoBehaviour
 {
@@ -116,10 +117,42 @@ public class CharScript : MonoBehaviour
         }
 
         healthBar.SetHealth(currentHealth);
+
+        if (this.gameObject.tag == "Player" || this.gameObject.tag == "Companion")
+        {
+            StartCoroutine(Blink(0.5f));
+        }
     }
 
     public  void SetHPinUI()
     {
         healthBar.SetHealth(currentHealth);
+    }
+
+    IEnumerator Blink(float waitTime)
+    {
+
+        Image image = this.gameObject.GetComponent<Image>();
+
+        var endTime = Time.time + waitTime;
+
+        while (Time.time < endTime)
+        {
+            switch (image.color.a.ToString())
+            {
+                case "0":
+                    image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
+                    //Play sound
+                    yield return new WaitForSeconds(0.1f);
+                    break;
+                case "1":
+                    image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+                    //Play sound
+                    yield return new WaitForSeconds(0.1f);
+                    break;
+            }
+        }
+
+        image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
     }
 }

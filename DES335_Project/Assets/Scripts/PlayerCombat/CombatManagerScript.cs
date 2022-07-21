@@ -27,6 +27,7 @@ public class CombatManagerScript : MonoBehaviour
     private bool enemy2Moved;
     private string activeCharacter;
     private int activeAttack;
+    private int activeItem;
     private Text actionLogTextBox;
 
     bool shakeEnemy;
@@ -79,6 +80,7 @@ public class CombatManagerScript : MonoBehaviour
                 attackMenu.SetActive(false);
                 combatMenu.SetActive(false);
                 pointer.SetActive(false);
+                friendlyPointer.SetActive(false);
 
                 if (announcer != null)
                 {
@@ -102,6 +104,10 @@ public class CombatManagerScript : MonoBehaviour
                 attackMenu.SetActive(false);
                 combatMenu.SetActive(false);
                 pointer.SetActive(false);
+                friendlyPointer.SetActive(false);
+
+                StartCoroutine(EnemyStart());
+
                 if (announcer != null)
                 {
                     announcer.SetActive(true);
@@ -109,8 +115,9 @@ public class CombatManagerScript : MonoBehaviour
                     announcer.transform.GetChild(1).gameObject.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        announcer.SetActive(false);
+                        announcer.SetActive(false);            
                         currState = "EnemyTurn";
+
                     }
                 }
                 else
@@ -124,6 +131,7 @@ public class CombatManagerScript : MonoBehaviour
                 attackMenu.SetActive(false);
                 combatMenu.SetActive(true);
                 pointer.SetActive(false);
+                friendlyPointer.SetActive(false);
                 CheckActiveChar();
                 break;
 
@@ -283,9 +291,10 @@ public class CombatManagerScript : MonoBehaviour
         currState = "Targeting";     
     }
 
-    public void UseItem(string ItemName)
+    public void ItemSelected(int itemNumber)
     {
         currState = "FriendlyTargeting";
+        activeItem = itemNumber;
     }
 
     public void EnableEnemyPointer(GameObject EnemySprite)
@@ -380,28 +389,59 @@ public class CombatManagerScript : MonoBehaviour
         }
     }
 
+    public void UseItem(GameObject character)
+    {
+        if (currState == "FriendlyTargeting")
+        {
+            switch (activeItem)
+            {
+                case 0:
+                    character.GetComponent<CharScript>().TakeDamage(Mathf.FloorToInt(character.GetComponent<CharScript>().maxHealth * 0.2f) * -1 , "Normal");
+                    break;
+                case 1:
+                    character.GetComponent<CharScript>().TakeDamage(Mathf.FloorToInt(character.GetComponent<CharScript>().maxHealth * 0.4f) * -1 , "Normal");
+                    break;
+            }
+
+            if (activeItem == 0)
+            {
+                actionLogTextBox.text = activeCharacter + " is using Herb on " + character.transform.name;
+            }
+            else
+            {
+                actionLogTextBox.text = activeCharacter + " is using Elixir on " + character.transform.name;
+            }
+
+            MarkAction(activeCharacter);
+            currState = "Main";
+        }
+    }
+
     public void SwitchActiveCharacter(GameObject selected)
     {
-        if (selected.transform.tag == "Player")
+        if (currState != "Targeting" && currState != "FriendlyTargeting")
         {
-            if (playerMoved != true)
+            if (selected.transform.tag == "Player")
             {
-                activeCharacter = "Player";
+                if (playerMoved != true)
+                {
+                    activeCharacter = "Player";
+                }
+                else
+                {
+                    activeCharacter = "Companion";
+                }
             }
-            else
+            else if (selected.transform.tag == "Companion")
             {
-                activeCharacter = "Companion";
-            }
-        }
-        else if (selected.transform.tag == "Companion")
-        {
-            if (companionMoved != true)
-            {
-                activeCharacter = "Companion";
-            }
-            else
-            {
-                activeCharacter = "player";
+                if (companionMoved != true)
+                {
+                    activeCharacter = "Companion";
+                }
+                else
+                {
+                    activeCharacter = "player";
+                }
             }
         }
     }
@@ -448,18 +488,37 @@ public class CombatManagerScript : MonoBehaviour
         image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
     }
 
-    private IEnumerator EnemyStart(KeyCode keyCode)
+    private IEnumerator EnemyStart()
     {
-        while (!Input.GetKeyDown(keyCode))
+        while (currState == "E_Announcer" || currState == "EnemyTurn")
         {
-            enemyEntity1.GetComponent<Enemy>().Enemy_Attack();
+            yield return new WaitForSeconds(2f);
+            announcer.SetActive(false);
+            currState = "EnemyTurn";
 
-            yield return waitForKeyPress(KeyCode.Space);
+            yield return new WaitForSeconds(5f);
 
-            enemyEntity2.GetComponent<Enemy>().Enemy_Attack();
+            if (enemy1Moved == false)
+            {
+                enemyEntity1.GetComponent<Enemy>().Enemy_Attack();
+                enemy1Moved = true;
+            }
+            yield return new WaitForSeconds(5f);
 
-            yield return waitForKeyPress(KeyCode.Space);
-            yield return null;
+            if (enemy2Moved == false)
+            {
+                enemyEntity2.GetComponent<Enemy>().Enemy_Attack();
+                enemy2Moved = true;
+            }
+
+            if (enemy1Moved == true && enemy2Moved == true)
+            {
+                playerMoved = false;
+                companionMoved = false;
+                currState = "P_Announcer";
+            }
+
+            StopAllCoroutines();
         }
     }
 
@@ -528,6 +587,7 @@ public class CombatManagerScript : MonoBehaviour
             {
                 enemy2Moved = false;
             }
+
             currState = "E_Announcer";
         }
     }

@@ -9,7 +9,9 @@ public class Inventory : MonoBehaviour
                                        300, 350, 350, 400};
     // Update is called once per frame
 
-    public static int inventorySF = 0;
+    public static int inventorySF = 120;
+    public static int inventHerb = 0;
+    public static int inventElixir = 0;
     public static bool added = true;
 
     void Update()
