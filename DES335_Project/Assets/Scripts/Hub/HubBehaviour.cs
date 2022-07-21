@@ -182,19 +182,25 @@ public class HubBehaviour : MonoBehaviour
             }
         }
   
+
         if (playerInfo.activeSelf)
         {
-            if (switchID == "" && !checkLvUpgradeBtn)
+            if (switchID == "")
             {
                 noWeaponPanel.SetActive(true);
                 noArmorPanel.SetActive(true);
+            }
+            else {
+                noWeaponPanel.SetActive(false);
+                noArmorPanel.SetActive(false);
+            }
+            if (switchID == "" && !checkLvUpgradeBtn)
+            {
                 noEquipmentMsg.SetActive(true);
 
             }
             else
             {
-                noWeaponPanel.SetActive(false);
-                noArmorPanel.SetActive(false);
                 noEquipmentMsg.SetActive(false);
             }
         }
@@ -202,14 +208,10 @@ public class HubBehaviour : MonoBehaviour
         {
             if (absorbID == "" && !checkLvUpgradeBtn)
             {
-                noWeaponPanel.SetActive(true);
-                noArmorPanel.SetActive(true);
                 noEquipmentMsg.SetActive(true);
             }
             else
             {
-                noWeaponPanel.SetActive(false);
-                noArmorPanel.SetActive(false);
                 noEquipmentMsg.SetActive(false);
             }
         }
