@@ -24,8 +24,6 @@ public class HubBehaviour : MonoBehaviour
 
     public TextMeshProUGUI[] itemAmountLabel;
 
-    public ProfileBehaviour profileScript;
-
     public GameObject notEnoughSF;
 
     public GameObject allyWeaponPanel, allyArmorPanel, mainArmorPanel, mainWeaponPanel, noEquipmentMsg, witchPanel;
@@ -85,7 +83,7 @@ public class HubBehaviour : MonoBehaviour
         allyCurrLv = 1;
         mainCurrLv = 1;
         noEquipmentMsg.SetActive(true);
-        soulForce = profileScript.sfAmount;
+        soulForce = Inventory.inventorySF;
         witchPanel.SetActive(false);
         blacksmithCanvas.SetActive(false);
         generalStoreCanvas.SetActive(false);
@@ -99,7 +97,6 @@ public class HubBehaviour : MonoBehaviour
 
         sellSliderScript.GetComponent<SellSliderBehaviour>();
 
-        profileScript.GetComponent<ProfileBehaviour>();
 
     }
 
@@ -404,14 +401,14 @@ public class HubBehaviour : MonoBehaviour
     }
 
     public void BuyItemBtn() {
-        if (profileScript.sfAmount - int.Parse(itemCost.text) >= 0)
+        if (Inventory.inventorySF - int.Parse(itemCost.text) >= 0)
         {
             switch (itemName.text)
             {
                 case "Herb":
-                    Debug.Log("Amount: "+ profileScript.sfAmount + " Item Cost: "+ itemCost.text);
-                    profileScript.sfAmount= profileScript.sfAmount - int.Parse(itemCost.text);
-                    soulForce = profileScript.sfAmount;
+                    Debug.Log("Amount: "+ Inventory.inventorySF + " Item Cost: "+ itemCost.text);
+                    Inventory.inventorySF = Inventory.inventorySF - int.Parse(itemCost.text);
+                    soulForce = Inventory.inventorySF;
                     itemAmountLabel[0].text = (int.Parse(itemAmountLabel[0].text) + sliderScript.totalItem).ToString();
                     itemAmountLabel[2].text = (int.Parse(itemAmountLabel[2].text) + sliderScript.totalItem).ToString();
                     itemAmountLabel[4].text = (int.Parse(itemAmountLabel[4].text) + sliderScript.totalItem).ToString();
@@ -420,9 +417,9 @@ public class HubBehaviour : MonoBehaviour
                     break;
 
                 case "Elixir":
-                    Debug.Log("Amount: " + profileScript.sfAmount + " Item Cost: " + itemCost.text);
-                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(itemCost.text);
-                    soulForce = profileScript.sfAmount;
+                    Debug.Log("Amount: " + Inventory.inventorySF + " Item Cost: " + itemCost.text);
+                    Inventory.inventorySF = Inventory.inventorySF - int.Parse(itemCost.text);
+                    soulForce = Inventory.inventorySF;
                     itemAmountLabel[1].text = (int.Parse(itemAmountLabel[1].text) + sliderScript.totalItem).ToString();
                     itemAmountLabel[3].text = (int.Parse(itemAmountLabel[3].text) + sliderScript.totalItem).ToString();
                     itemAmountLabel[5].text = (int.Parse(itemAmountLabel[5].text) + sliderScript.totalItem).ToString();
@@ -447,8 +444,8 @@ public class HubBehaviour : MonoBehaviour
             case "Herb":
                 if (int.Parse(itemAmountLabel[0].text) > 0)
                 {
-                    profileScript.sfAmount = profileScript.sfAmount + int.Parse(sellItemCost.text);
-                    soulForce = profileScript.sfAmount;
+                    Inventory.inventorySF = Inventory.inventorySF + int.Parse(sellItemCost.text);
+                    soulForce = Inventory.inventorySF;
                     itemAmountLabel[0].text = (int.Parse(itemAmountLabel[0].text) - sellSliderScript.sellTotalItem).ToString();
                     itemAmountLabel[2].text = (int.Parse(itemAmountLabel[2].text) - sellSliderScript.sellTotalItem).ToString();
                     itemAmountLabel[4].text = (int.Parse(itemAmountLabel[4].text) - sellSliderScript.sellTotalItem).ToString();
@@ -459,8 +456,8 @@ public class HubBehaviour : MonoBehaviour
                 case "Elixir":
                     if (int.Parse(itemAmountLabel[1].text) > 0)
                     {
-                        profileScript.sfAmount = profileScript.sfAmount + int.Parse(sellItemCost.text);
-                        soulForce = profileScript.sfAmount;
+                    Inventory.inventorySF = Inventory.inventorySF + int.Parse(sellItemCost.text);
+                        soulForce = Inventory.inventorySF;
                         itemAmountLabel[1].text = (int.Parse(itemAmountLabel[1].text) - sellSliderScript.sellTotalItem).ToString();
                         itemAmountLabel[3].text = (int.Parse(itemAmountLabel[3].text) - sellSliderScript.sellTotalItem).ToString();
                         itemAmountLabel[5].text = (int.Parse(itemAmountLabel[5].text) - sellSliderScript.sellTotalItem).ToString();
@@ -589,47 +586,47 @@ public class HubBehaviour : MonoBehaviour
 
     public void UpgradePlayer() {
         if (allyWeaponPanel.activeSelf) {
-            if (profileScript.sfAmount > int.Parse(allyWeaponPrice.text) && int.Parse(allyWeaponLv.text)<5)
+            if (Inventory.inventorySF > int.Parse(allyWeaponPrice.text) && int.Parse(allyWeaponLv.text)<5)
             {
-                if (profileScript.sfAmount - int.Parse(allyWeaponPrice.text) >= 0) {
-                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(allyWeaponPrice.text);
-                    soulForce = profileScript.sfAmount;
+                if (Inventory.inventorySF - int.Parse(allyWeaponPrice.text) >= 0) {
+                    Inventory.inventorySF = Inventory.inventorySF - int.Parse(allyWeaponPrice.text);
+                    soulForce = Inventory.inventorySF;
                     allyWeaponPrice.text = (int.Parse(allyWeaponPrice.text) * 2).ToString();
                     allyWeaponLv.text = (int.Parse(allyWeaponLv.text) + 1).ToString();
                 }
             }
 
         } else if (allyArmorPanel.activeSelf) {
-            if (profileScript.sfAmount > int.Parse(allyArmorPrice.text) && int.Parse(allyArmorLv.text) < 5)
+            if (Inventory.inventorySF > int.Parse(allyArmorPrice.text) && int.Parse(allyArmorLv.text) < 5)
             {
-                if (profileScript.sfAmount - int.Parse(allyArmorPrice.text) >= 0)
+                if (Inventory.inventorySF - int.Parse(allyArmorPrice.text) >= 0)
                 {
-                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(allyArmorPrice.text);
-                    soulForce = profileScript.sfAmount;
+                    Inventory.inventorySF = Inventory.inventorySF - int.Parse(allyArmorPrice.text);
+                    soulForce = Inventory.inventorySF;
                     allyArmorPrice.text = (int.Parse(allyArmorPrice.text) * 2).ToString();
                     allyArmorLv.text = (int.Parse(allyArmorLv.text) + 1).ToString();
                 }
             }
 
         } else if (mainArmorPanel.activeSelf) {
-            if (profileScript.sfAmount > int.Parse(mainArmorPrice.text) && int.Parse(mainArmorLv.text) < 5)
+            if (Inventory.inventorySF > int.Parse(mainArmorPrice.text) && int.Parse(mainArmorLv.text) < 5)
             {
-                if (profileScript.sfAmount - int.Parse(mainArmorPrice.text) >= 0)
+                if (Inventory.inventorySF - int.Parse(mainArmorPrice.text) >= 0)
                 {
-                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(mainArmorPrice.text);
-                    soulForce = profileScript.sfAmount;
+                    Inventory.inventorySF = Inventory.inventorySF - int.Parse(mainArmorPrice.text);
+                    soulForce = Inventory.inventorySF;
                     mainArmorPrice.text = (int.Parse(mainArmorPrice.text) * 2).ToString();
                     mainArmorLv.text = (int.Parse(mainArmorLv.text) + 1).ToString();
                 }
             }
 
         } else if (upgradeMainPanel.activeSelf) {
-            if (profileScript.sfAmount > int.Parse(upgradeMainPrice.text) && mainCurrLv < 5)
+            if (Inventory.inventorySF > int.Parse(upgradeMainPrice.text) && mainCurrLv < 5)
             {
-                if (profileScript.sfAmount - int.Parse(upgradeMainPrice.text) >= 0)
+                if (Inventory.inventorySF - int.Parse(upgradeMainPrice.text) >= 0)
                 {
-                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(upgradeMainPrice.text);
-                    soulForce = profileScript.sfAmount;
+                    Inventory.inventorySF = Inventory.inventorySF - int.Parse(upgradeMainPrice.text);
+                    soulForce = Inventory.inventorySF;
                     upgradeMainPrice.text = (int.Parse(upgradeMainPrice.text) * 2).ToString();
                     upgradeMain.text = (int.Parse(upgradeMain.text) + 1).ToString();
                     mainCurrLv = int.Parse(upgradeMain.text);
@@ -642,12 +639,12 @@ public class HubBehaviour : MonoBehaviour
         }
         else if (upgradeAllyPanel.activeSelf)
         {
-            if (profileScript.sfAmount > int.Parse(upgradeAllyPrice.text) && int.Parse(upgradeAlly.text)<5)
+            if (Inventory.inventorySF > int.Parse(upgradeAllyPrice.text) && int.Parse(upgradeAlly.text)<5)
             {
-                if (profileScript.sfAmount - int.Parse(upgradeAllyPrice.text) >= 0)
+                if (Inventory.inventorySF - int.Parse(upgradeAllyPrice.text) >= 0)
                 {
-                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(upgradeAllyPrice.text);
-                    soulForce = profileScript.sfAmount;
+                    Inventory.inventorySF = Inventory.inventorySF - int.Parse(upgradeAllyPrice.text);
+                    soulForce = Inventory.inventorySF;
                     upgradeAllyPrice.text = (int.Parse(upgradeAllyPrice.text) * 2).ToString();
                     upgradeAlly.text = (int.Parse(upgradeAlly.text) + 1).ToString();
                     allyCurrLv = int.Parse(upgradeAlly.text);
@@ -661,12 +658,12 @@ public class HubBehaviour : MonoBehaviour
 
         else 
         {
-            if (profileScript.sfAmount > int.Parse(mainWeaponPrice.text) && int.Parse(mainWeaponLv.text) < 5)
+            if (Inventory.inventorySF > int.Parse(mainWeaponPrice.text) && int.Parse(mainWeaponLv.text) < 5)
             {
-                if (profileScript.sfAmount - int.Parse(mainWeaponPrice.text) >= 0)
+                if (Inventory.inventorySF - int.Parse(mainWeaponPrice.text) >= 0)
                 {
-                    profileScript.sfAmount = profileScript.sfAmount - int.Parse(mainWeaponPrice.text);
-                    soulForce = profileScript.sfAmount;
+                    Inventory.inventorySF = Inventory.inventorySF - int.Parse(mainWeaponPrice.text);
+                    soulForce = Inventory.inventorySF;
                     mainWeaponPrice.text = (int.Parse(mainWeaponPrice.text) * 2).ToString();
                     mainWeaponLv.text = (int.Parse(mainWeaponLv.text) + 1).ToString();
                 }
