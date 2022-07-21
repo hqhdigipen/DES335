@@ -32,14 +32,14 @@ public class HubBehaviour : MonoBehaviour
 
     public TextMeshProUGUI[] nyxHP, allyHP;
 
-    public TextMeshProUGUI cSF, bSF, sSF, upSF, invSF;
+    public TextMeshProUGUI cSF, bSF, sSF, upSF, invSF, wSF;
     int soulForce;
 
     public GameObject upgradeMainPanel;
-    public TextMeshProUGUI profileMainLv, upgradeMain, mainLv, upgradeMainPrice;
+    public TextMeshProUGUI profileMainLv, upgradeMain, mainLv, upgradeMainPrice, witchMainLv;
 
     public GameObject upgradeAllyPanel;
-    public TextMeshProUGUI profileAllyLv, upgradeAlly, allyLv, upgradeAllyPrice;
+    public TextMeshProUGUI profileAllyLv, upgradeAlly, allyLv, upgradeAllyPrice, witchAllyLv;
 
     int mainCurrLv, allyCurrLv;
 
@@ -104,8 +104,10 @@ public class HubBehaviour : MonoBehaviour
     {
         allyLv.text = allyCurrLv.ToString();
         profileAllyLv.text = allyCurrLv.ToString();
+        witchAllyLv.text = allyCurrLv.ToString();
 
         mainLv.text = mainCurrLv.ToString();
+        witchMainLv.text = mainCurrLv.ToString();
         profileMainLv.text = mainCurrLv.ToString();
 
         cSF.text = soulForce.ToString();
@@ -113,6 +115,7 @@ public class HubBehaviour : MonoBehaviour
         sSF.text = soulForce.ToString();
         invSF.text = soulForce.ToString();
         upSF.text = soulForce.ToString();
+        wSF.text = soulForce.ToString();
 
         switch (itemName.text) {
             case "Herb":
@@ -520,6 +523,7 @@ public class HubBehaviour : MonoBehaviour
     public void AllyWeaponBtn() {
         allyWeaponPanel.SetActive(true);
         allyArmorPanel.SetActive(false);
+        upgradeAllyPanel.SetActive(false);
         mainWeaponPanel.SetActive(false);
         mainArmorPanel.SetActive(false);
         upgradeMainPanel.SetActive(false);
@@ -529,6 +533,7 @@ public class HubBehaviour : MonoBehaviour
     {
         allyWeaponPanel.SetActive(false);
         allyArmorPanel.SetActive(true);
+        upgradeAllyPanel.SetActive(false);
         mainWeaponPanel.SetActive(false);
         mainArmorPanel.SetActive(false);
         upgradeMainPanel.SetActive(false);
@@ -539,6 +544,7 @@ public class HubBehaviour : MonoBehaviour
         checkLvUpgradeBtn = false;
         allyWeaponPanel.SetActive(false);
         allyArmorPanel.SetActive(false);
+        upgradeAllyPanel.SetActive(false);
         mainWeaponPanel.SetActive(false);
         mainArmorPanel.SetActive(true);
         upgradeMainPanel.SetActive(false);
@@ -549,6 +555,7 @@ public class HubBehaviour : MonoBehaviour
         checkLvUpgradeBtn = false;
         allyWeaponPanel.SetActive(false);
         allyArmorPanel.SetActive(false);
+        upgradeAllyPanel.SetActive(false);
         mainWeaponPanel.SetActive(true);
         mainArmorPanel.SetActive(false);
         upgradeMainPanel.SetActive(false);
@@ -559,10 +566,11 @@ public class HubBehaviour : MonoBehaviour
         checkLvUpgradeBtn = true;
         allyWeaponPanel.SetActive(false);
         allyArmorPanel.SetActive(false);
+        upgradeAllyPanel.SetActive(false);
+
         mainWeaponPanel.SetActive(false);
         mainArmorPanel.SetActive(false);
         upgradeMainPanel.SetActive(true);
-        upgradeAllyPanel.SetActive(false);
     }
 
     public void WitchBtn()
@@ -586,7 +594,7 @@ public class HubBehaviour : MonoBehaviour
 
     public void UpgradePlayer() {
         if (allyWeaponPanel.activeSelf) {
-            if (Inventory.inventorySF > int.Parse(allyWeaponPrice.text) && int.Parse(allyWeaponLv.text)<5)
+            if (Inventory.inventorySF >= int.Parse(allyWeaponPrice.text) && int.Parse(allyWeaponLv.text)<5)
             {
                 if (Inventory.inventorySF - int.Parse(allyWeaponPrice.text) >= 0) {
                     Inventory.inventorySF = Inventory.inventorySF - int.Parse(allyWeaponPrice.text);
@@ -597,7 +605,7 @@ public class HubBehaviour : MonoBehaviour
             }
 
         } else if (allyArmorPanel.activeSelf) {
-            if (Inventory.inventorySF > int.Parse(allyArmorPrice.text) && int.Parse(allyArmorLv.text) < 5)
+            if (Inventory.inventorySF >= int.Parse(allyArmorPrice.text) && int.Parse(allyArmorLv.text) < 5)
             {
                 if (Inventory.inventorySF - int.Parse(allyArmorPrice.text) >= 0)
                 {
@@ -609,7 +617,7 @@ public class HubBehaviour : MonoBehaviour
             }
 
         } else if (mainArmorPanel.activeSelf) {
-            if (Inventory.inventorySF > int.Parse(mainArmorPrice.text) && int.Parse(mainArmorLv.text) < 5)
+            if (Inventory.inventorySF >= int.Parse(mainArmorPrice.text) && int.Parse(mainArmorLv.text) < 5)
             {
                 if (Inventory.inventorySF - int.Parse(mainArmorPrice.text) >= 0)
                 {
@@ -621,7 +629,7 @@ public class HubBehaviour : MonoBehaviour
             }
 
         } else if (upgradeMainPanel.activeSelf) {
-            if (Inventory.inventorySF > int.Parse(upgradeMainPrice.text) && mainCurrLv < 5)
+            if (Inventory.inventorySF >= int.Parse(upgradeMainPrice.text) && mainCurrLv < 5)
             {
                 if (Inventory.inventorySF - int.Parse(upgradeMainPrice.text) >= 0)
                 {
@@ -630,16 +638,17 @@ public class HubBehaviour : MonoBehaviour
                     upgradeMainPrice.text = (int.Parse(upgradeMainPrice.text) * 2).ToString();
                     upgradeMain.text = (int.Parse(upgradeMain.text) + 1).ToString();
                     mainCurrLv = int.Parse(upgradeMain.text);
-                    nyxHP[0].text = (int.Parse(nyxHP[0].text) + 10).ToString();
-                    nyxHP[1].text = (int.Parse(nyxHP[1].text) + 10).ToString();
-                    nyxHP[2].text = (int.Parse(nyxHP[2].text) + 10).ToString();
+                    foreach (TextMeshProUGUI hp in nyxHP)
+                    {
+                        hp.text = (int.Parse(hp.text) + 10).ToString();
+                    }
                 }
             }
 
         }
         else if (upgradeAllyPanel.activeSelf)
         {
-            if (Inventory.inventorySF > int.Parse(upgradeAllyPrice.text) && int.Parse(upgradeAlly.text)<5)
+            if (Inventory.inventorySF >= int.Parse(upgradeAllyPrice.text) && int.Parse(upgradeAlly.text)<5)
             {
                 if (Inventory.inventorySF - int.Parse(upgradeAllyPrice.text) >= 0)
                 {
@@ -648,9 +657,10 @@ public class HubBehaviour : MonoBehaviour
                     upgradeAllyPrice.text = (int.Parse(upgradeAllyPrice.text) * 2).ToString();
                     upgradeAlly.text = (int.Parse(upgradeAlly.text) + 1).ToString();
                     allyCurrLv = int.Parse(upgradeAlly.text);
-                    allyHP[0].text = (int.Parse(allyHP[0].text) + 10).ToString();
-                    allyHP[1].text = (int.Parse(allyHP[1].text) + 10).ToString();
-                    allyHP[2].text = (int.Parse(allyHP[2].text) + 10).ToString();
+
+                    foreach (TextMeshProUGUI hp in allyHP) { 
+                        hp.text = (int.Parse(hp.text) + 10).ToString();
+                    }
                 }
             }
 
@@ -658,7 +668,7 @@ public class HubBehaviour : MonoBehaviour
 
         else 
         {
-            if (Inventory.inventorySF > int.Parse(mainWeaponPrice.text) && int.Parse(mainWeaponLv.text) < 5)
+            if (Inventory.inventorySF >= int.Parse(mainWeaponPrice.text) && int.Parse(mainWeaponLv.text) < 5)
             {
                 if (Inventory.inventorySF - int.Parse(mainWeaponPrice.text) >= 0)
                 {
