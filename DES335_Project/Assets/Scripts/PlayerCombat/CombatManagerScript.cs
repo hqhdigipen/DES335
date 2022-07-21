@@ -374,7 +374,7 @@ public class CombatManagerScript : MonoBehaviour
             }
 
             //enemy.GetComponent<CharScript>().TakeDamage(5, "Fire");
-            StartCoroutine(shake(enemy, 0.1f));
+            StartCoroutine(shake(enemy, 0.5f));
             MarkAction(activeCharacter);
             currState = "Main";
         }
@@ -410,6 +410,7 @@ public class CombatManagerScript : MonoBehaviour
 
     IEnumerator shake(GameObject enemy, float waitTime)
     {
+        /*
         Vector2 temp = enemy.GetComponent<RectTransform>().anchoredPosition;
         targetEnemy = enemy;
         for (int g = 0; g < 10; g++)
@@ -421,6 +422,30 @@ public class CombatManagerScript : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
         }
         enemy.GetComponent<RectTransform>().anchoredPosition = temp;
+        */
+
+        Image image = enemy.GetComponent<Image>();
+
+        var endTime = Time.time + waitTime;
+
+        while (Time.time <endTime)
+        {
+            switch (image.color.a.ToString())
+            {
+                case "0":
+                    image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
+                    //Play sound
+                    yield return new WaitForSeconds(0.1f);
+                    break;
+                case "1":
+                    image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+                    //Play sound
+                    yield return new WaitForSeconds(0.1f);
+                    break;
+            }
+        }
+
+        image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
     }
 
     private IEnumerator EnemyStart(KeyCode keyCode)

@@ -58,6 +58,11 @@ public class SceneBehaviour : MonoBehaviour
         SceneManager.LoadScene("QH'sScene");
     }
 
+    public void ExitMainMenuBtn()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void ExitGameBtn()
     {
         Debug.Log("exitgame");
