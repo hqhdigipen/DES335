@@ -25,7 +25,6 @@ public class DialogueBtn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
     public void ExitDialogue()
     {
@@ -43,7 +42,6 @@ public class DialogueBtn : MonoBehaviour
                 switch (cBtn.GetComponentInChildren<TextMeshProUGUI>().text)
                 {
                     case "Banshee Wail":
-                        Cursor.visible = false;
 
                         foreach (GameObject d in dialogueCanvas)
                         {
@@ -51,14 +49,14 @@ public class DialogueBtn : MonoBehaviour
                             {
                                 prefabMsg =Instantiate(d) as GameObject;
                                 prefabMsg.transform.SetParent(cBtn.transform.parent.gameObject.transform, false);
-                                prefabMsg.transform.position = Input.mousePosition + offset;
+                                prefabMsg.transform.position = Input.mousePosition;
+                                prefabMsg.transform.position = new Vector3(prefabMsg.transform.position.x, prefabMsg.transform.position.y + 100);
                                 prefabMsg.SetActive(true);
                             }
                         }
                         Debug.Log("Banshee Wail");
                         break;
                     case "Bash":
-                        Cursor.visible = false;
 
                         foreach (GameObject d in dialogueCanvas)
                         {
@@ -66,7 +64,8 @@ public class DialogueBtn : MonoBehaviour
                             {
                                 prefabMsg = Instantiate(d) as GameObject;
                                 prefabMsg.transform.SetParent(cBtn.transform.parent.gameObject.transform, false);
-                                prefabMsg.transform.position = Input.mousePosition + offset;
+                                prefabMsg.transform.position = Input.mousePosition;
+                                prefabMsg.transform.position = new Vector3(prefabMsg.transform.position.x, prefabMsg.transform.position.y + 100);
                                 prefabMsg.SetActive(true);
 
                             }
@@ -75,7 +74,6 @@ public class DialogueBtn : MonoBehaviour
                         break;
 
             case "Hibernation":
-                Cursor.visible = false;
 
                 foreach (GameObject d in dialogueCanvas)
                 {
@@ -83,7 +81,8 @@ public class DialogueBtn : MonoBehaviour
                     {
                         prefabMsg = Instantiate(d) as GameObject;
                         prefabMsg.transform.SetParent(cBtn.transform.parent.gameObject.transform, false);
-                        prefabMsg.transform.position = Input.mousePosition + offset;
+                        prefabMsg.transform.position = Input.mousePosition;
+                        prefabMsg.transform.position = new Vector3(prefabMsg.transform.position.x, prefabMsg.transform.position.y + 100);
                         prefabMsg.SetActive(true);
 
                     }
@@ -92,7 +91,6 @@ public class DialogueBtn : MonoBehaviour
                 break;
 
                 case "Vine Whip":
-                Cursor.visible = false;
 
                 foreach (GameObject d in dialogueCanvas)
                 {
@@ -100,7 +98,8 @@ public class DialogueBtn : MonoBehaviour
                     {
                         prefabMsg = Instantiate(d) as GameObject;
                         prefabMsg.transform.SetParent(cBtn.transform.parent.gameObject.transform, false);
-                        prefabMsg.transform.position = Input.mousePosition + offset;
+                        prefabMsg.transform.position = Input.mousePosition;
+                        prefabMsg.transform.position = new Vector3(prefabMsg.transform.position.x, prefabMsg.transform.position.y + 100);
                         prefabMsg.SetActive(true);
 
                     }
@@ -109,14 +108,14 @@ public class DialogueBtn : MonoBehaviour
                 break;
 
                 case "Phantom Claw":
-                Cursor.visible = false;
                 foreach (GameObject d in dialogueCanvas)
                 {
                     if (d.name.Contains("Phantom Claw"))
                     {
                         prefabMsg = Instantiate(d) as GameObject;
                         prefabMsg.transform.SetParent(cBtn.transform.parent.gameObject.transform, false);
-                        prefabMsg.transform.position = Input.mousePosition + offset;
+                        prefabMsg.transform.position = Input.mousePosition;
+                        prefabMsg.transform.position = new Vector3(prefabMsg.transform.position.x, prefabMsg.transform.position.y + 100);
                         prefabMsg.SetActive(true);
 
                     }
@@ -125,7 +124,6 @@ public class DialogueBtn : MonoBehaviour
                 break;
 
                 case "Astral Plane":
-                Cursor.visible = false;
 
                 foreach (GameObject d in dialogueCanvas)
                 {
@@ -133,7 +131,8 @@ public class DialogueBtn : MonoBehaviour
                     {
                         prefabMsg = Instantiate(d) as GameObject;
                         prefabMsg.transform.SetParent(cBtn.transform.parent.gameObject.transform, false);
-                        prefabMsg.transform.position = Input.mousePosition + offset;
+                        prefabMsg.transform.position = Input.mousePosition;
+                        prefabMsg.transform.position = new Vector3(prefabMsg.transform.position.x, prefabMsg.transform.position.y + 100);
                         prefabMsg.SetActive(true);
 
                     }
@@ -142,7 +141,6 @@ public class DialogueBtn : MonoBehaviour
                 break;
 
                 case "Merciful Protection":
-                Cursor.visible = false;
 
                 foreach (GameObject d in dialogueCanvas)
                 {
@@ -150,7 +148,8 @@ public class DialogueBtn : MonoBehaviour
                     {
                         prefabMsg = Instantiate(d) as GameObject;
                         prefabMsg.transform.SetParent(cBtn.transform.parent.gameObject.transform, false);
-                        prefabMsg.transform.position = Input.mousePosition + offset;
+                        prefabMsg.transform.position = Input.mousePosition;
+                        prefabMsg.transform.position = new Vector3(prefabMsg.transform.position.x, prefabMsg.transform.position.y + 100);
                         prefabMsg.SetActive(true);
 
                     }
@@ -159,7 +158,6 @@ public class DialogueBtn : MonoBehaviour
                 break;
 
                 case "Earth Cloak":
-                Cursor.visible = false;
 
                 foreach (GameObject d in dialogueCanvas)
                 {
@@ -167,7 +165,8 @@ public class DialogueBtn : MonoBehaviour
                     {
                         prefabMsg = Instantiate(d) as GameObject;
                         prefabMsg.transform.SetParent(cBtn.transform.parent.gameObject.transform, false);
-                        prefabMsg.transform.position = Input.mousePosition + offset;
+                        prefabMsg.transform.position = Input.mousePosition;
+                        prefabMsg.transform.position = new Vector3(prefabMsg.transform.position.x, prefabMsg.transform.position.y + 100);
                         prefabMsg.SetActive(true);
 
                     }
@@ -176,14 +175,14 @@ public class DialogueBtn : MonoBehaviour
                 break;
 
                 case "Earth Orb":
-                Cursor.visible = false;
                 foreach (GameObject d in dialogueCanvas)
                 {
                     if (d.name.Contains("Earth Orb"))
                     {
                         prefabMsg = Instantiate(d) as GameObject;
                         prefabMsg.transform.SetParent(cBtn.transform.parent.gameObject.transform, false);
-                        prefabMsg.transform.position = Input.mousePosition + offset;
+                        prefabMsg.transform.position = Input.mousePosition;
+                        prefabMsg.transform.position = new Vector3(prefabMsg.transform.position.x, prefabMsg.transform.position.y + 100);
                         prefabMsg.SetActive(true);
 
                     }
@@ -192,14 +191,14 @@ public class DialogueBtn : MonoBehaviour
                 break;
 
             case "Toughen":
-                Cursor.visible = false;
                 foreach (GameObject d in dialogueCanvas)
                 {
                     if (d.name.Contains("Toughen"))
                     {
                         prefabMsg = Instantiate(d) as GameObject;
                         prefabMsg.transform.SetParent(cBtn.transform.parent.gameObject.transform, false);
-                        prefabMsg.transform.position = Input.mousePosition + offset;
+                        prefabMsg.transform.position = Input.mousePosition;
+                        prefabMsg.transform.position = new Vector3(prefabMsg.transform.position.x, prefabMsg.transform.position.y + 100);
                         prefabMsg.SetActive(true);
 
                     }
