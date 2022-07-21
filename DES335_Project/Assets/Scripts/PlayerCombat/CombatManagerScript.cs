@@ -15,6 +15,7 @@ public class CombatManagerScript : MonoBehaviour
     public GameObject attackMenu;
     public GameObject itemMenu;
     public Text attack1Text, attack2Text, attack3Text, attack4Text;
+    private List<GameObject> attackBoxList;
 
     private int actionCounter;
     private bool isPlayerTurn;
@@ -44,9 +45,19 @@ public class CombatManagerScript : MonoBehaviour
         enemyEntity1 = GameObject.FindGameObjectWithTag("Enemy");
         enemyEntity2 = GameObject.FindGameObjectWithTag("Enemy2");
 
+        attackBoxList = new List<GameObject>();
+
         if (GameObject.Find("TextBox") != null)
         {
             actionLogTextBox = GameObject.Find("TextBox").GetComponent<Text>();
+        }
+
+        if (GameObject.Find("AttackMenu") != null)
+        {
+            attackBoxList.Add(GameObject.Find("AttackMenu").transform.GetChild(0).gameObject);
+            attackBoxList.Add(GameObject.Find("AttackMenu").transform.GetChild(1).gameObject);
+            attackBoxList.Add(GameObject.Find("AttackMenu").transform.GetChild(2).gameObject);
+            attackBoxList.Add(GameObject.Find("AttackMenu").transform.GetChild(3).gameObject);
         }
 
         activeCharacter = "Player";
@@ -200,6 +211,28 @@ public class CombatManagerScript : MonoBehaviour
                 attack2Text.text = playerEntity.GetComponent<Skills>().Skill_List[1].Name;
                 attack3Text.text = playerEntity.GetComponent<Skills>().Skill_List[2].Name;
                 attack4Text.text = playerEntity.GetComponent<Skills>().Skill_List[3].Name;
+
+                if (attackBoxList.Count == 4)
+                {
+                    for (int i = 0;  i < 4; i++)
+                    {
+                        switch (playerEntity.GetComponent<Skills>().Skill_List[i].Skill_Element_Type.ToString())
+                        {
+                            case "Normal":
+                                attackBoxList[i].GetComponent<Image>().color = new Color32(207, 207, 207, 255);
+                                break;
+                            case "Fire":
+                                attackBoxList[i].GetComponent<Image>().color = new Color32(255, 158, 158, 255);
+                                break;
+                            case "Earth":
+                                attackBoxList[i].GetComponent<Image>().color = new Color32(168, 255, 158, 255);
+                                break;
+                            case "Water":
+                                attackBoxList[i].GetComponent<Image>().color = new Color32(158, 223, 225, 255);
+                                break;
+                        }
+                    }
+                }
             }
             else if (activeCharacter == "Companion")
             {
@@ -207,6 +240,28 @@ public class CombatManagerScript : MonoBehaviour
                 attack2Text.text = companionEntity.GetComponent<Skills>().Skill_List[1].Name;
                 attack3Text.text = companionEntity.GetComponent<Skills>().Skill_List[2].Name;
                 attack4Text.text = companionEntity.GetComponent<Skills>().Skill_List[3].Name;
+
+                if (attackBoxList.Count == 4)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        switch (companionEntity.GetComponent<Skills>().Skill_List[i].Skill_Element_Type.ToString())
+                        {
+                            case "Normal":
+                                attackBoxList[i].GetComponent<Image>().color = new Color32(207, 207, 207, 255);
+                                break;
+                            case "Fire":
+                                attackBoxList[i].GetComponent<Image>().color = new Color32(255, 158, 158, 255);
+                                break;
+                            case "Earth":
+                                attackBoxList[i].GetComponent<Image>().color = new Color32(168, 255, 158, 255);
+                                break;
+                            case "Water":
+                                attackBoxList[i].GetComponent<Image>().color = new Color32(158, 223, 225, 255);
+                                break;
+                        }
+                    }
+                }
             }
         }
     }

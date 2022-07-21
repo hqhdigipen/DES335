@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour
     public GameObject companion;
     public GameObject enemy;
 
+    public Sprite redSprite, blueSprite, greenSprite; 
+
     private GameObject gameManager;
     private Text actionLogTextBox;
     
@@ -38,6 +40,24 @@ public class Enemy : MonoBehaviour
         if (GameObject.Find("TextBox") != null)
         {
             actionLogTextBox = GameObject.Find("TextBox").GetComponent<Text>();
+        }
+
+        int randomNumber = Random.Range(0, 2);
+
+        switch (randomNumber)
+        {
+            case 0:
+                enemy.GetComponent<Image>().sprite = redSprite;
+                enemy.GetComponent<CharScript>().elementType = CharScript.ElementType.Fire;
+                break;
+            case 1:
+                enemy.GetComponent<Image>().sprite = blueSprite;
+                enemy.GetComponent<CharScript>().elementType = CharScript.ElementType.Water;
+                break;
+            case 2:
+                enemy.GetComponent<Image>().sprite =greenSprite;
+                enemy.GetComponent<CharScript>().elementType = CharScript.ElementType.Earth;
+                break;
         }
     }   
 
