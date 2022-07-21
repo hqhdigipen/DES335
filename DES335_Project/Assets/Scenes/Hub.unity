@@ -5484,7 +5484,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1995307021}
         m_TargetAssemblyTypeName: SceneBehaviour, Assembly-CSharp
-        m_MethodName: ExitToMM
+        m_MethodName: ExitMainMenuBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
