@@ -18,6 +18,10 @@ public class SceneBehaviour : MonoBehaviour
     {
     }
 
+    public void ExitToMM()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 
     public void RualieHover()
     {
