@@ -66,6 +66,8 @@ public class HubBehaviour : MonoBehaviour
 
     public GameObject switchAlly, switchNyx;
 
+    public GameObject switchBackBtn;
+
     bool checkLvUpgradeBtn;
 
 
@@ -162,23 +164,35 @@ public class HubBehaviour : MonoBehaviour
 
         if (switchNyx.activeSelf)
         {
-            if (switchID != "" && int.Parse(switchID) == int.Parse(pgNum.text) - 1 || absorbID != "" && int.Parse(absorbID) == int.Parse(pgNum.text) - 1)
+            if (switchID != "" && int.Parse(switchID) == int.Parse(pgNum.text) - 1)
             {
                 alreadySwitchMsg.SetActive(true);
+                switchBackBtn.SetActive(true);
+            }
+            else if (absorbID != "" && int.Parse(absorbID) == int.Parse(pgNum.text) - 1) {
+                alreadySwitchMsg.SetActive(true);
+                switchBackBtn.SetActive(false);
             }
             else
             {
                 alreadySwitchMsg.SetActive(false);
+                switchBackBtn.SetActive(false);
             }
         }
         else {
-            if (switchID != "" && int.Parse(switchID) == int.Parse(pgNum.text) - 1 || absorbID != "" && int.Parse(absorbID) == int.Parse(pgNum.text) - 1)
+            if (switchID != "" && int.Parse(switchID) == int.Parse(pgNum.text) - 1)
             {
                 alreadySwitchMsg.SetActive(true);
+                switchBackBtn.SetActive(false);
+            }
+            else if (absorbID != "" && int.Parse(absorbID) == int.Parse(pgNum.text) - 1) {
+                alreadySwitchMsg.SetActive(true);
+                switchBackBtn.SetActive(true);
             }
             else
             {
                 alreadySwitchMsg.SetActive(false);
+                switchBackBtn.SetActive(false);
             }
         }
   
