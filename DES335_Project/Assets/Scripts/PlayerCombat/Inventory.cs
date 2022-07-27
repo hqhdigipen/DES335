@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
                 added = true;
             }
 
-            Debug.Log("Route:" + GameState.route + " InventorySF: " + inventorySF + " added: " + added);
+          //  Debug.Log("Route:" + GameState.route + " InventorySF: " + inventorySF + " added: " + added);
         }
     }
 }

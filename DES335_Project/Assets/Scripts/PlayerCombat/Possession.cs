@@ -46,7 +46,8 @@ public class Possession : MonoBehaviour
 
     public GameObject PossessButton;
     public GameObject companion, enemy, enemy2, player;
-    private string currState; 
+    private string currState;
+    public static bool possessed = false;
 
     int numOfEnemy = 2;
     static int target_remaining = 2;
@@ -65,6 +66,8 @@ public class Possession : MonoBehaviour
     }
     public void PossessEnemy()
     {
+        possessed = true; 
+
         for (int i = 0; i < 4; ++i)
         {
             if (target_remaining == (int)OPPONENT.ENEMY)
@@ -102,7 +105,7 @@ public class Possession : MonoBehaviour
         }
     }
 
-    void PossessButtonPopUp()
+    public void PossessButtonPopUp()
     {
         if (enemy.GetComponent<CharScript>().currentHealth <= 0)
         {          
@@ -129,7 +132,11 @@ public class Possession : MonoBehaviour
         {
             if (target_remaining == (int)OPPONENT.ENEMY)
             {
-                if ((enemy.GetComponent<CharScript>().currentHealth / enemy.GetComponent<CharScript>().maxHealth) * 100 < 25)
+                float hp = ((float)enemy.GetComponent<CharScript>().currentHealth / (float)enemy.GetComponent<CharScript>().maxHealth);
+                hp *= 100;
+                Debug.Log("Enemy HP%: " + hp);
+
+                if (hp < 25)
                 {
                     if (PossessButton != null)
                     {
@@ -139,11 +146,15 @@ public class Possession : MonoBehaviour
             }
             else if (target_remaining == (int)OPPONENT.ENEMY2)
             {
-                if ((enemy2.GetComponent<CharScript>().currentHealth / enemy2.GetComponent<CharScript>().maxHealth) * 100 < 25)
+                float hp = ((float)enemy2.GetComponent<CharScript>().currentHealth / (float)enemy2.GetComponent<CharScript>().maxHealth);
+                hp *= 100;
+                Debug.Log("Enemy2 HP%: " + hp);
+
+                if (hp < 25)
                 {
                     if (PossessButton != null)
                     {
-                        PossessButton.SetActive(true);
+                        PossessButton.SetActive(true);           
                     }
                 }
             }

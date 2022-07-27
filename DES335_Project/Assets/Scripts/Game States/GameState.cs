@@ -71,7 +71,11 @@ public class GameState : MonoBehaviour
             {
                 g_state = (int)GameState.state.WIN;
 
-                if (route != (int)(Route.Route_4))
+                if (Possession.possessed)
+                {
+                    SceneManager.LoadScene("Possess Victory");
+                }
+                else if (route != (int)(Route.Route_4))
                 {
                     SceneManager.LoadScene("Victory");
                 }
