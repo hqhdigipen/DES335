@@ -1023,7 +1023,7 @@ MonoBehaviour:
     Skill_Element_Type: 1
     Skill_Damage_Type: 0
   - Name: Water Gun
-    Damage: 20
+    Damage: 200
     MP: 5
     Skill_Element_Type: 2
     Skill_Damage_Type: 0
@@ -3722,7 +3722,7 @@ MonoBehaviour:
     Skill_Element_Type: 3
     Skill_Damage_Type: 0
   - Name: Water blade
-    Damage: 20
+    Damage: 200
     MP: 5
     Skill_Element_Type: 2
     Skill_Damage_Type: 0

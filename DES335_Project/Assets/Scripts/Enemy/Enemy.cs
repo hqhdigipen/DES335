@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
             actionLogTextBox = GameObject.Find("TextBox").GetComponent<Text>();
         }
 
-        int randomNumber = Random.Range(0, 2);
+        int randomNumber = Random.Range(0, 3);
 
         switch (randomNumber)
         {
