@@ -65,6 +65,12 @@ public class GameState : MonoBehaviour
             enemy2.GetComponent<CharScript>().TakeDamage(100, "Normal");
         }
 
+        if (Input.GetKeyDown(KeyCode.C))    
+        {
+            enemy.GetComponent<CharScript>().TakeDamage(100, "Normal");
+            enemy2.GetComponent<CharScript>().TakeDamage(90, "Normal");
+        }
+
         if (enemy != null && enemy2 != null)
         {
             if (enemy.GetComponent<CharScript>().currentHealth <= 0 && enemy2.GetComponent<CharScript>().currentHealth <= 0)

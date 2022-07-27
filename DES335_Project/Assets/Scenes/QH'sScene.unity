@@ -1065,7 +1065,7 @@ MonoBehaviour:
   companion: {fileID: 0}
   enemy: {fileID: 0}
   enemy2: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 403361196}
 --- !u!114 &403361204
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum POSSESSED_CHARACTER_ELEMENTS
+{
+    Fire,
+    Water,
+    Earth
+}
 public class Possession : MonoBehaviour
 {
    enum OPPONENT
     {
         ENEMY,
         ENEMY2
-    }
-
-    public enum POSSESSED_CHARACTER_ELEMENTS
-    {
-        Fire,
-        Water,
-        Earth
     }
     public enum POSSESSED_SKILL_TYPE
     {
@@ -48,6 +47,7 @@ public class Possession : MonoBehaviour
     public GameObject companion, enemy, enemy2, player;
     private string currState;
     public static bool possessed = false;
+    public static int EnemyElementType;
 
     int numOfEnemy = 2;
     static int target_remaining = 2;
@@ -141,6 +141,8 @@ public class Possession : MonoBehaviour
                     if (PossessButton != null)
                     {
                         PossessButton.SetActive(true);
+                        EnemyElementType = (int)enemy.GetComponent<CharScript>().elementType;
+
                     }
                 }
             }
@@ -154,7 +156,9 @@ public class Possession : MonoBehaviour
                 {
                     if (PossessButton != null)
                     {
-                        PossessButton.SetActive(true);           
+                        PossessButton.SetActive(true);
+                        EnemyElementType = (int)enemy2.GetComponent<CharScript>().elementType;
+                        Debug.Log("Possessed Enemy Type: " + EnemyElementType);
                     }
                 }
             }
