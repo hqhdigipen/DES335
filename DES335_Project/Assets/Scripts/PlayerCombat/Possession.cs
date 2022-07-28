@@ -97,11 +97,13 @@ public class Possession : MonoBehaviour
             player.GetComponent<Skills>().Skill_List[i].Skill_Element_Type = (Skills.SKILL_TYPE)Possessed_Skill_List[i].Skill_Element_Type;
             player.GetComponent<Skills>().Skill_List[i].Skill_Damage_Type = (Skills.DAMAGE_TYPE)Possessed_Skill_List[i].Skill_Damage_Type;
 
+            /*
            Debug.Log("PS: " + player.GetComponent<Skills>().Skill_List[i].Name
            + " Damage: " + player.GetComponent<Skills>().Skill_List[i].Damage
            + " MP: " + player.GetComponent<Skills>().Skill_List[i].MP
            + " Skill Type: " + player.GetComponent<Skills>().Skill_List[i].Skill_Element_Type
            + "Damage Type: " + player.GetComponent<Skills>().Skill_List[i].Skill_Damage_Type);
+            */
         }
     }
 
@@ -114,7 +116,7 @@ public class Possession : MonoBehaviour
             if(numOfEnemy == 2)
                 numOfEnemy = 1;
             
-            Debug.Log("Enemy2 Left, Enemy Dead");
+           // Debug.Log("Enemy2 Left, Enemy Dead");
         }
 
         if (enemy2.GetComponent<CharScript>().currentHealth <= 0)
@@ -123,7 +125,7 @@ public class Possession : MonoBehaviour
                 numOfEnemy = 1;
             
             target_remaining = (int)OPPONENT.ENEMY;
-            Debug.Log("Enemy Left, Enemy2 Dead");
+            //Debug.Log("Enemy Left, Enemy2 Dead");
         }
 
       //  Debug.Log("number of enemies left: " + numOfEnemy);
@@ -134,15 +136,15 @@ public class Possession : MonoBehaviour
             {
                 float hp = ((float)enemy.GetComponent<CharScript>().currentHealth / (float)enemy.GetComponent<CharScript>().maxHealth);
                 hp *= 100;
-                Debug.Log("Enemy HP%: " + hp);
+               // Debug.Log("Enemy HP%: " + hp);
 
-                if (hp < 25)
+                if (hp < 25 && hp > 0)
                 {
                     if (PossessButton != null)
                     {
                         PossessButton.SetActive(true);
                         EnemyElementType = (int)enemy.GetComponent<CharScript>().elementType;
-
+                        Debug.Log("Possessed Enemy1 Type: " + EnemyElementType);
                     }
                 }
             }
@@ -150,15 +152,15 @@ public class Possession : MonoBehaviour
             {
                 float hp = ((float)enemy2.GetComponent<CharScript>().currentHealth / (float)enemy2.GetComponent<CharScript>().maxHealth);
                 hp *= 100;
-                Debug.Log("Enemy2 HP%: " + hp);
+              //  Debug.Log("Enemy2 HP%: " + hp);
 
-                if (hp < 25)
+                if (hp < 25 && hp >0)
                 {
                     if (PossessButton != null)
                     {
                         PossessButton.SetActive(true);
                         EnemyElementType = (int)enemy2.GetComponent<CharScript>().elementType;
-                        Debug.Log("Possessed Enemy Type: " + EnemyElementType);
+                        Debug.Log("Possessed Enemy2 Type: " + EnemyElementType);
                     }
                 }
             }
