@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    List<int> SF_List = new List<int> {100, 150, 150, 200,
-                                       200, 250, 250, 300,
-                                       300, 350, 350, 400};
+    List<int> SF_List = new List<int> {100, 200, 200, 300,
+                                       200, 300, 300, 400,
+                                       300, 400, 400, 500};
     // Update is called once per frame
 
     public static int inventorySF = 120;
@@ -20,7 +20,15 @@ public class Inventory : MonoBehaviour
         {
             if (GameState.route == i+1 && !added)
             {
-                inventorySF += SF_List[i];
+                if (Possession.possessed)
+                {
+                    inventorySF += SF_List[i]/2;
+
+                }
+                else
+                {
+                    inventorySF += SF_List[i];
+                }
                 added = true;
             }
 

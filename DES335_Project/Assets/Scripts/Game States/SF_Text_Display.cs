@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class SF_Text_Display : MonoBehaviour
 {
-    List<int> SF_List = new List<int> {100, 150, 150, 200,
-                                       200, 250, 250, 300,
-                                       300, 350, 350, 400};
+    List<int> SF_List = new List<int> {100, 200, 200, 300,
+                                       200, 300, 300, 400,
+                                       300, 400, 400, 500};
 
     public int SF = 0;
     public int level = 0;
@@ -28,12 +28,25 @@ public class SF_Text_Display : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
+            int sf = 0;
+
             if (GameState.route == i + 1)
             {
-                SF_Text.text = SF_List[i].ToString();
-                //Debug.Log("routeTest:" + GameState.route);
+                if (Possession.possessed)
+                {
+                    sf = SF_List[i] / 2;
+                    SF_Text.text = sf.ToString();
+
+                    //SF_Text.text = SF_List[i].ToString();
+                }
+                else
+                {
+                    SF_Text.text = SF_List[i].ToString();
+                    //Debug.Log("routeTest:" + GameState.route);
+                }
             }
         }
+
 
         /*
         if (GameState.route == 4)

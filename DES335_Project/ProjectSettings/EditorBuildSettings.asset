@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Possess Victory.unity
     guid: c5f153c472e893b4da17d8ce3b19e77b
+  - enabled: 1
+    path: Assets/Scenes/PossessVictoryRoute4.unity
+    guid: 945242070ae85664091f25c68a92ce7d
   m_configObjects: {}
