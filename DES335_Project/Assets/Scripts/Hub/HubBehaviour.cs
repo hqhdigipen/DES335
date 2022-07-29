@@ -37,6 +37,7 @@ public class HubBehaviour : MonoBehaviour
 
     public GameObject upgradeMainPanel;
     public TextMeshProUGUI profileMainLv, upgradeMain, mainLv, upgradeMainPrice, witchMainLv;
+    public static int playerEqLvl = 1, playerArmourLvl = 1, allyEqLvl = 1, allyAmourLvl = 1;
 
     public GameObject upgradeAllyPanel;
     public TextMeshProUGUI profileAllyLv, upgradeAlly, allyLv, upgradeAllyPrice, witchAllyLv;
@@ -618,6 +619,9 @@ public class HubBehaviour : MonoBehaviour
                     allyWeaponPrice.text = (int.Parse(allyWeaponPrice.text) * 2).ToString();
                     allyWeaponLv.text = (int.Parse(allyWeaponLv.text) + 1).ToString();
                 }
+
+                ++allyEqLvl;
+                Debug.Log("Current Ally Weapon Upgrade Level: " + allyEqLvl);
             }
 
         } else if (allyArmorPanel.activeSelf) {
@@ -630,6 +634,9 @@ public class HubBehaviour : MonoBehaviour
                     allyArmorPrice.text = (int.Parse(allyArmorPrice.text) * 2).ToString();
                     allyArmorLv.text = (int.Parse(allyArmorLv.text) + 1).ToString();
                 }
+
+                ++allyAmourLvl;
+                Debug.Log("Current Ally Amour Upgrade Level: " + allyAmourLvl);
             }
 
         } else if (mainArmorPanel.activeSelf) {
@@ -642,6 +649,9 @@ public class HubBehaviour : MonoBehaviour
                     mainArmorPrice.text = (int.Parse(mainArmorPrice.text) * 2).ToString();
                     mainArmorLv.text = (int.Parse(mainArmorLv.text) + 1).ToString();
                 }
+
+                ++playerArmourLvl;
+                Debug.Log("Current Player Amour Upgrade Level: " + playerArmourLvl);
             }
 
         } else if (upgradeMainPanel.activeSelf) {
@@ -693,6 +703,9 @@ public class HubBehaviour : MonoBehaviour
                     mainWeaponPrice.text = (int.Parse(mainWeaponPrice.text) * 2).ToString();
                     mainWeaponLv.text = (int.Parse(mainWeaponLv.text) + 1).ToString();
                 }
+
+                ++playerEqLvl;
+                Debug.Log("Current Player Weapon Upgrade Level: " + playerEqLvl);
             }
         }
     }
