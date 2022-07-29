@@ -48,13 +48,13 @@ public class SF_Text_Display : MonoBehaviour
         }
 
 
-        /*
+        
         if (GameState.route == 4)
         {
             level = 1;
             level_Text.text = level.ToString();
         }
-        */
+        
 
         total_SF = Inventory.inventorySF;
         total_SF_Text.text = total_SF.ToString();
