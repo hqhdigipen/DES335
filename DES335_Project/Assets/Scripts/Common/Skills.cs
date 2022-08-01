@@ -71,15 +71,22 @@ public class Skills : MonoBehaviour
     Skill PlayerEqLvl4Skill4 = new Skill("Skill2Level4", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
     Skill PlayerEqLvl5Skill4 = new Skill("Skill2Level5", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
 
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+        companion = GameObject.Find("Companion");
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (HubBehaviour.playerEqLvl == 2)
+        if (HubBehaviour.playerEqLvl == 2 && this.gameObject.tag == "Player")
         {
             player.GetComponent<Skills>().Skill_List[0] = PlayerEqLvl2Skill1;
             player.GetComponent<Skills>().Skill_List[1] = PlayerEqLvl2Skill2;
             player.GetComponent<Skills>().Skill_List[2] = PlayerEqLvl2Skill3;
             player.GetComponent<Skills>().Skill_List[3] = PlayerEqLvl2Skill4;
         }
+        
     }
 }
