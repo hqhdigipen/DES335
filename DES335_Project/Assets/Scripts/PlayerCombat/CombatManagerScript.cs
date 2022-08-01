@@ -517,14 +517,14 @@ public class CombatManagerScript : MonoBehaviour
             announcer.SetActive(false);
             currState = "EnemyTurn";
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(2f);
 
             if (enemy1Moved == false)
             {
                 enemyEntity1.GetComponent<Enemy>().Enemy_Attack();
                 enemy1Moved = true;
             }
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(2f);
 
             if (enemy2Moved == false)
             {
