@@ -369,10 +369,13 @@ public class CombatManagerScript : MonoBehaviour
                             enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[3].Damage, playerEntity.GetComponent<Skills>().Skill_List[3].Skill_Element_Type.ToString());
                             break;
                     }
-
+                    /*
                     actionLogTextBox.text = activeCharacter + " is using " + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Name +
                  "(" + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Skill_Element_Type.ToString() + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].MP + "/5) , -" +
                  playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage + " damage to " + enemy.transform.name;
+                    */
+                    actionLogTextBox.text = activeCharacter + " used " + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Name + ". Dealt " +
+                    companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage + " damage to " + enemy.transform.name + ".";
                     break;
                 case "Companion":
                     switch (activeAttack)
@@ -390,9 +393,13 @@ public class CombatManagerScript : MonoBehaviour
                             enemy.GetComponent<CharScript>().TakeDamage(companionEntity.GetComponent<Skills>().Skill_List[3].Damage, companionEntity.GetComponent<Skills>().Skill_List[3].Skill_Element_Type.ToString());
                             break;
                     }
+                    /*
                     actionLogTextBox.text = activeCharacter + " is using " + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Name +
                  "(" + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Skill_Element_Type.ToString() + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].MP + "/5) , -" +
                  companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage + " damage to " + enemy.transform.name;
+                    */
+                    actionLogTextBox.text = activeCharacter + " used " + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Name + ". Dealt " +
+                   companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage + " damage to " + enemy.transform.name + ".";
                     break;
             }
 
