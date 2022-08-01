@@ -1008,12 +1008,12 @@ MonoBehaviour:
   Character_Element: 0
   Skill_List:
   - Name: Bash
-    Damage: 20
+    Damage: 10
     MP: 5
     Skill_Element_Type: 0
     Skill_Damage_Type: 0
   - Name: Flame Blade
-    Damage: 20
+    Damage: 15
     MP: 5
     Skill_Element_Type: 1
     Skill_Damage_Type: 0
@@ -1023,7 +1023,7 @@ MonoBehaviour:
     Skill_Element_Type: 1
     Skill_Damage_Type: 0
   - Name: Inferno
-    Damage: 20
+    Damage: 25
     MP: 5
     Skill_Element_Type: 1
     Skill_Damage_Type: 0
@@ -1999,7 +1999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 723, y: -46}
+  m_AnchoredPosition: {x: 723, y: -174}
   m_SizeDelta: {x: 345.75, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &790680392
@@ -3712,23 +3712,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character_Element: 0
   Skill_List:
-  - Name: Slam
-    Damage: 30
+  - Name: Magic Water
+    Damage: 5
     MP: 5
-    Skill_Element_Type: 0
+    Skill_Element_Type: 2
     Skill_Damage_Type: 0
-  - Name: Flame Rush
-    Damage: 25
+  - Name: Water Splash
+    Damage: 10
     MP: 5
-    Skill_Element_Type: 1
+    Skill_Element_Type: 2
     Skill_Damage_Type: 0
-  - Name: Earth Tomb
+  - Name: Aqua Jet
     Damage: 15
     MP: 5
-    Skill_Element_Type: 3
+    Skill_Element_Type: 2
     Skill_Damage_Type: 0
-  - Name: Water blade
-    Damage: 200
+  - Name: Hydro Cannon
+    Damage: 20
     MP: 5
     Skill_Element_Type: 2
     Skill_Damage_Type: 0
@@ -4236,7 +4236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 723, y: -176}
+  m_AnchoredPosition: {x: 723, y: -304}
   m_SizeDelta: {x: 345.75, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1453261585
@@ -5129,7 +5129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1688887640
 RectTransform:
   m_ObjectHideFlags: 0
