@@ -63,11 +63,13 @@ public class HubBehaviour : MonoBehaviour
     public GameObject noWeaponPanel, noArmorPanel;
 
     string switchID="";
-    string absorbID = "0";
+    //string absorbID = "0";
 
     public GameObject switchAlly, switchNyx;
 
-    public GameObject switchBackBtn;
+    //public GameObject switchBackBtn;
+
+    public GameObject hideLArrow, hideRArrow, allyWitchUI;
 
     bool checkLvUpgradeBtn;
 
@@ -165,38 +167,47 @@ public class HubBehaviour : MonoBehaviour
 
         if (switchNyx.activeSelf)
         {
+            allyWitchUI.SetActive(false);
+            hideLArrow.SetActive(true);
+            hideRArrow.SetActive(true);
             if (switchID != "" && int.Parse(switchID) == int.Parse(pgNum.text) - 1)
             {
                 alreadySwitchMsg.SetActive(true);
-                switchBackBtn.SetActive(true);
+                //switchBackBtn.SetActive(true);
             }
-            else if (absorbID != "" && int.Parse(absorbID) == int.Parse(pgNum.text) - 1) {
+            /*else if (absorbID != "" && int.Parse(absorbID) == int.Parse(pgNum.text) - 1) {
                 alreadySwitchMsg.SetActive(true);
-                switchBackBtn.SetActive(false);
-            }
+                //switchBackBtn.SetActive(false);
+            }*/
             else
             {
                 alreadySwitchMsg.SetActive(false);
-                switchBackBtn.SetActive(false);
+                //switchBackBtn.SetActive(false);
             }
         }
         else {
+
+            allyWitchUI.SetActive(true);
+            hideLArrow.SetActive(false);
+            hideRArrow.SetActive(false);
+        }
+        /*else {
             if (switchID != "" && int.Parse(switchID) == int.Parse(pgNum.text) - 1)
             {
                 alreadySwitchMsg.SetActive(true);
-                switchBackBtn.SetActive(false);
+                //switchBackBtn.SetActive(false);
             }
             else if (absorbID != "" && int.Parse(absorbID) == int.Parse(pgNum.text) - 1) {
                 alreadySwitchMsg.SetActive(true);
-                switchBackBtn.SetActive(true);
+                //switchBackBtn.SetActive(true);
             }
             else
             {
                 alreadySwitchMsg.SetActive(false);
-                switchBackBtn.SetActive(false);
+                //switchBackBtn.SetActive(false);
             }
-        }
-  
+        }*/
+
 
         if (playerInfo.activeSelf)
         {
@@ -221,14 +232,15 @@ public class HubBehaviour : MonoBehaviour
         }
         else
         {
-            if (absorbID == "" && !checkLvUpgradeBtn)
+            /*if (absorbID == "" && !checkLvUpgradeBtn)
             {
                 noEquipmentMsg.SetActive(true);
             }
             else
             {
                 noEquipmentMsg.SetActive(false);
-            }
+            }*/
+            
         }
     }
 
@@ -302,7 +314,7 @@ public class HubBehaviour : MonoBehaviour
 
                 alreadySwitchMsg.SetActive(false);
             }
-            else if (switchAlly.activeSelf && absorbID != "")
+            /*else if (switchAlly.activeSelf && absorbID != "")
             {
                 absorbID = "";
                 foreach (TextMeshProUGUI weapon in cAllyWeapon)
@@ -337,7 +349,7 @@ public class HubBehaviour : MonoBehaviour
             }
             else {
                 Debug.Log("You did not switch skill with this enemy");
-            }
+            }*/
         }
         
     }
@@ -381,7 +393,7 @@ public class HubBehaviour : MonoBehaviour
                     alreadySwitchMsg.SetActive(true);
 
                 }
-                else {
+                /*else {
                     absorbID = (int.Parse(pgNum.text) - 1).ToString();
                     foreach (TextMeshProUGUI weapon in cAllyWeapon)
                     {
@@ -412,7 +424,7 @@ public class HubBehaviour : MonoBehaviour
                         skill.text = cEnemySkill4[int.Parse(pgNum.text) - 1].text;
                     }
                     alreadySwitchMsg.SetActive(true);
-                }
+                }*/
             }
             Debug.Log("This Works");
         
