@@ -1017,16 +1017,18 @@ MonoBehaviour:
     MP: 5
     Skill_Element_Type: 1
     Skill_Damage_Type: 0
-  - Name: Flame Kick
+  - Name: Blaze
     Damage: 20
     MP: 5
     Skill_Element_Type: 1
     Skill_Damage_Type: 0
-  - Name: Water Gun
-    Damage: 200
+  - Name: Inferno
+    Damage: 20
     MP: 5
-    Skill_Element_Type: 2
+    Skill_Element_Type: 1
     Skill_Damage_Type: 0
+  player: {fileID: 0}
+  companion: {fileID: 0}
 --- !u!114 &403361203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2285,6 +2287,8 @@ MonoBehaviour:
     MP: 5
     Skill_Element_Type: 3
     Skill_Damage_Type: 0
+  player: {fileID: 0}
+  companion: {fileID: 0}
 --- !u!114 &796629882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2730,6 +2734,8 @@ MonoBehaviour:
     MP: 5
     Skill_Element_Type: 3
     Skill_Damage_Type: 0
+  player: {fileID: 0}
+  companion: {fileID: 0}
 --- !u!1 &970696721
 GameObject:
   m_ObjectHideFlags: 0
@@ -3726,6 +3732,8 @@ MonoBehaviour:
     MP: 5
     Skill_Element_Type: 2
     Skill_Damage_Type: 0
+  player: {fileID: 0}
+  companion: {fileID: 0}
 --- !u!1 &1221728709
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,28 +48,51 @@ public class Skills : MonoBehaviour
     public CHARACTER_ELEMENTS Character_Element;
     public Skill[] Skill_List = new Skill[4];
     //private Skill[] Skills_Upgraded_List = new Skill[4];
+    private static bool keypressed = false;
 
     public GameObject player, companion;
 
-    Skill PlayerEqLvl2Skill1 = new Skill("Skill1Level2", 50, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl3Skill1 = new Skill("Skill1Level3", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl4Skill1 = new Skill("Skill1Level4", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl5Skill1 = new Skill("Skill1Level5", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    //Player
+    Skill PlayerEqLvl2Skill1 = new Skill("Slam", 30, 5, SKILL_TYPE.Normal, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl2Skill2 = new Skill("Flame Rush", 50, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerAmourLvl2Skill3 = new Skill("Blaze Kick", 50, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerAmourLvl2Skill4 = new Skill("Inferno Claw ", 50, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
 
-    Skill PlayerEqLvl2Skill2 = new Skill("Skill2Level2", 50, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl3Skill2 = new Skill("Skill2Level3", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl4Skill2 = new Skill("Skill2Level4", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl5Skill2 = new Skill("Skill2Level5", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl3Skill1 = new Skill("Hyper Punch", 40, 5, SKILL_TYPE.Normal, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl3Skill2 = new Skill("Flame Blitz", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerAmourLvl3Skill3 = new Skill("Blaze Gigs", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerAmourLvl3Skill4 = new Skill("Inferno Blast", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
 
-    Skill PlayerEqLvl2Skill3 = new Skill("Skill2Level2", 50, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl3Skill3 = new Skill("Skill2Level3", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl4Skill3 = new Skill("Skill2Level4", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl5Skill3 = new Skill("Skill2Level5", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl4Skill1 = new Skill("Sonic Boom", 50, 5, SKILL_TYPE.Normal, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl4Skill2 = new Skill("Flame Nado", 70, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerAmourLvl4Skill3 = new Skill("Blaze Tempest", 70, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerAmourLvl4Skill4 = new Skill("Inferno Impact", 70, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
 
-    Skill PlayerEqLvl2Skill4 = new Skill("Skill2Level2", 50, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl3Skill4 = new Skill("Skill2Level3", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl4Skill4 = new Skill("Skill2Level4", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl5Skill4 = new Skill("Skill2Level5", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl5Skill1 = new Skill("Sonic Punch", 60, 5, SKILL_TYPE.Normal, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl5Skill2 = new Skill("Flame Call", 70, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerAmourLvl5Skill3 = new Skill("Blade Inferno", 70, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerAmourLvl5Skill4 = new Skill("Inferno Infinite", 70, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+
+    //Companion
+    Skill AllyEqLvl2Skill1 = new Skill("Skill1Level2", 50, 5, SKILL_TYPE.Normal, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill AllyEqLvl2Skill2 = new Skill("Skill2Level2", 50, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill AllyAmourLvl2Skill3 = new Skill("Skill3Level2", 50, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill AllyAmourLvl2Skill4 = new Skill("Skill4Level2", 50, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+
+    Skill AllyEqLvl3Skill1 = new Skill("Skill1Level3", 60, 5, SKILL_TYPE.Normal, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill AllyEqLvl3Skill2 = new Skill("Skill2Level3", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill AllyAmourLvl3Skill3 = new Skill("Skill3Level3", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill AllyAmourLvl3Skill4 = new Skill("Skill4Level3", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+
+    Skill AllyEqLvl4Skill1 = new Skill("Skill1Level4", 70, 5, SKILL_TYPE.Normal, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill AllyEqLvl4Skill2 = new Skill("Skill2Level4", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill AllyAmourLvl4Skill3 = new Skill("Skill3Level4", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill AllyAmourLvl4Skill4 = new Skill("Skill4Level4", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+
+    Skill AllyEqLvl5Skill1 = new Skill("Skill1Level5", 70, 5, SKILL_TYPE.Normal, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill AllyEqLvl5Skill2 = new Skill("Skill2Level5", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill AllyAmourLvl5Skill3 = new Skill("Skill3Level5", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill AllyAmourLvl5Skill4 = new Skill("Skill4Level5", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
 
     private void Start()
     {
@@ -77,16 +100,132 @@ public class Skills : MonoBehaviour
         companion = GameObject.Find("Companion");
     }
 
-    // Update is called once per frame
+    // Update is called once per frame  
     void Update()
     {
-        if (HubBehaviour.playerEqLvl == 2 && this.gameObject.tag == "Player")
+        if (Input.GetKeyDown(KeyCode.Q) && !keypressed)
+        {
+            keypressed = true;
+            HubBehaviour.playerEqLvl++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.W) && !keypressed)
+        {
+            keypressed = true;
+            HubBehaviour.playerArmourLvl++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && !keypressed)
+        {
+            keypressed = true;
+            HubBehaviour.allyEqLvl++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && !keypressed)
+        {
+            keypressed = true;
+            HubBehaviour.allyAmourLvl++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            keypressed = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            HubBehaviour.playerEqLvl = 1;
+            HubBehaviour.playerArmourLvl = 1;
+            HubBehaviour.allyEqLvl = 1;
+            HubBehaviour.allyAmourLvl = 1;
+        }
+
+        //Player Eq
+        if (HubBehaviour.playerEqLvl == 2)
         {
             player.GetComponent<Skills>().Skill_List[0] = PlayerEqLvl2Skill1;
             player.GetComponent<Skills>().Skill_List[1] = PlayerEqLvl2Skill2;
-            player.GetComponent<Skills>().Skill_List[2] = PlayerEqLvl2Skill3;
-            player.GetComponent<Skills>().Skill_List[3] = PlayerEqLvl2Skill4;
         }
-        
+        else if (HubBehaviour.playerEqLvl == 3)
+        {
+            player.GetComponent<Skills>().Skill_List[0] = PlayerEqLvl3Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = PlayerEqLvl3Skill2;
+        }
+        else if (HubBehaviour.playerEqLvl == 4)
+        {
+            player.GetComponent<Skills>().Skill_List[0] = PlayerEqLvl4Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = PlayerEqLvl4Skill2;
+        }
+        else if (HubBehaviour.playerEqLvl == 5)
+        {
+            player.GetComponent<Skills>().Skill_List[0] = PlayerEqLvl5Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = PlayerEqLvl5Skill2;
+        }
+
+        //Player Amour
+        if (HubBehaviour.playerArmourLvl == 2)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = PlayerAmourLvl2Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = PlayerAmourLvl2Skill4;
+        }
+        else if (HubBehaviour.playerArmourLvl == 3)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = PlayerAmourLvl3Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = PlayerAmourLvl3Skill4;
+        }
+        else if (HubBehaviour.playerArmourLvl == 4)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = PlayerAmourLvl4Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = PlayerAmourLvl4Skill4;
+        }
+        else if (HubBehaviour.playerArmourLvl == 5)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = PlayerAmourLvl5Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = PlayerAmourLvl5Skill4;
+        }
+
+        //Companion Eq
+        if (HubBehaviour.allyEqLvl == 2)
+        {
+            companion.GetComponent<Skills>().Skill_List[0] = AllyEqLvl2Skill1;
+            companion.GetComponent<Skills>().Skill_List[1] = AllyEqLvl2Skill2;
+        }
+        else if (HubBehaviour.allyEqLvl == 3)
+        {
+            companion.GetComponent<Skills>().Skill_List[0] = AllyEqLvl3Skill1;
+            companion.GetComponent<Skills>().Skill_List[1] = AllyEqLvl3Skill2;
+        }
+        else if (HubBehaviour.allyEqLvl == 4)
+        {
+            companion.GetComponent<Skills>().Skill_List[0] = AllyEqLvl4Skill1;
+            companion.GetComponent<Skills>().Skill_List[1] = AllyEqLvl4Skill2;
+        }
+        else if (HubBehaviour.allyEqLvl == 5)
+        {
+            companion.GetComponent<Skills>().Skill_List[0] = AllyEqLvl5Skill1;
+            companion.GetComponent<Skills>().Skill_List[1] = AllyEqLvl5Skill2;
+        }
+
+        //Companion Amour
+        if (HubBehaviour.allyAmourLvl == 2)
+        {
+            companion.GetComponent<Skills>().Skill_List[2] = AllyAmourLvl2Skill3;
+            companion.GetComponent<Skills>().Skill_List[3] = AllyAmourLvl2Skill4;
+        }
+        else if (HubBehaviour.allyAmourLvl == 3)
+        {
+            companion.GetComponent<Skills>().Skill_List[2] = AllyAmourLvl3Skill3;
+            companion.GetComponent<Skills>().Skill_List[3] = AllyAmourLvl3Skill4;
+        }
+        else if (HubBehaviour.allyAmourLvl == 4)
+        {
+            companion.GetComponent<Skills>().Skill_List[2] = AllyAmourLvl4Skill3;
+            companion.GetComponent<Skills>().Skill_List[3] = AllyAmourLvl4Skill4;
+        }
+        else if (HubBehaviour.allyAmourLvl == 5)
+        {
+            companion.GetComponent<Skills>().Skill_List[2] = AllyAmourLvl5Skill3;
+            companion.GetComponent<Skills>().Skill_List[3] = AllyAmourLvl5Skill4;
+        }
     }
 }
