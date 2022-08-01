@@ -49,7 +49,7 @@ public class Skills : MonoBehaviour
     public Skill[] Skill_List = new Skill[4];
     //private Skill[] Skills_Upgraded_List = new Skill[4];
 
-    GameObject player, companion;
+    public GameObject player, companion;
 
     Skill PlayerEqLvl2Skill1 = new Skill("Skill1Level2", 50, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
     Skill PlayerEqLvl3Skill1 = new Skill("Skill1Level3", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
@@ -57,19 +57,29 @@ public class Skills : MonoBehaviour
     Skill PlayerEqLvl5Skill1 = new Skill("Skill1Level5", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
 
     Skill PlayerEqLvl2Skill2 = new Skill("Skill2Level2", 50, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl3Skill2 = new Skill("Skill2Level2", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl4Skill2 = new Skill("Skill2Level2", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill PlayerEqLvl5Skill2 = new Skill("Skill2Level2", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl3Skill2 = new Skill("Skill2Level3", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl4Skill2 = new Skill("Skill2Level4", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl5Skill2 = new Skill("Skill2Level5", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+
+    Skill PlayerEqLvl2Skill3 = new Skill("Skill2Level2", 50, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl3Skill3 = new Skill("Skill2Level3", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl4Skill3 = new Skill("Skill2Level4", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl5Skill3 = new Skill("Skill2Level5", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+
+    Skill PlayerEqLvl2Skill4 = new Skill("Skill2Level2", 50, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl3Skill4 = new Skill("Skill2Level3", 60, 5, SKILL_TYPE.Fire, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl4Skill4 = new Skill("Skill2Level4", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill PlayerEqLvl5Skill4 = new Skill("Skill2Level5", 70, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
 
     // Update is called once per frame
     void Update()
     {
-        for (int i = 2; i <= 5; ++i)
+        if (HubBehaviour.playerEqLvl == 2)
         {
-            if (HubBehaviour.playerEqLvl == i)
-            {
-
-            }
+            player.GetComponent<Skills>().Skill_List[0] = PlayerEqLvl2Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = PlayerEqLvl2Skill2;
+            player.GetComponent<Skills>().Skill_List[2] = PlayerEqLvl2Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = PlayerEqLvl2Skill4;
         }
     }
 }
