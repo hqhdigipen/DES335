@@ -139,7 +139,7 @@ public class Skills : MonoBehaviour
     // Update is called once per frame  
     void Update()
     {
-        /*
+        
         if (Input.GetKeyDown(KeyCode.Q) && !keypressed)
         {
             keypressed = true;
@@ -176,7 +176,7 @@ public class Skills : MonoBehaviour
             HubBehaviour.allyEqLvl = 1;
             HubBehaviour.allyAmourLvl = 1;
         }
-        */
+        
 
         //Player Eq
         if (HubBehaviour.playerEqLvl == 1)

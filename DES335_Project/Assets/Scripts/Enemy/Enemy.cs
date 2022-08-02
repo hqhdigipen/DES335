@@ -210,7 +210,7 @@ public class Enemy : MonoBehaviour
             if (actionLogTextBox != null)
             {
                 actionLogTextBox.text = enemy.transform.name + " is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
-                 "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" +
+                 "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , " +
                  damage + " damage to Player";
             }
 
@@ -227,7 +227,7 @@ public class Enemy : MonoBehaviour
             companion.GetComponent<CharScript>().TakeDamage(damage, attack_element);
             
             Debug.Log(enemy.transform.name + " is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
-             "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" + 
+             "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , " + 
              damage + " damage to Companion");
 
             if (companion.GetComponent<CharScript>().currentHealth <= 0)
@@ -244,7 +244,7 @@ public class Enemy : MonoBehaviour
             if (actionLogTextBox != null)
             {
                 actionLogTextBox.text = enemy.transform.name + " is using " + enemy.GetComponent<Skills>().Skill_List[i].Name +
-             "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , -" +
+             "(" + attack_element + enemy.GetComponent<Skills>().Skill_List[i].MP + "/5) , " +
              damage + " damage to Companion";
             }
         }

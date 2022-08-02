@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class CombatManagerScript : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class CombatManagerScript : MonoBehaviour
     public GameObject combatMenu;
     public GameObject attackMenu;
     public GameObject itemMenu;
+    public GameObject runMenu;
     public Text attack1Text, attack2Text, attack3Text, attack4Text;
     private List<GameObject> attackBoxList;
 
@@ -82,6 +84,7 @@ public class CombatManagerScript : MonoBehaviour
                 combatMenu.SetActive(false);
                 pointer.SetActive(false);
                 friendlyPointer.SetActive(false);
+                runMenu.SetActive(false);
 
                 if (announcer != null)
                 {
@@ -106,6 +109,7 @@ public class CombatManagerScript : MonoBehaviour
                 combatMenu.SetActive(false);
                 pointer.SetActive(false);
                 friendlyPointer.SetActive(false);
+                runMenu.SetActive(false);
 
                 StartCoroutine(EnemyStart());
 
@@ -133,6 +137,7 @@ public class CombatManagerScript : MonoBehaviour
                 combatMenu.SetActive(true);
                 pointer.SetActive(false);
                 friendlyPointer.SetActive(false);
+                runMenu.SetActive(false);
                 CheckActiveChar();
                 break;
 
@@ -146,6 +151,10 @@ public class CombatManagerScript : MonoBehaviour
             case "Item":
                 itemMenu.SetActive(true);
                 combatMenu.SetActive(false);
+                break;
+
+            case "Run":
+                runMenu.SetActive(true);
                 break;
 
             case "Targeting":
@@ -284,6 +293,21 @@ public class CombatManagerScript : MonoBehaviour
     public void ItemButton()
     {
         currState = "Item";
+    }
+
+    public void RunButton()
+    {
+        currState = "Run";
+    }
+
+    public void YesButton()
+    {
+        SceneManager.LoadScene("Hub");
+    }
+
+    public void NoButton()
+    {
+        currState = "Main";
     }
 
     public void AttackSelected(int slotNumber)
