@@ -190,6 +190,7 @@ public class CombatManagerScript : MonoBehaviour
                         playerMoved = false;
                         companionMoved = false;
                         currState = "P_Announcer";
+                        StopAllCoroutines();
                     }
                 }
                 break;
@@ -592,14 +593,13 @@ public class CombatManagerScript : MonoBehaviour
                 enemy2Moved = true;
             }
 
-            if (enemy1Moved == true && enemy2Moved == true )
+            if (enemy1Moved == true && enemy2Moved == true && currState == "EnemyTurn")
             {
                 playerMoved = false;
                 companionMoved = false;
                 currState = "P_Announcer";
+                StopAllCoroutines();
             }
-
-            StopAllCoroutines();
         }
     }
 
