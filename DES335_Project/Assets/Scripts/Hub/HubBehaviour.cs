@@ -41,7 +41,7 @@ public class HubBehaviour : MonoBehaviour
     public static bool firetype = false, watertype = false, earthtype = false;
     public static string s1 = "", s2 = "", s3 = "", s4 = "";
     public static string p1 = "", p2 = "", p3 = "", p4 = "";
-
+    public static string c1 = "", c2 = "", c3 = "", c4 = ""; //companion skills
     public GameObject upgradeAllyPanel;
     public TextMeshProUGUI profileAllyLv, upgradeAlly, allyLv, upgradeAllyPrice, witchAllyLv;
 
@@ -78,6 +78,7 @@ public class HubBehaviour : MonoBehaviour
 
     public TextMeshProUGUI mWeaponAttk, mArmorDef, aWeaponAttk, aWeaponDef;
 
+    
     public void Start()
     {
         pgNum.text = 1.ToString();
@@ -367,12 +368,40 @@ public class HubBehaviour : MonoBehaviour
                     switchID = (int.Parse(pgNum.text) - 1).ToString();
                     foreach (TextMeshProUGUI weapon in cNyxWeapon)
                     {
-                        weapon.text = cEnemyWeapon[int.Parse(pgNum.text) - 1].text;
-                    }
+                        switch (Possession.EnemyElementType)
+                        {
+                            case 0:
+                                weapon.text = "Fire Orb";
+                                break;
+
+                            case 1:
+                                weapon.text = "Water Orb";
+                                break;
+
+                            case 2:
+                                weapon.text = "Earth Orb";
+                                break;
+
+                        }
+                }
                     foreach (TextMeshProUGUI armor in cNyxArmor)
                     {
-                        armor.text = cEnemyArmor[int.Parse(pgNum.text) - 1].text;
+                    //armor.text = cEnemyArmor[int.Parse(pgNum.text) - 1].text;
+                    switch (Possession.EnemyElementType)
+                    {
+                        case 0:
+                            armor.text = "Fire Cloak";
+                            break;
+
+                        case 1:
+                            armor.text = "Water Cloak";
+                            break;
+
+                        case 2:
+                            armor.text = "Earth Cloak";
+                            break;
                     }
+                }
 
                     foreach (TextMeshProUGUI skill in cNyxSkill1)
                     {
