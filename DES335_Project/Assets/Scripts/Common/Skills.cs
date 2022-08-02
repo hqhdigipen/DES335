@@ -447,11 +447,16 @@ public class Skills : MonoBehaviour
         HubBehaviour.p3 = player.GetComponent<Skills>().Skill_List[2].Name;
         HubBehaviour.p4 = player.GetComponent<Skills>().Skill_List[3].Name;
 
-        /*
+        HubBehaviour.c1 = companion.GetComponent<Skills>().Skill_List[0].Name;
+        HubBehaviour.c2 = companion.GetComponent<Skills>().Skill_List[1].Name;
+        HubBehaviour.c3 = companion.GetComponent<Skills>().Skill_List[2].Name;
+        HubBehaviour.c4 = companion.GetComponent<Skills>().Skill_List[3].Name;
+
+        
         Debug.Log("Player S1: " + HubBehaviour.p1);
         Debug.Log("Player S2: " + HubBehaviour.p2);
         Debug.Log("Player S3: " + HubBehaviour.p3);
         Debug.Log("Player S4: " + HubBehaviour.p4);
-        */
+        
     }
 }
