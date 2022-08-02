@@ -74,6 +74,7 @@ public class HubBehaviour : MonoBehaviour
 
     bool checkLvUpgradeBtn;
 
+    public TextMeshProUGUI mWeaponAttk, mArmorDef, aWeaponAttk, aWeaponDef;
 
     public void Start()
     {
@@ -629,7 +630,7 @@ public class HubBehaviour : MonoBehaviour
                 if (Inventory.inventorySF - int.Parse(allyWeaponPrice.text) >= 0) {
                     Inventory.inventorySF = Inventory.inventorySF - int.Parse(allyWeaponPrice.text);
                     soulForce = Inventory.inventorySF;
-                    allyWeaponPrice.text = (int.Parse(allyWeaponPrice.text) * 2).ToString();
+                    allyWeaponPrice.text = (int.Parse(allyWeaponPrice.text) * 1.3).ToString();
                     allyWeaponLv.text = (int.Parse(allyWeaponLv.text) + 1).ToString();
                 }
 
@@ -644,7 +645,7 @@ public class HubBehaviour : MonoBehaviour
                 {
                     Inventory.inventorySF = Inventory.inventorySF - int.Parse(allyArmorPrice.text);
                     soulForce = Inventory.inventorySF;
-                    allyArmorPrice.text = (int.Parse(allyArmorPrice.text) * 2).ToString();
+                    allyArmorPrice.text = (int.Parse(allyArmorPrice.text) * 1.3).ToString();
                     allyArmorLv.text = (int.Parse(allyArmorLv.text) + 1).ToString();
                 }
 
@@ -659,7 +660,7 @@ public class HubBehaviour : MonoBehaviour
                 {
                     Inventory.inventorySF = Inventory.inventorySF - int.Parse(mainArmorPrice.text);
                     soulForce = Inventory.inventorySF;
-                    mainArmorPrice.text = (int.Parse(mainArmorPrice.text) * 2).ToString();
+                    mainArmorPrice.text = (int.Parse(mainArmorPrice.text) * 1.3).ToString();
                     mainArmorLv.text = (int.Parse(mainArmorLv.text) + 1).ToString();
                 }
 
@@ -674,12 +675,12 @@ public class HubBehaviour : MonoBehaviour
                 {
                     Inventory.inventorySF = Inventory.inventorySF - int.Parse(upgradeMainPrice.text);
                     soulForce = Inventory.inventorySF;
-                    upgradeMainPrice.text = (int.Parse(upgradeMainPrice.text) * 2).ToString();
+                    upgradeMainPrice.text = (int.Parse(upgradeMainPrice.text) * 1.3).ToString();
                     upgradeMain.text = (int.Parse(upgradeMain.text) + 1).ToString();
                     mainCurrLv = int.Parse(upgradeMain.text);
                     foreach (TextMeshProUGUI hp in nyxHP)
                     {
-                        hp.text = (int.Parse(hp.text) + 10).ToString();
+                        hp.text = (int.Parse(hp.text) * 1.3).ToString();
                     }
                 }
             }
@@ -693,12 +694,12 @@ public class HubBehaviour : MonoBehaviour
                 {
                     Inventory.inventorySF = Inventory.inventorySF - int.Parse(upgradeAllyPrice.text);
                     soulForce = Inventory.inventorySF;
-                    upgradeAllyPrice.text = (int.Parse(upgradeAllyPrice.text) * 2).ToString();
+                    upgradeAllyPrice.text = (int.Parse(upgradeAllyPrice.text) * 1.3).ToString();
                     upgradeAlly.text = (int.Parse(upgradeAlly.text) + 1).ToString();
                     allyCurrLv = int.Parse(upgradeAlly.text);
 
                     foreach (TextMeshProUGUI hp in allyHP) { 
-                        hp.text = (int.Parse(hp.text) + 10).ToString();
+                        hp.text = (int.Parse(hp.text) * 1.3).ToString();
                     }
                 }
             }
@@ -713,7 +714,7 @@ public class HubBehaviour : MonoBehaviour
                 {
                     Inventory.inventorySF = Inventory.inventorySF - int.Parse(mainWeaponPrice.text);
                     soulForce = Inventory.inventorySF;
-                    mainWeaponPrice.text = (int.Parse(mainWeaponPrice.text) * 2).ToString();
+                    mainWeaponPrice.text = (int.Parse(mainWeaponPrice.text) * 1.3).ToString();
                     mainWeaponLv.text = (int.Parse(mainWeaponLv.text) + 1).ToString();
                 }
 
@@ -739,6 +740,10 @@ public class HubBehaviour : MonoBehaviour
             //error message
             Debug.Log("You don't have any elixir");
         }
+    }
+
+    public void WeaponUpgradeDetails() { 
+        
     }
 
     public void OpenBlacksmithCanvas()
