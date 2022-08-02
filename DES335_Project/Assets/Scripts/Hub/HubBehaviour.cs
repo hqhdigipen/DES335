@@ -78,6 +78,8 @@ public class HubBehaviour : MonoBehaviour
 
     public TextMeshProUGUI mWeaponAttk, mArmorDef, aWeaponAttk, aWeaponDef;
 
+    public GameObject notPossossYet;
+
     
     public void Start()
     {
@@ -128,6 +130,7 @@ public class HubBehaviour : MonoBehaviour
 
         if (s1 != "" && s2 != "" && s3 != "" && s4 != "")
         {
+            notPossossYet.SetActive(false);
             switch (Possession.EnemyElementType)
             {
                 case 0:
@@ -151,8 +154,9 @@ public class HubBehaviour : MonoBehaviour
             cEnemySkill3[int.Parse(pgNum.text) - 1].text = s3;
             cEnemySkill4[int.Parse(pgNum.text) - 1].text = s4;
         }
-        else { 
+        else {
             //shows player that they don't have possessed enemies
+            notPossossYet.SetActive(true);
         }
 
 
