@@ -38,6 +38,7 @@ public class HubBehaviour : MonoBehaviour
     public GameObject upgradeMainPanel;
     public TextMeshProUGUI profileMainLv, upgradeMain, mainLv, upgradeMainPrice, witchMainLv;
     public static int playerEqLvl = 1, playerArmourLvl = 1, allyEqLvl = 1, allyAmourLvl = 1;
+    public static bool firetype = false, watertype = false, earthtype = false; 
 
     public GameObject upgradeAllyPanel;
     public TextMeshProUGUI profileAllyLv, upgradeAlly, allyLv, upgradeAllyPrice, witchAllyLv;
@@ -846,5 +847,33 @@ public class HubBehaviour : MonoBehaviour
         mainWeaponPanel.SetActive(false);
         mainArmorPanel.SetActive(false);
     }
+
+    public void switchFireSkills()
+    {
+        firetype = true;
+        watertype = false;
+        earthtype = false;
+
+        Debug.Log("Ally is Fire type");
+    }
+
+    public void switchWaterSkills()
+    {
+        watertype = true;
+        earthtype = false;
+        firetype = false;
+
+        Debug.Log("Ally is Water type");
+    }
+
+    public void switchEarthSkills()
+    {
+        earthtype = true;
+        firetype = false;
+        watertype = false;
+
+        Debug.Log("Ally is Earth type");
+    }
+
 }
 
