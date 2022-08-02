@@ -110,25 +110,25 @@ public class Skills : MonoBehaviour
     Skill EarthAmourLvl1Skill3 = new Skill("Leaf Cut", 15, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
     Skill EarthAmourLvl1Skill4 = new Skill("Solar Attack", 20, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
 
-    Skill EarthEqLvl2Skill1 = new Skill("Earth Ring", 10, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill EarthEqLvl2Skill2 = new Skill("Vine Wrap", 15, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill EarthAmourLvl2Skill3 = new Skill("Leaf Slash", 20, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill EarthAmourLvl2Skill4 = new Skill("Solar Burst", 25, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthEqLvl2Skill1 = new Skill("Earth Ring", 10, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthEqLvl2Skill2 = new Skill("Vine Wrap", 15, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthAmourLvl2Skill3 = new Skill("Leaf Slash", 20, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthAmourLvl2Skill4 = new Skill("Solar Burst", 25, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
 
-    Skill EarthEqLvl3Skill1 = new Skill("Earth Twirl", 15, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill EarthEqLvl3Skill2 = new Skill("Vine Trap", 20, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill EarthAmourLvl3Skill3 = new Skill("Leaf Blade", 25, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill EarthAmourLvl3Skill4 = new Skill("Solar Blast", 30, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthEqLvl3Skill1 = new Skill("Earth Twirl", 15, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthEqLvl3Skill2 = new Skill("Vine Trap", 20, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthAmourLvl3Skill3 = new Skill("Leaf Blade", 25, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthAmourLvl3Skill4 = new Skill("Solar Blast", 30, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
 
-    Skill EarthEqLvl4Skill1 = new Skill("Earth Blizzard", 20, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill EarthEqLvl4Skill2 = new Skill("Vine Slash", 25, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill EarthAmourLvl4Skill3 = new Skill("Leaf Lash", 30, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill EarthAmourLvl4Skill4 = new Skill("Solar Beam", 35, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthEqLvl4Skill1 = new Skill("Earth Blizzard", 20, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthEqLvl4Skill2 = new Skill("Vine Slash", 25, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthAmourLvl4Skill3 = new Skill("Leaf Lash", 30, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthAmourLvl4Skill4 = new Skill("Solar Beam", 35, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
 
-    Skill EarthEqLvl5Skill1 = new Skill("Earthquake", 25, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill EarthEqLvl5Skill2 = new Skill("Vine Flare", 30, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill EarthAmourLvl5Skill3 = new Skill("Leaf Storm", 35, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
-    Skill EarthAmourLvl5Skill4 = new Skill("Solar Power", 40, 5, SKILL_TYPE.Water, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthEqLvl5Skill1 = new Skill("Earthquake", 25, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthEqLvl5Skill2 = new Skill("Vine Flare", 30, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthAmourLvl5Skill3 = new Skill("Leaf Storm", 35, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
+    Skill EarthAmourLvl5Skill4 = new Skill("Solar Power", 40, 5, SKILL_TYPE.Earth, DAMAGE_TYPE.SINGLE_TARGET);
 
     private void Start()
     {
@@ -179,8 +179,10 @@ public class Skills : MonoBehaviour
             HubBehaviour.allyAmourLvl = 1;
         }
 
+        /*
         Debug.Log("allyEqLvl: " + HubBehaviour.allyEqLvl + " allyAmourlvl: " + HubBehaviour.allyAmourLvl + 
             " Water: " + HubBehaviour.watertype + " Fire: " + HubBehaviour.firetype + " Earth: " + HubBehaviour.earthtype);
+        */
 
         //Player Eq
         if (HubBehaviour.playerEqLvl == 1)
