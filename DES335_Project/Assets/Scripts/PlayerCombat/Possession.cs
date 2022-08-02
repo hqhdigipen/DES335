@@ -200,5 +200,15 @@ public class Possession : MonoBehaviour
             PossessButtonPopUp();
         else
             return;
+
+        HubBehaviour.p1 = player.GetComponent<Skills>().Skill_List[0].Name;
+        HubBehaviour.p2 = player.GetComponent<Skills>().Skill_List[1].Name;
+        HubBehaviour.p3 = player.GetComponent<Skills>().Skill_List[2].Name;
+        HubBehaviour.p4 = player.GetComponent<Skills>().Skill_List[3].Name;
+
+        HubBehaviour.c1 = companion.GetComponent<Skills>().Skill_List[0].Name;
+        HubBehaviour.c2 = companion.GetComponent<Skills>().Skill_List[1].Name;
+        HubBehaviour.c3 = companion.GetComponent<Skills>().Skill_List[2].Name;
+        HubBehaviour.c4 = companion.GetComponent<Skills>().Skill_List[3].Name;
     }
 }

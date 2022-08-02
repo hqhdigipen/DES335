@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Skills : MonoBehaviour
 {
@@ -51,6 +52,9 @@ public class Skills : MonoBehaviour
     private static bool keypressed = false;
 
     public GameObject player, companion, enemy, enemy2;
+
+    Scene m_Scene;
+    string sceneName;
 
     //Fire Skills
     Skill FireEqLvl1Skill1 = new Skill("Bash", 5, 5, SKILL_TYPE.Normal, DAMAGE_TYPE.SINGLE_TARGET);
@@ -132,10 +136,16 @@ public class Skills : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Player");
-        companion = GameObject.Find("Companion");
-        enemy = GameObject.Find("Enemy");
-        enemy2 = GameObject.Find("Enemy (1)");
+        m_Scene = SceneManager.GetActiveScene();
+        sceneName = m_Scene.name;
+
+        if (sceneName != "Hub")
+        {
+            player = GameObject.Find("Player");
+            companion = GameObject.Find("Companion");
+            enemy = GameObject.Find("Enemy");
+            enemy2 = GameObject.Find("Enemy (1)");
+        }
     }
 
     // Update is called once per frame  
@@ -398,48 +408,54 @@ public class Skills : MonoBehaviour
             companion.GetComponent<Skills>().Skill_List[3] = FireAmourLvl5Skill4;
         }
 
-        if (enemy.GetComponent<CharScript>().elementType == CharScript.ElementType.Earth)
+        if (enemy != null)
         {
-            enemy.GetComponent<Skills>().Skill_List[0] = EarthEqLvl1Skill1;
-            enemy.GetComponent<Skills>().Skill_List[1] = EarthEqLvl1Skill2;
-            enemy.GetComponent<Skills>().Skill_List[2] = EarthAmourLvl1Skill3;
-            enemy.GetComponent<Skills>().Skill_List[3] = EarthAmourLvl1Skill4;
-        }
-        else if (enemy.GetComponent<CharScript>().elementType == CharScript.ElementType.Fire)
-        {
-            enemy.GetComponent<Skills>().Skill_List[0] = FireEqLvl1Skill1;
-            enemy.GetComponent<Skills>().Skill_List[1] = FireEqLvl1Skill2;
-            enemy.GetComponent<Skills>().Skill_List[2] = FireAmourLvl1Skill3;
-            enemy.GetComponent<Skills>().Skill_List[3] = FireAmourLvl1Skill4;
-        }
-        else if (enemy.GetComponent<CharScript>().elementType == CharScript.ElementType.Water)
-        {
-            enemy.GetComponent<Skills>().Skill_List[0] = WaterEqLvl1Skill1;
-            enemy.GetComponent<Skills>().Skill_List[1] = WaterEqLvl1Skill2;
-            enemy.GetComponent<Skills>().Skill_List[2] = WaterAmourLvl1Skill3;
-            enemy.GetComponent<Skills>().Skill_List[3] = WaterAmourLvl1Skill4;
+            if (enemy.GetComponent<CharScript>().elementType == CharScript.ElementType.Earth)
+            {
+                enemy.GetComponent<Skills>().Skill_List[0] = EarthEqLvl1Skill1;
+                enemy.GetComponent<Skills>().Skill_List[1] = EarthEqLvl1Skill2;
+                enemy.GetComponent<Skills>().Skill_List[2] = EarthAmourLvl1Skill3;
+                enemy.GetComponent<Skills>().Skill_List[3] = EarthAmourLvl1Skill4;
+            }
+            else if (enemy.GetComponent<CharScript>().elementType == CharScript.ElementType.Fire)
+            {
+                enemy.GetComponent<Skills>().Skill_List[0] = FireEqLvl1Skill1;
+                enemy.GetComponent<Skills>().Skill_List[1] = FireEqLvl1Skill2;
+                enemy.GetComponent<Skills>().Skill_List[2] = FireAmourLvl1Skill3;
+                enemy.GetComponent<Skills>().Skill_List[3] = FireAmourLvl1Skill4;
+            }
+            else if (enemy.GetComponent<CharScript>().elementType == CharScript.ElementType.Water)
+            {
+                enemy.GetComponent<Skills>().Skill_List[0] = WaterEqLvl1Skill1;
+                enemy.GetComponent<Skills>().Skill_List[1] = WaterEqLvl1Skill2;
+                enemy.GetComponent<Skills>().Skill_List[2] = WaterAmourLvl1Skill3;
+                enemy.GetComponent<Skills>().Skill_List[3] = WaterAmourLvl1Skill4;
+            }
         }
 
-        if (enemy2.GetComponent<CharScript>().elementType == CharScript.ElementType.Earth)
+        if (enemy2 != null)
         {
-            enemy2.GetComponent<Skills>().Skill_List[0] = EarthEqLvl1Skill1;
-            enemy2.GetComponent<Skills>().Skill_List[1] = EarthEqLvl1Skill2;
-            enemy2.GetComponent<Skills>().Skill_List[2] = EarthAmourLvl1Skill3;
-            enemy2.GetComponent<Skills>().Skill_List[3] = EarthAmourLvl1Skill4;
-        }
-        else if (enemy2.GetComponent<CharScript>().elementType == CharScript.ElementType.Fire)
-        {
-            enemy2.GetComponent<Skills>().Skill_List[0] = FireEqLvl1Skill1;
-            enemy2.GetComponent<Skills>().Skill_List[1] = FireEqLvl1Skill2;
-            enemy2.GetComponent<Skills>().Skill_List[2] = FireAmourLvl1Skill3;
-            enemy2.GetComponent<Skills>().Skill_List[3] = FireAmourLvl1Skill4;
-        }
-        else if (enemy2.GetComponent<CharScript>().elementType == CharScript.ElementType.Water)
-        {
-            enemy2.GetComponent<Skills>().Skill_List[0] = WaterEqLvl1Skill1;
-            enemy2.GetComponent<Skills>().Skill_List[1] = WaterEqLvl1Skill2;
-            enemy2.GetComponent<Skills>().Skill_List[2] = WaterAmourLvl1Skill3;
-            enemy2.GetComponent<Skills>().Skill_List[3] = WaterAmourLvl1Skill4;
+            if (enemy2.GetComponent<CharScript>().elementType == CharScript.ElementType.Earth)
+            {
+                enemy2.GetComponent<Skills>().Skill_List[0] = EarthEqLvl1Skill1;
+                enemy2.GetComponent<Skills>().Skill_List[1] = EarthEqLvl1Skill2;
+                enemy2.GetComponent<Skills>().Skill_List[2] = EarthAmourLvl1Skill3;
+                enemy2.GetComponent<Skills>().Skill_List[3] = EarthAmourLvl1Skill4;
+            }
+            else if (enemy2.GetComponent<CharScript>().elementType == CharScript.ElementType.Fire)
+            {
+                enemy2.GetComponent<Skills>().Skill_List[0] = FireEqLvl1Skill1;
+                enemy2.GetComponent<Skills>().Skill_List[1] = FireEqLvl1Skill2;
+                enemy2.GetComponent<Skills>().Skill_List[2] = FireAmourLvl1Skill3;
+                enemy2.GetComponent<Skills>().Skill_List[3] = FireAmourLvl1Skill4;
+            }
+            else if (enemy2.GetComponent<CharScript>().elementType == CharScript.ElementType.Water)
+            {
+                enemy2.GetComponent<Skills>().Skill_List[0] = WaterEqLvl1Skill1;
+                enemy2.GetComponent<Skills>().Skill_List[1] = WaterEqLvl1Skill2;
+                enemy2.GetComponent<Skills>().Skill_List[2] = WaterAmourLvl1Skill3;
+                enemy2.GetComponent<Skills>().Skill_List[3] = WaterAmourLvl1Skill4;
+            }
         }
 
         HubBehaviour.p1 = player.GetComponent<Skills>().Skill_List[0].Name;
@@ -457,6 +473,11 @@ public class Skills : MonoBehaviour
         Debug.Log("Player S2: " + HubBehaviour.p2);
         Debug.Log("Player S3: " + HubBehaviour.p3);
         Debug.Log("Player S4: " + HubBehaviour.p4);
-        
+
+        Debug.Log("Ally S1: " + HubBehaviour.c1);
+        Debug.Log("Ally S2: " + HubBehaviour.c2);
+        Debug.Log("Ally S3: " + HubBehaviour.c3);
+        Debug.Log("Ally S4: " + HubBehaviour.c4);
+
     }
 }

@@ -487,11 +487,19 @@ public class CombatManagerScript : MonoBehaviour
 
             if (activeItem == 0)
             {
-                actionLogTextBox.text = activeCharacter + " is using Herb on " + character.transform.name;
+                if (Inventory.inventHerb > 0)
+                {
+                    actionLogTextBox.text = activeCharacter + " is using Herb on " + character.transform.name;
+                    --Inventory.inventHerb; 
+                }
             }
             else
             {
-                actionLogTextBox.text = activeCharacter + " is using Elixir on " + character.transform.name;
+                if (Inventory.inventElixir > 0)
+                {
+                    actionLogTextBox.text = activeCharacter + " is using Elixir on " + character.transform.name;
+                    --Inventory.inventElixir;
+                }
             }
 
             MarkAction(activeCharacter);

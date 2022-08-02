@@ -38,7 +38,7 @@ public class HubBehaviour : MonoBehaviour
     public GameObject upgradeMainPanel;
     public TextMeshProUGUI profileMainLv, upgradeMain, mainLv, upgradeMainPrice, witchMainLv;
     public static int playerEqLvl = 1, playerArmourLvl = 1, allyEqLvl = 1, allyAmourLvl = 1;
-    public static bool firetype = false, watertype = false, earthtype = false;
+    public static bool firetype = false, watertype = true, earthtype = false;
     public static string s1 = "", s2 = "", s3 = "", s4 = "";
     public static string p1 = "", p2 = "", p3 = "", p4 = "";
     public static string c1 = "", c2 = "", c3 = "", c4 = ""; //companion skills

@@ -27775,6 +27775,75 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7749385555322219607, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
   m_PrefabInstance: {fileID: 1081586025}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1231268457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1231268459}
+  - component: {fileID: 1231268458}
+  m_Layer: 0
+  m_Name: TempP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1231268458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231268457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f908d8e4383f364bb52075549fe7fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Character_Element: 0
+  Skill_List:
+  - Name: 
+    Damage: 0
+    MP: 0
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  - Name: 
+    Damage: 0
+    MP: 0
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  - Name: 
+    Damage: 0
+    MP: 0
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  - Name: 
+    Damage: 0
+    MP: 0
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  player: {fileID: 1231268457}
+  companion: {fileID: 1943477928}
+  enemy: {fileID: 0}
+  enemy2: {fileID: 0}
+--- !u!4 &1231268459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231268457}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 257.0003, y: 238.03854, z: -24.579908}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1232887832 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3931864238885991244, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
@@ -45072,6 +45141,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942798566}
   m_CullTransparentMesh: 1
+--- !u!1 &1943477928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1943477930}
+  - component: {fileID: 1943477929}
+  m_Layer: 0
+  m_Name: TempC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1943477929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943477928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f908d8e4383f364bb52075549fe7fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Character_Element: 0
+  Skill_List:
+  - Name: 
+    Damage: 0
+    MP: 0
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  - Name: 
+    Damage: 0
+    MP: 0
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  - Name: 
+    Damage: 0
+    MP: 0
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  - Name: 
+    Damage: 0
+    MP: 0
+    Skill_Element_Type: 0
+    Skill_Damage_Type: 0
+  player: {fileID: 1231268457}
+  companion: {fileID: 1943477928}
+  enemy: {fileID: 0}
+  enemy2: {fileID: 0}
+--- !u!4 &1943477930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943477928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 257.0003, y: 238.03854, z: -24.579908}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1944059779
 GameObject:
   m_ObjectHideFlags: 0
