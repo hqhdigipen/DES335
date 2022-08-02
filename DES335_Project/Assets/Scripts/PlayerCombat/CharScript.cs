@@ -8,6 +8,7 @@ public class CharScript : MonoBehaviour
     public int maxHealth = 100;
     public int setCurrentHealth;
     public int currentHealth;
+    int tempCal;
 
     float typeAdvantageMod = 1.25f;
     float typeWeaknessMod = 0.75f;
@@ -42,7 +43,7 @@ public class CharScript : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage, string atkElement)
+    public int TakeDamage(int damage, string atkElement)
     {
         switch (elementType.ToString())
         {
@@ -51,15 +52,19 @@ public class CharScript : MonoBehaviour
                 {
                     case "Fire":
                         currentHealth -= damage;
+                        tempCal = damage;
                         break;
                     case "Water":
                         currentHealth -= Mathf.FloorToInt(damage * typeAdvantageMod);
+                        tempCal = Mathf.FloorToInt(damage * typeAdvantageMod);
                         break;
                     case "Earth":
                         currentHealth -= Mathf.FloorToInt(damage * typeWeaknessMod);
+                        tempCal = Mathf.FloorToInt(damage * typeWeaknessMod);
                         break;
                     case "Normal":
                         currentHealth -= damage;
+                        tempCal = damage;
                         break;
                 }
                 break;
@@ -68,15 +73,19 @@ public class CharScript : MonoBehaviour
                 {
                     case "Fire":
                         currentHealth -= Mathf.FloorToInt(damage * typeWeaknessMod);
+                        tempCal = Mathf.FloorToInt(damage * typeWeaknessMod);
                         break;
                     case "Water":
                         currentHealth -= damage;
+                        tempCal = damage;
                         break;
                     case "Earth":
                         currentHealth -= Mathf.FloorToInt(damage * typeAdvantageMod);
+                        tempCal = Mathf.FloorToInt(damage * typeAdvantageMod);
                         break;
                     case "Normal":
                         currentHealth -= damage;
+                        tempCal = damage;
                         break;
                 }
                 break;
@@ -85,15 +94,19 @@ public class CharScript : MonoBehaviour
                 {
                     case "Fire":
                         currentHealth -= Mathf.FloorToInt(damage * typeAdvantageMod);
+                        tempCal = Mathf.FloorToInt(damage * typeAdvantageMod);
                         break;
                     case "Water":
                         currentHealth -= Mathf.FloorToInt(damage * typeWeaknessMod);
+                        tempCal = Mathf.FloorToInt(damage * typeWeaknessMod);
                         break;
                     case "Earth":
                         currentHealth -= damage;
+                        tempCal = damage;
                         break;
                     case "Normal":
                         currentHealth -= damage;
+                        tempCal = damage;
                         break;
                 }
                 break;
@@ -102,15 +115,19 @@ public class CharScript : MonoBehaviour
                 {
                     case "Fire":
                         currentHealth -= damage;
+                        tempCal = damage;
                         break;
                     case "Water":
                         currentHealth -= damage;
+                        tempCal = damage;
                         break;
                     case "Earth":
                         currentHealth -= damage;
+                        tempCal = damage;
                         break;
                     case "Normal":
                         currentHealth -= damage;
+                        tempCal = damage;
                         break;
                 }
                 break;
@@ -122,6 +139,7 @@ public class CharScript : MonoBehaviour
         {
             StartCoroutine(Blink(0.5f));
         }
+        return tempCal;
     }
 
     public  void SetHPinUI()
