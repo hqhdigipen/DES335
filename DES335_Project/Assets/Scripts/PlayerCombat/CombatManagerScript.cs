@@ -403,8 +403,22 @@ public class CombatManagerScript : MonoBehaviour
                  "(" + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Skill_Element_Type.ToString() + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].MP + "/5) , -" +
                  playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage + " damage to " + enemy.transform.name;
                     */
-                    actionLogTextBox.text = activeCharacter + " used " + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Name + ". Dealt " +
-                    tempDmgNo.ToString() + " damage to " + enemy.transform.name + ".";
+
+                    if (tempDmgNo > playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage)
+                    {
+                        actionLogTextBox.text = activeCharacter + " used " + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Name + ". It's super effective, Dealt " +
+                        tempDmgNo.ToString() + " damage to " + enemy.transform.name + ".";
+                    }
+                    else if (tempDmgNo < playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage)
+                    {
+                        actionLogTextBox.text = activeCharacter + " used " + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Name + ". It's not effective, Dealt " +
+                        tempDmgNo.ToString() + " damage to " + enemy.transform.name + ".";
+                    }
+                    else
+                    {
+                        actionLogTextBox.text = activeCharacter + " used " + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Name + ". Dealt " +
+                       tempDmgNo.ToString() + " damage to " + enemy.transform.name + ".";
+                    }
                     break;
                 case "Companion":
                     switch (activeAttack)
@@ -431,8 +445,21 @@ public class CombatManagerScript : MonoBehaviour
                  "(" + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Skill_Element_Type.ToString() + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].MP + "/5) , -" +
                  companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage + " damage to " + enemy.transform.name;
                     */
-                    actionLogTextBox.text = activeCharacter + " used " + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Name + ". Dealt " +
-                   tempDmgNo.ToString() + " damage to " + enemy.transform.name + ".";
+                    if (tempDmgNo > companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage)
+                    {
+                        actionLogTextBox.text = activeCharacter + " used " + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Name + ". It's super effective, Dealt " +
+                        tempDmgNo.ToString() + " damage to " + enemy.transform.name + ".";
+                    }
+                    else if (tempDmgNo < companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage)
+                    {
+                        actionLogTextBox.text = activeCharacter + " used " + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Name + ". It's not effective, Dealt " +
+                        tempDmgNo.ToString() + " damage to " + enemy.transform.name + ".";
+                    }
+                    else
+                    {
+                        actionLogTextBox.text = activeCharacter + " used " + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Name + ". Dealt " +
+                       tempDmgNo.ToString() + " damage to " + enemy.transform.name + ".";
+                    }
                     break;
             }
 
@@ -565,7 +592,7 @@ public class CombatManagerScript : MonoBehaviour
                 enemy2Moved = true;
             }
 
-            if (enemy1Moved == true && enemy2Moved == true)
+            if (enemy1Moved == true && enemy2Moved == true )
             {
                 playerMoved = false;
                 companionMoved = false;
