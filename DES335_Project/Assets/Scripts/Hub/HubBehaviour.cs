@@ -102,12 +102,11 @@ public class HubBehaviour : MonoBehaviour
         sliderScript.GetComponent<SliderBehaviour>();
 
         sellSliderScript.GetComponent<SellSliderBehaviour>();
-
-
     }
 
     public void Update()
     {
+
         allyLv.text = allyCurrLv.ToString();
         profileAllyLv.text = allyCurrLv.ToString();
         witchAllyLv.text = allyCurrLv.ToString();

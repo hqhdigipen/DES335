@@ -52,6 +52,10 @@ public class Possession : MonoBehaviour
     int numOfEnemy = 2;
     static int target_remaining = 2;
 
+    public static List <string> eName, eSkill;
+    public static List<int> eDmg, eMp;
+    public static List<string> eElementalType, eDmgType;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,6 +94,14 @@ public class Possession : MonoBehaviour
 
                 enemy2.GetComponent<CharScript>().currentHealth = 0;
             }
+
+            eName.Add(Possessed_Skill_List[i].Name.ToString());
+            eDmg.Add(Possessed_Skill_List[i].Damage);
+            eMp.Add(Possessed_Skill_List[i].MP);
+            eElementalType.Add(Possessed_Skill_List[i].Skill_Element_Type.ToString());
+            eDmgType.Add(Possessed_Skill_List[i].Skill_Damage_Type.ToString());
+
+            Debug.Log("Name: " + eName + " Dmg:"+eDmg+" MP:" +eMp+" Element Type: " +eElementalType+" DMG Type:" +eDmgType);
 
             player.GetComponent<Skills>().Skill_List[i].Name = Possessed_Skill_List[i].Name;
             player.GetComponent<Skills>().Skill_List[i].Damage = Possessed_Skill_List[i].Damage;
