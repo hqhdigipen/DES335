@@ -153,7 +153,10 @@ public class GameState : MonoBehaviour
         //g_state = (int)GameState.state.HUB;
 
         //SceneManager.LoadScene("Hub");
-        SceneManager.LoadScene("Confirmation Page");
+        if(route != (int)Route.Route_4)
+             SceneManager.LoadScene("Confirmation Page");
+        else
+             SceneManager.LoadScene("Hub");
     }
 
     public void YesButtonPressed()

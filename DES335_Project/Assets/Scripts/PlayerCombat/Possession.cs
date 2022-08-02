@@ -95,6 +95,7 @@ public class Possession : MonoBehaviour
                 enemy2.GetComponent<CharScript>().currentHealth = 0;
             }
 
+            /*
             eName.Add(Possessed_Skill_List[i].Name.ToString());
             eDmg.Add(Possessed_Skill_List[i].Damage);
             eMp.Add(Possessed_Skill_List[i].MP);
@@ -102,6 +103,7 @@ public class Possession : MonoBehaviour
             eDmgType.Add(Possessed_Skill_List[i].Skill_Damage_Type.ToString());
 
             Debug.Log("Name: " + eName + " Dmg:"+eDmg+" MP:" +eMp+" Element Type: " +eElementalType+" DMG Type:" +eDmgType);
+            */
 
             player.GetComponent<Skills>().Skill_List[i].Name = Possessed_Skill_List[i].Name;
             player.GetComponent<Skills>().Skill_List[i].Damage = Possessed_Skill_List[i].Damage;
@@ -109,6 +111,15 @@ public class Possession : MonoBehaviour
             player.GetComponent<Skills>().Skill_List[i].Skill_Element_Type = (Skills.SKILL_TYPE)Possessed_Skill_List[i].Skill_Element_Type;
             player.GetComponent<Skills>().Skill_List[i].Skill_Damage_Type = (Skills.DAMAGE_TYPE)Possessed_Skill_List[i].Skill_Damage_Type;
 
+            HubBehaviour.s1 = Possessed_Skill_List[0].Name;
+            HubBehaviour.s2 = Possessed_Skill_List[1].Name;
+            HubBehaviour.s3 = Possessed_Skill_List[2].Name;
+            HubBehaviour.s4 = Possessed_Skill_List[3].Name;
+
+            Debug.Log("S1: " + HubBehaviour.s1);
+            Debug.Log("S2: " + HubBehaviour.s2);
+            Debug.Log("S3: " + HubBehaviour.s3);
+            Debug.Log("S4: " + HubBehaviour.s4);
             /*
            Debug.Log("PS: " + player.GetComponent<Skills>().Skill_List[i].Name
            + " Damage: " + player.GetComponent<Skills>().Skill_List[i].Damage

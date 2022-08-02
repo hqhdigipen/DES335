@@ -38,7 +38,8 @@ public class HubBehaviour : MonoBehaviour
     public GameObject upgradeMainPanel;
     public TextMeshProUGUI profileMainLv, upgradeMain, mainLv, upgradeMainPrice, witchMainLv;
     public static int playerEqLvl = 1, playerArmourLvl = 1, allyEqLvl = 1, allyAmourLvl = 1;
-    public static bool firetype = false, watertype = false, earthtype = false; 
+    public static bool firetype = false, watertype = false, earthtype = false;
+    public static string s1 = "", s2 = "", s3 = "", s4 = "";
 
     public GameObject upgradeAllyPanel;
     public TextMeshProUGUI profileAllyLv, upgradeAlly, allyLv, upgradeAllyPrice, witchAllyLv;
@@ -374,25 +375,29 @@ public class HubBehaviour : MonoBehaviour
 
                     foreach (TextMeshProUGUI skill in cNyxSkill1)
                     {
-                        skill.text = cEnemySkill1[int.Parse(pgNum.text) - 1].text;
-                    }
+                    //skill.text = cEnemySkill1[int.Parse(pgNum.text) - 1].text;
+                    skill.text = s1;
+                     }
 
                     foreach (TextMeshProUGUI skill in cNyxSkill2)
                     {
-                        skill.text = cEnemySkill2[int.Parse(pgNum.text) - 1].text;
+                    // skill.text = cEnemySkill2[int.Parse(pgNum.text) - 1].text;
+                    skill.text = s2;
                     }
 
-                    foreach (TextMeshProUGUI skill in cNyxSkill3)
-                    {
-                        skill.text = cEnemySkill3[int.Parse(pgNum.text) - 1].text;
-                    }
+                     foreach (TextMeshProUGUI skill in cNyxSkill3)
+                     {
+                    // skill.text = cEnemySkill3[int.Parse(pgNum.text) - 1].text;
+                    skill.text = s3;
+                     }
 
                     foreach (TextMeshProUGUI skill in cNyxSkill4)
                     {
-                        skill.text = cEnemySkill4[int.Parse(pgNum.text) - 1].text;
-                    }
+                    // skill.text = cEnemySkill4[int.Parse(pgNum.text) - 1].text;
+                    skill.text = s4;
+                }
 
-                    alreadySwitchMsg.SetActive(true);
+                alreadySwitchMsg.SetActive(true);
 
                 }
                 /*else {
