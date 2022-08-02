@@ -29,6 +29,7 @@ public class CombatManagerScript : MonoBehaviour
     private int activeAttack;
     private int activeItem;
     private Text actionLogTextBox;
+    int tempDmgNo;
 
     bool shakeEnemy;
     GameObject targetEnemy;
@@ -357,16 +358,20 @@ public class CombatManagerScript : MonoBehaviour
                     switch(activeAttack)
                     {
                         case 0:
-                            enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[0].Damage, playerEntity.GetComponent<Skills>().Skill_List[0].Skill_Element_Type.ToString()) ;
+                            enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[0].Damage, playerEntity.GetComponent<Skills>().Skill_List[0].Skill_Element_Type.ToString());
+                            tempDmgNo = enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[0].Damage, playerEntity.GetComponent<Skills>().Skill_List[0].Skill_Element_Type.ToString());
                             break;
                         case 1:
                             enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[1].Damage, playerEntity.GetComponent<Skills>().Skill_List[1].Skill_Element_Type.ToString());
+                            tempDmgNo = enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[1].Damage, playerEntity.GetComponent<Skills>().Skill_List[1].Skill_Element_Type.ToString());
                             break;
                         case 2:
                             enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[2].Damage, playerEntity.GetComponent<Skills>().Skill_List[2].Skill_Element_Type.ToString());
+                            tempDmgNo = enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[2].Damage, playerEntity.GetComponent<Skills>().Skill_List[2].Skill_Element_Type.ToString());
                             break;
                         case 3:
                             enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[3].Damage, playerEntity.GetComponent<Skills>().Skill_List[3].Skill_Element_Type.ToString());
+                            tempDmgNo = enemy.GetComponent<CharScript>().TakeDamage(playerEntity.GetComponent<Skills>().Skill_List[3].Damage, playerEntity.GetComponent<Skills>().Skill_List[3].Skill_Element_Type.ToString());
                             break;
                     }
                     /*
@@ -374,23 +379,27 @@ public class CombatManagerScript : MonoBehaviour
                  "(" + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Skill_Element_Type.ToString() + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].MP + "/5) , -" +
                  playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage + " damage to " + enemy.transform.name;
                     */
-                    actionLogTextBox.text = activeCharacter + " used " + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Name + ". Dealt " +
-                    companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage + " damage to " + enemy.transform.name + ".";
+                    actionLogTextBox.text = activeCharacter + " used " + playerEntity.GetComponent<Skills>().Skill_List[activeAttack].Name + ". Dealt " +
+                    tempDmgNo.ToString() + " damage to " + enemy.transform.name + ".";
                     break;
                 case "Companion":
                     switch (activeAttack)
                     {
                         case 0:
                             enemy.GetComponent<CharScript>().TakeDamage(companionEntity.GetComponent<Skills>().Skill_List[0].Damage, companionEntity.GetComponent<Skills>().Skill_List[0].Skill_Element_Type.ToString());
+                            tempDmgNo = enemy.GetComponent<CharScript>().TakeDamage(companionEntity.GetComponent<Skills>().Skill_List[0].Damage, companionEntity.GetComponent<Skills>().Skill_List[0].Skill_Element_Type.ToString());
                             break;
                         case 1:
                             enemy.GetComponent<CharScript>().TakeDamage(companionEntity.GetComponent<Skills>().Skill_List[1].Damage, companionEntity.GetComponent<Skills>().Skill_List[1].Skill_Element_Type.ToString());
+                            tempDmgNo = enemy.GetComponent<CharScript>().TakeDamage(companionEntity.GetComponent<Skills>().Skill_List[1].Damage, companionEntity.GetComponent<Skills>().Skill_List[1].Skill_Element_Type.ToString());
                             break;
                         case 2:
                             enemy.GetComponent<CharScript>().TakeDamage(companionEntity.GetComponent<Skills>().Skill_List[2].Damage, companionEntity.GetComponent<Skills>().Skill_List[2].Skill_Element_Type.ToString());
+                            tempDmgNo = enemy.GetComponent<CharScript>().TakeDamage(companionEntity.GetComponent<Skills>().Skill_List[2].Damage, companionEntity.GetComponent<Skills>().Skill_List[2].Skill_Element_Type.ToString());
                             break;
                         case 3:
                             enemy.GetComponent<CharScript>().TakeDamage(companionEntity.GetComponent<Skills>().Skill_List[3].Damage, companionEntity.GetComponent<Skills>().Skill_List[3].Skill_Element_Type.ToString());
+                            tempDmgNo = enemy.GetComponent<CharScript>().TakeDamage(companionEntity.GetComponent<Skills>().Skill_List[3].Damage, companionEntity.GetComponent<Skills>().Skill_List[3].Skill_Element_Type.ToString());
                             break;
                     }
                     /*
@@ -399,7 +408,7 @@ public class CombatManagerScript : MonoBehaviour
                  companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage + " damage to " + enemy.transform.name;
                     */
                     actionLogTextBox.text = activeCharacter + " used " + companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Name + ". Dealt " +
-                   companionEntity.GetComponent<Skills>().Skill_List[activeAttack].Damage + " damage to " + enemy.transform.name + ".";
+                   tempDmgNo.ToString() + " damage to " + enemy.transform.name + ".";
                     break;
             }
 
