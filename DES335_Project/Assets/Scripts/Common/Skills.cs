@@ -436,5 +436,15 @@ public class Skills : MonoBehaviour
             enemy2.GetComponent<Skills>().Skill_List[2] = WaterAmourLvl1Skill3;
             enemy2.GetComponent<Skills>().Skill_List[3] = WaterAmourLvl1Skill4;
         }
+
+        HubBehaviour.p1 = player.GetComponent<Skills>().Skill_List[0].Name;
+        HubBehaviour.p2 = player.GetComponent<Skills>().Skill_List[1].Name;
+        HubBehaviour.p3 = player.GetComponent<Skills>().Skill_List[2].Name;
+        HubBehaviour.p4 = player.GetComponent<Skills>().Skill_List[3].Name;
+
+        Debug.Log("Player S1: " + HubBehaviour.p1);
+        Debug.Log("Player S2: " + HubBehaviour.p2);
+        Debug.Log("Player S3: " + HubBehaviour.p3);
+        Debug.Log("Player S4: " + HubBehaviour.p4);
     }
 }

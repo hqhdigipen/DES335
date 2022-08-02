@@ -40,6 +40,7 @@ public class HubBehaviour : MonoBehaviour
     public static int playerEqLvl = 1, playerArmourLvl = 1, allyEqLvl = 1, allyAmourLvl = 1;
     public static bool firetype = false, watertype = false, earthtype = false;
     public static string s1 = "", s2 = "", s3 = "", s4 = "";
+    public static string p1 = "", p2 = "", p3 = "", p4 = "";
 
     public GameObject upgradeAllyPanel;
     public TextMeshProUGUI profileAllyLv, upgradeAlly, allyLv, upgradeAllyPrice, witchAllyLv;
