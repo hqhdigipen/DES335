@@ -126,6 +126,36 @@ public class HubBehaviour : MonoBehaviour
         upSF.text = soulForce.ToString();
         wSF.text = soulForce.ToString();
 
+        if (s1 != "" && s2 != "" && s3 != "" && s4 != "")
+        {
+            switch (Possession.EnemyElementType)
+            {
+                case 0:
+                    cEnemyWeapon[int.Parse(pgNum.text) - 1].text = "Fire Orb";
+                    cEnemyArmor[int.Parse(pgNum.text) - 1].text = "Fire Cloak";
+                    break;
+
+                case 1:
+                    cEnemyWeapon[int.Parse(pgNum.text) - 1].text = "Water Orb";
+                    cEnemyArmor[int.Parse(pgNum.text) - 1].text = "Water Cloak";
+                    break;
+
+                case 2:
+                    cEnemyWeapon[int.Parse(pgNum.text) - 1].text = "Earth Orb";
+                    cEnemyArmor[int.Parse(pgNum.text) - 1].text = "Earth Cloak";
+                    break;
+            }
+
+            cEnemySkill1[int.Parse(pgNum.text) - 1].text = s1;
+            cEnemySkill2[int.Parse(pgNum.text) - 1].text = s2;
+            cEnemySkill3[int.Parse(pgNum.text) - 1].text = s3;
+            cEnemySkill4[int.Parse(pgNum.text) - 1].text = s4;
+        }
+        else { 
+            //shows player that they don't have possessed enemies
+        }
+
+
         switch (itemName.text) {
             case "Herb":
                 if (sliderScript.totalItem <= 1) {
@@ -361,8 +391,9 @@ public class HubBehaviour : MonoBehaviour
 
     public void SwitchBtn() {
 
-            if (enemyList[int.Parse(pgNum.text) - 1].activeSelf)
-            {
+        if (enemyList[int.Parse(pgNum.text) - 1].activeSelf)
+        {
+            if (s1!="" && s2 != "" && s3 != "" && s4 != "")
                 if (switchNyx.activeSelf)
                 {
                     switchID = (int.Parse(pgNum.text) - 1).ToString();
@@ -383,86 +414,89 @@ public class HubBehaviour : MonoBehaviour
                                 break;
 
                         }
-                }
+                    }
                     foreach (TextMeshProUGUI armor in cNyxArmor)
                     {
-                    //armor.text = cEnemyArmor[int.Parse(pgNum.text) - 1].text;
-                    switch (Possession.EnemyElementType)
-                    {
-                        case 0:
-                            armor.text = "Fire Cloak";
-                            break;
+                        //armor.text = cEnemyArmor[int.Parse(pgNum.text) - 1].text;
+                        switch (Possession.EnemyElementType)
+                        {
+                            case 0:
+                                armor.text = "Fire Cloak";
+                                break;
 
-                        case 1:
-                            armor.text = "Water Cloak";
-                            break;
+                            case 1:
+                                armor.text = "Water Cloak";
+                                break;
 
-                        case 2:
-                            armor.text = "Earth Cloak";
-                            break;
+                            case 2:
+                                armor.text = "Earth Cloak";
+                                break;
+                        }
                     }
-                }
 
                     foreach (TextMeshProUGUI skill in cNyxSkill1)
                     {
-                    //skill.text = cEnemySkill1[int.Parse(pgNum.text) - 1].text;
-                    skill.text = s1;
-                     }
+                        //skill.text = cEnemySkill1[int.Parse(pgNum.text) - 1].text;
+                        skill.text = s1;
+                    }
 
                     foreach (TextMeshProUGUI skill in cNyxSkill2)
                     {
-                    // skill.text = cEnemySkill2[int.Parse(pgNum.text) - 1].text;
-                    skill.text = s2;
+                        // skill.text = cEnemySkill2[int.Parse(pgNum.text) - 1].text;
+                        skill.text = s2;
                     }
 
-                     foreach (TextMeshProUGUI skill in cNyxSkill3)
-                     {
-                    // skill.text = cEnemySkill3[int.Parse(pgNum.text) - 1].text;
-                    skill.text = s3;
-                     }
+                    foreach (TextMeshProUGUI skill in cNyxSkill3)
+                    {
+                        // skill.text = cEnemySkill3[int.Parse(pgNum.text) - 1].text;
+                        skill.text = s3;
+                    }
 
                     foreach (TextMeshProUGUI skill in cNyxSkill4)
                     {
-                    // skill.text = cEnemySkill4[int.Parse(pgNum.text) - 1].text;
-                    skill.text = s4;
-                }
-
-                alreadySwitchMsg.SetActive(true);
-
-                }
-                /*else {
-                    absorbID = (int.Parse(pgNum.text) - 1).ToString();
-                    foreach (TextMeshProUGUI weapon in cAllyWeapon)
-                    {
-                        weapon.text = cEnemyWeapon[int.Parse(pgNum.text) - 1].text;
-                    }
-                    foreach (TextMeshProUGUI armor in cAllyArmor)
-                    {
-                        armor.text = cEnemyArmor[int.Parse(pgNum.text) - 1].text;
+                        // skill.text = cEnemySkill4[int.Parse(pgNum.text) - 1].text;
+                        skill.text = s4;
                     }
 
-                    foreach (TextMeshProUGUI skill in cAllySkill1)
-                    {
-                        skill.text = cEnemySkill1[int.Parse(pgNum.text) - 1].text;
-                    }
-
-                    foreach (TextMeshProUGUI skill in cAllySkill2)
-                    {
-                        skill.text = cEnemySkill2[int.Parse(pgNum.text) - 1].text;
-                    }
-
-                    foreach (TextMeshProUGUI skill in cAllySkill3)
-                    {
-                        skill.text = cEnemySkill3[int.Parse(pgNum.text) - 1].text;
-                    }
-
-                    foreach (TextMeshProUGUI skill in cAllySkill4)
-                    {
-                        skill.text = cEnemySkill4[int.Parse(pgNum.text) - 1].text;
-                    }
                     alreadySwitchMsg.SetActive(true);
-                }*/
-            }
+
+                }
+            /*else {
+                absorbID = (int.Parse(pgNum.text) - 1).ToString();
+                foreach (TextMeshProUGUI weapon in cAllyWeapon)
+                {
+                    weapon.text = cEnemyWeapon[int.Parse(pgNum.text) - 1].text;
+                }
+                foreach (TextMeshProUGUI armor in cAllyArmor)
+                {
+                    armor.text = cEnemyArmor[int.Parse(pgNum.text) - 1].text;
+                }
+
+                foreach (TextMeshProUGUI skill in cAllySkill1)
+                {
+                    skill.text = cEnemySkill1[int.Parse(pgNum.text) - 1].text;
+                }
+
+                foreach (TextMeshProUGUI skill in cAllySkill2)
+                {
+                    skill.text = cEnemySkill2[int.Parse(pgNum.text) - 1].text;
+                }
+
+                foreach (TextMeshProUGUI skill in cAllySkill3)
+                {
+                    skill.text = cEnemySkill3[int.Parse(pgNum.text) - 1].text;
+                }
+
+                foreach (TextMeshProUGUI skill in cAllySkill4)
+                {
+                    skill.text = cEnemySkill4[int.Parse(pgNum.text) - 1].text;
+                }
+                alreadySwitchMsg.SetActive(true);
+            }*/
+        }
+        else { 
+            //show error
+        }
             Debug.Log("This Works");
         
     }
