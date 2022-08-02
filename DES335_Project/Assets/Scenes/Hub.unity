@@ -347,7 +347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &3100820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3579,7 +3579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3931864238885991244, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_text
-      value: Earth Cloak
+      value: Magic Cloak
       objectReference: {fileID: 0}
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
@@ -6019,7 +6019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &250970492
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10552,7 +10552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &528162466
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11503,7 +11503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3931864238885991244, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_text
-      value: Earth Cloak
+      value: Magic Cloak
       objectReference: {fileID: 0}
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
@@ -21046,7 +21046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &988677704
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29911,7 +29911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3931864238885991244, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_text
-      value: Earth Orb
+      value: Magic Paw
       objectReference: {fileID: 0}
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
@@ -30503,7 +30503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1353143431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49706,7 +49706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3931864238885991244, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_text
-      value: Earth Orb
+      value: Magic Paw
       objectReference: {fileID: 0}
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name

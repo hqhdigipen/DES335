@@ -932,7 +932,35 @@ public class HubBehaviour : MonoBehaviour
         watertype = false;
         earthtype = false;
 
-        Debug.Log("Ally is Fire type");
+        foreach (TextMeshProUGUI weapon in cAllyWeapon)
+        {
+            weapon.text = "Fire Orb";
+        }
+
+        foreach (TextMeshProUGUI armor in cAllyArmor)
+        {
+            armor.text = "Fire Cloak";
+        }
+
+        foreach (TextMeshProUGUI skill1 in cAllySkill1)
+        {
+            skill1.text = "Fire Wall";
+        }
+        foreach (TextMeshProUGUI skill2 in cAllySkill2)
+        {
+            skill2.text = "Fire Blessing";
+        }
+
+        foreach (TextMeshProUGUI skill3 in cAllySkill3)
+        {
+            skill3.text = "Fire Bolt";
+        }
+
+        foreach (TextMeshProUGUI skill4 in cAllySkill4)
+        {
+            skill4.text = "Fire Blessing";
+        }
+
     }
 
     public void switchWaterSkills()
@@ -940,6 +968,36 @@ public class HubBehaviour : MonoBehaviour
         watertype = true;
         earthtype = false;
         firetype = false;
+
+        foreach (TextMeshProUGUI weapon in cAllyWeapon)
+        {
+            weapon.text = "Water Orb";
+        }
+
+        foreach (TextMeshProUGUI armor in cAllyArmor)
+        {
+            armor.text = "Water Cloak";
+        }
+
+        foreach (TextMeshProUGUI skill1 in cAllySkill1)
+        {
+            skill1.text = "Water Wall";
+        }
+        foreach (TextMeshProUGUI skill2 in cAllySkill2)
+        {
+            skill2.text = "Water Blessing";
+        }
+
+        foreach (TextMeshProUGUI skill3 in cAllySkill3)
+        {
+            skill3.text = "Hydro Shot";
+        }
+
+        foreach (TextMeshProUGUI skill4 in cAllySkill4)
+        {
+            skill4.text = "Water Fall";
+        }
+
 
         Debug.Log("Ally is Water type");
     }
@@ -949,6 +1007,36 @@ public class HubBehaviour : MonoBehaviour
         earthtype = true;
         firetype = false;
         watertype = false;
+
+        foreach (TextMeshProUGUI weapon in cAllyWeapon)
+        {
+            weapon.text = "Earth Orb";
+        }
+
+        foreach (TextMeshProUGUI armor in cAllyArmor)
+        {
+            armor.text = "Earth Cloak";
+        }
+
+        foreach (TextMeshProUGUI skill1 in cAllySkill1)
+        {
+            skill1.text = "Bash";
+        }
+        foreach (TextMeshProUGUI skill2 in cAllySkill2)
+        {
+            skill2.text = "Vine Whip";
+        }
+
+        foreach (TextMeshProUGUI skill3 in cAllySkill3)
+        {
+            skill3.text = "Hibernation";
+        }
+
+        foreach (TextMeshProUGUI skill4 in cAllySkill4)
+        {
+            skill4.text = "Toughen";
+        }
+
 
         Debug.Log("Ally is Earth type");
     }
