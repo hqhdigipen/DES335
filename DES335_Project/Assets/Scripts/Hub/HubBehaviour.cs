@@ -233,6 +233,7 @@ public class HubBehaviour : MonoBehaviour
         }
         else
         {
+            noEquipmentMsg.SetActive(false);
             /*if (absorbID == "" && !checkLvUpgradeBtn)
             {
                 noEquipmentMsg.SetActive(true);
@@ -241,7 +242,7 @@ public class HubBehaviour : MonoBehaviour
             {
                 noEquipmentMsg.SetActive(false);
             }*/
-            
+
         }
     }
 
