@@ -178,7 +178,9 @@ public class Skills : MonoBehaviour
             HubBehaviour.allyEqLvl = 1;
             HubBehaviour.allyAmourLvl = 1;
         }
-        
+
+        Debug.Log("allyEqLvl: " + HubBehaviour.allyEqLvl + " allyAmourlvl: " + HubBehaviour.allyAmourLvl + 
+            " Water: " + HubBehaviour.watertype + " Fire: " + HubBehaviour.firetype + " Earth: " + HubBehaviour.earthtype);
 
         //Player Eq
         if (HubBehaviour.playerEqLvl == 1)
@@ -270,6 +272,7 @@ public class Skills : MonoBehaviour
         {
             companion.GetComponent<Skills>().Skill_List[2] = WaterAmourLvl2Skill3;
             companion.GetComponent<Skills>().Skill_List[3] = WaterAmourLvl2Skill4;
+
         }
         else if (HubBehaviour.allyAmourLvl == 3 && HubBehaviour.watertype)
         {
@@ -442,9 +445,11 @@ public class Skills : MonoBehaviour
         HubBehaviour.p3 = player.GetComponent<Skills>().Skill_List[2].Name;
         HubBehaviour.p4 = player.GetComponent<Skills>().Skill_List[3].Name;
 
+        /*
         Debug.Log("Player S1: " + HubBehaviour.p1);
         Debug.Log("Player S2: " + HubBehaviour.p2);
         Debug.Log("Player S3: " + HubBehaviour.p3);
         Debug.Log("Player S4: " + HubBehaviour.p4);
+        */
     }
 }
