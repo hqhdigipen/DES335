@@ -928,118 +928,132 @@ public class HubBehaviour : MonoBehaviour
 
     public void switchFireSkills()
     {
-        firetype = true;
-        watertype = false;
-        earthtype = false;
+        if (Inventory.inventorySF - 50 >= 0)
+        {
+            Inventory.inventorySF = Inventory.inventorySF - 50;
+            soulForce = Inventory.inventorySF;
+            firetype = true;
+            watertype = false;
+            earthtype = false;
 
-        foreach (TextMeshProUGUI weapon in cAllyWeapon)
-        {
-            weapon.text = "Fire Orb";
-        }
+            foreach (TextMeshProUGUI weapon in cAllyWeapon)
+            {
+                weapon.text = "Fire Orb";
+            }
 
-        foreach (TextMeshProUGUI armor in cAllyArmor)
-        {
-            armor.text = "Fire Cloak";
-        }
+            foreach (TextMeshProUGUI armor in cAllyArmor)
+            {
+                armor.text = "Fire Cloak";
+            }
 
-        foreach (TextMeshProUGUI skill1 in cAllySkill1)
-        {
-            skill1.text = "Fire Wall";
-        }
-        foreach (TextMeshProUGUI skill2 in cAllySkill2)
-        {
-            skill2.text = "Fire Blessing";
-        }
+            foreach (TextMeshProUGUI skill1 in cAllySkill1)
+            {
+                skill1.text = "Fire Wall";
+            }
+            foreach (TextMeshProUGUI skill2 in cAllySkill2)
+            {
+                skill2.text = "Fire Blessing";
+            }
 
-        foreach (TextMeshProUGUI skill3 in cAllySkill3)
-        {
-            skill3.text = "Fire Bolt";
-        }
+            foreach (TextMeshProUGUI skill3 in cAllySkill3)
+            {
+                skill3.text = "Fire Bolt";
+            }
 
-        foreach (TextMeshProUGUI skill4 in cAllySkill4)
-        {
-            skill4.text = "Fire Blessing";
+            foreach (TextMeshProUGUI skill4 in cAllySkill4)
+            {
+                skill4.text = "Fire Blessing";
+            }
         }
 
     }
 
     public void switchWaterSkills()
     {
-        watertype = true;
-        earthtype = false;
-        firetype = false;
-
-        foreach (TextMeshProUGUI weapon in cAllyWeapon)
+        if (Inventory.inventorySF - 50 >= 0)
         {
-            weapon.text = "Water Orb";
-        }
+            Inventory.inventorySF = Inventory.inventorySF - 50;
+            soulForce = Inventory.inventorySF;
+            watertype = true;
+            earthtype = false;
+            firetype = false;
 
-        foreach (TextMeshProUGUI armor in cAllyArmor)
-        {
-            armor.text = "Water Cloak";
-        }
+            foreach (TextMeshProUGUI weapon in cAllyWeapon)
+            {
+                weapon.text = "Water Orb";
+            }
 
-        foreach (TextMeshProUGUI skill1 in cAllySkill1)
-        {
-            skill1.text = "Water Wall";
-        }
-        foreach (TextMeshProUGUI skill2 in cAllySkill2)
-        {
-            skill2.text = "Water Blessing";
-        }
+            foreach (TextMeshProUGUI armor in cAllyArmor)
+            {
+                armor.text = "Water Cloak";
+            }
 
-        foreach (TextMeshProUGUI skill3 in cAllySkill3)
-        {
-            skill3.text = "Hydro Shot";
+            foreach (TextMeshProUGUI skill1 in cAllySkill1)
+            {
+                skill1.text = "Water Wall";
+            }
+            foreach (TextMeshProUGUI skill2 in cAllySkill2)
+            {
+                skill2.text = "Water Blessing";
+            }
+
+            foreach (TextMeshProUGUI skill3 in cAllySkill3)
+            {
+                skill3.text = "Hydro Shot";
+            }
+
+            foreach (TextMeshProUGUI skill4 in cAllySkill4)
+            {
+                skill4.text = "Water Fall";
+            }
+
+
+            Debug.Log("Ally is Water type");
         }
-
-        foreach (TextMeshProUGUI skill4 in cAllySkill4)
-        {
-            skill4.text = "Water Fall";
-        }
-
-
-        Debug.Log("Ally is Water type");
     }
 
     public void switchEarthSkills()
     {
-        earthtype = true;
-        firetype = false;
-        watertype = false;
-
-        foreach (TextMeshProUGUI weapon in cAllyWeapon)
+        if (Inventory.inventorySF - 50 >= 0)
         {
-            weapon.text = "Earth Orb";
-        }
+            Inventory.inventorySF = Inventory.inventorySF - 50;
+            soulForce = Inventory.inventorySF;
+            earthtype = true;
+            firetype = false;
+            watertype = false;
 
-        foreach (TextMeshProUGUI armor in cAllyArmor)
-        {
-            armor.text = "Earth Cloak";
-        }
+            foreach (TextMeshProUGUI weapon in cAllyWeapon)
+            {
+                weapon.text = "Earth Orb";
+            }
 
-        foreach (TextMeshProUGUI skill1 in cAllySkill1)
-        {
-            skill1.text = "Bash";
-        }
-        foreach (TextMeshProUGUI skill2 in cAllySkill2)
-        {
-            skill2.text = "Vine Whip";
-        }
+            foreach (TextMeshProUGUI armor in cAllyArmor)
+            {
+                armor.text = "Earth Cloak";
+            }
 
-        foreach (TextMeshProUGUI skill3 in cAllySkill3)
-        {
-            skill3.text = "Hibernation";
+            foreach (TextMeshProUGUI skill1 in cAllySkill1)
+            {
+                skill1.text = "Bash";
+            }
+            foreach (TextMeshProUGUI skill2 in cAllySkill2)
+            {
+                skill2.text = "Vine Whip";
+            }
+
+            foreach (TextMeshProUGUI skill3 in cAllySkill3)
+            {
+                skill3.text = "Hibernation";
+            }
+
+            foreach (TextMeshProUGUI skill4 in cAllySkill4)
+            {
+                skill4.text = "Toughen";
+            }
+
+
+            Debug.Log("Ally is Earth type");
         }
-
-        foreach (TextMeshProUGUI skill4 in cAllySkill4)
-        {
-            skill4.text = "Toughen";
-        }
-
-
-        Debug.Log("Ally is Earth type");
     }
-
 }
 
