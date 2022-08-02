@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
                                        300, 400, 400, 500};
     // Update is called once per frame
 
-    public static int inventorySF = 1000;
+    public static int inventorySF = 500, SF_Gained = 0;
     public static int inventHerb = 0;
     public static int inventElixir = 0;
     public static bool added = true;
@@ -23,11 +23,13 @@ public class Inventory : MonoBehaviour
                 if (Possession.possessed)
                 {
                     inventorySF += SF_List[i]/2;
+                    SF_Gained += SF_List[i] / 2;
 
                 }
                 else
                 {
                     inventorySF += SF_List[i];
+                    SF_Gained += SF_List[i];
                 }
                 added = true;
             }

@@ -150,10 +150,25 @@ public class GameState : MonoBehaviour
     public void BackToHubButtonPressed()
     {
         Debug.Log("BackToHub Button Pressed");
+        //g_state = (int)GameState.state.HUB;
+
+        //SceneManager.LoadScene("Hub");
+        SceneManager.LoadScene("Confirmation Page");
+    }
+
+    public void YesButtonPressed()
+    {
+        Debug.Log("Yes Button Pressed");
         g_state = (int)GameState.state.HUB;
-
+        Inventory.inventorySF -= Inventory.SF_Gained;
         SceneManager.LoadScene("Hub");
+    }
 
+    public void NoButtonPressed()
+    {
+        Debug.Log("No Button Pressed");
+        g_state = (int)GameState.state.COMBAT;
+        SceneManager.LoadScene("Victory");
     }
 
     public void route2Pressed()
