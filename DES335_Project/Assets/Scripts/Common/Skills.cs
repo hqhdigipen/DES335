@@ -469,15 +469,15 @@ public class Skills : MonoBehaviour
         HubBehaviour.c4 = companion.GetComponent<Skills>().Skill_List[3].Name;
 
         
-        Debug.Log("Player S1: " + HubBehaviour.p1);
-        Debug.Log("Player S2: " + HubBehaviour.p2);
-        Debug.Log("Player S3: " + HubBehaviour.p3);
-        Debug.Log("Player S4: " + HubBehaviour.p4);
+        //Debug.Log("Player S1: " + HubBehaviour.p1);
+        //Debug.Log("Player S2: " + HubBehaviour.p2);
+        //Debug.Log("Player S3: " + HubBehaviour.p3);
+        //Debug.Log("Player S4: " + HubBehaviour.p4);
 
-        Debug.Log("Ally S1: " + HubBehaviour.c1);
-        Debug.Log("Ally S2: " + HubBehaviour.c2);
-        Debug.Log("Ally S3: " + HubBehaviour.c3);
-        Debug.Log("Ally S4: " + HubBehaviour.c4);
+        //Debug.Log("Ally S1: " + HubBehaviour.c1);
+        //Debug.Log("Ally S2: " + HubBehaviour.c2);
+        //Debug.Log("Ally S3: " + HubBehaviour.c3);
+        //Debug.Log("Ally S4: " + HubBehaviour.c4);
 
     }
 }
