@@ -8,6 +8,14 @@ TagManager:
   - Companion
   - Enemy2
   - GameManager
+  - PlayerSkill_2
+  - PlayerSkill_1
+  - PlayerSkill_3
+  - PlayerSkill_4
+  - CompSkill_1
+  - CompSkill_2
+  - CompSkill_3
+  - CompSkill_4
   layers:
   - Default
   - TransparentFX

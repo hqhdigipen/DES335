@@ -347,7 +347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &3100820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3076,6 +3076,10 @@ PrefabInstance:
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
       value: EquipDetailsBtn (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSkill_2
       objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -10620,6 +10624,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EquipDetailsBtn (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: CompSkill_3
+      objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: CS4
@@ -11918,6 +11926,10 @@ PrefabInstance:
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
       value: EquipDetailsBtn (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSkill_4
       objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -13788,6 +13800,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EquipDetailsBtn (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSkill_3
+      objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: PS3
@@ -14060,6 +14076,10 @@ PrefabInstance:
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
       value: EquipDetailsBtn (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSkill_3
       objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -17371,6 +17391,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EquipDetailsBtn (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: CompSkill_2
+      objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: CS2
@@ -17768,6 +17792,10 @@ PrefabInstance:
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
       value: EquipDetailsBtn (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSkill_1
       objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -19654,6 +19682,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EquipDetailsBtn
       objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSkill_1
+      objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: PS1
@@ -19795,6 +19827,10 @@ PrefabInstance:
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
       value: EquipDetailsBtn (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSkill_2
       objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -23080,10 +23116,10 @@ MonoBehaviour:
   playerSkill2: []
   playerSkill3: []
   playerSkill4: []
-  CompSkill1: []
-  CompSkill2: []
-  CompSkill3: []
-  CompSkill4: []
+  compSkill1: []
+  compSkill2: []
+  compSkill3: []
+  compSkill4: []
 --- !u!224 &1055490869 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7749385555322219607, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
@@ -23127,6 +23163,10 @@ PrefabInstance:
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
       value: EquipDetailsBtn (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: CompSkill_2
       objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -23525,6 +23565,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EquipDetailsBtn (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: CompSkill_1
+      objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: CS1
@@ -23779,6 +23823,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EquipDetailsBtn (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: CompSkill_4
+      objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: CS4
@@ -23917,6 +23965,10 @@ PrefabInstance:
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
       value: EquipDetailsBtn (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: CompSkill_4
       objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -24183,6 +24235,10 @@ PrefabInstance:
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
       value: EquipDetailsBtn (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: CompSkill_1
       objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -29462,6 +29518,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EquipDetailsBtn (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: CompSkill_4
+      objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: CS4
@@ -33496,6 +33556,10 @@ PrefabInstance:
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
       value: EquipDetailsBtn (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: CompSkill_1
       objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -40114,6 +40178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EquipDetailsBtn (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSkill_4
+      objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: PS4
@@ -43615,6 +43683,10 @@ PrefabInstance:
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
       value: EquipDetailsBtn (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: CompSkill_3
       objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -48559,6 +48631,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EquipDetailsBtn (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: CompSkill_3
+      objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: CS3
@@ -48725,6 +48801,10 @@ PrefabInstance:
     - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Name
       value: EquipDetailsBtn (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465743893968792136, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
+      propertyPath: m_TagString
+      value: CompSkill_2
       objectReference: {fileID: 0}
     - target: {fileID: 6699673155740880368, guid: 28aa0ce987939b940aa9bdef8a8e9ff5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
