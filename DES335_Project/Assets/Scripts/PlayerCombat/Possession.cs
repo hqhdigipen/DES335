@@ -156,23 +156,29 @@ public class Possession : MonoBehaviour
 
     public void PossessButtonPopUp()
     {
-        if (enemy.GetComponent<CharScript>().currentHealth <= 0)
-        {          
-            target_remaining = (int)OPPONENT.ENEMY2;
+        if (enemy != null)
+        {
+            if (enemy.GetComponent<CharScript>().currentHealth <= 0)
+            {
+                target_remaining = (int)OPPONENT.ENEMY2;
 
-            if(numOfEnemy == 2)
-                numOfEnemy = 1;
-            
-           // Debug.Log("Enemy2 Left, Enemy Dead");
+                if (numOfEnemy == 2)
+                    numOfEnemy = 1;
+
+                // Debug.Log("Enemy2 Left, Enemy Dead");
+            }
         }
 
-        if (enemy2.GetComponent<CharScript>().currentHealth <= 0)
+        if (enemy2 != null)
         {
-            if (numOfEnemy == 2)
-                numOfEnemy = 1;
-            
-            target_remaining = (int)OPPONENT.ENEMY;
-            //Debug.Log("Enemy Left, Enemy2 Dead");
+            if (enemy2.GetComponent<CharScript>().currentHealth <= 0)
+            {
+                if (numOfEnemy == 2)
+                    numOfEnemy = 1;
+
+                target_remaining = (int)OPPONENT.ENEMY;
+                //Debug.Log("Enemy Left, Enemy2 Dead");
+            }
         }
 
       //  Debug.Log("number of enemies left: " + numOfEnemy);

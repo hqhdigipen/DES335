@@ -41,6 +41,8 @@ public class CharScript : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        healthBar.SetHealth(currentHealth);
     }
 
     public int TakeDamage(int damage, string atkElement)
