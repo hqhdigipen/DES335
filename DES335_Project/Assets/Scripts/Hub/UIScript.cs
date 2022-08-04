@@ -10,6 +10,7 @@ public class UIScript : MonoBehaviour
 
     [SerializeField]
     public List<TextMeshProUGUI> playerSkill1, playerSkill2, playerSkill3, playerSkill4, compSkill1, compSkill2, compSkill3, compSkill4;
+    public List<TextMeshProUGUI> playerWeapon, playerArmor;
 
     // Start is called before the first frame update
     void Awake()
@@ -61,6 +62,16 @@ public class UIScript : MonoBehaviour
 
             compSkill4.Add(fooObj.GetComponentInChildren<TextMeshProUGUI>());
         }
+
+        foreach (GameObject fooObj in GameObject.FindGameObjectsWithTag("Weapon"))
+        {
+            playerWeapon.Add(fooObj.GetComponentInChildren<TextMeshProUGUI>());
+        }
+
+        foreach (GameObject fooObj in GameObject.FindGameObjectsWithTag("Armor"))
+        {
+            playerArmor.Add(fooObj.GetComponentInChildren<TextMeshProUGUI>());
+        }
     }
 
     // Update is called once per frame
@@ -104,6 +115,43 @@ public class UIScript : MonoBehaviour
         foreach (TextMeshProUGUI fooObj in compSkill4)
         {
             fooObj.text = skill_Comp.Skill_List[3].Name;
+        }
+
+        if (HubBehaviour.firetype_P == true)
+        {
+            foreach (TextMeshProUGUI fooObj in playerWeapon)
+            {
+                fooObj.text = "Fire Orb";
+            }
+
+            foreach (TextMeshProUGUI fooObj2 in playerArmor)
+            {
+                fooObj2.text = "Fire Cloak";
+            }
+        }
+        else if (HubBehaviour.watertype_P == true)
+        {
+            foreach (TextMeshProUGUI fooObj in playerWeapon)
+            {
+                fooObj.text = "Water Orb";
+            }
+
+            foreach (TextMeshProUGUI fooObj2 in playerArmor)
+            {
+                fooObj2.text = "Water Cloak";
+            }
+        }
+        else if (HubBehaviour.earthtype_P == true)
+        {
+            foreach (TextMeshProUGUI fooObj in playerWeapon)
+            {
+                fooObj.text = "Earth Orb";
+            }
+
+            foreach (TextMeshProUGUI fooObj2 in playerArmor)
+            {
+                fooObj2.text = "Earth Cloak";
+            }
         }
     }
 }

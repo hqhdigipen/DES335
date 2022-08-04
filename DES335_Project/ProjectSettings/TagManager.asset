@@ -16,6 +16,8 @@ TagManager:
   - CompSkill_2
   - CompSkill_3
   - CompSkill_4
+  - Weapon
+  - Armor
   layers:
   - Default
   - TransparentFX
