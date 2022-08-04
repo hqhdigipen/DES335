@@ -222,54 +222,54 @@ public class Skills : MonoBehaviour
         }
 
         //Player Amour
-        if (HubBehaviour.playerArmourLvl == 1)
+        if (HubBehaviour.playerArmourLvl == 1 && HubBehaviour.firetype_P)
         {
             player.GetComponent<Skills>().Skill_List[2] = FireAmourLvl1Skill3;
             player.GetComponent<Skills>().Skill_List[3] = FireAmourLvl1Skill4;
         }
-        else if (HubBehaviour.playerArmourLvl == 2)
+        else if (HubBehaviour.playerArmourLvl == 2 && HubBehaviour.firetype_P)
         {
             player.GetComponent<Skills>().Skill_List[2] = FireAmourLvl2Skill3;
             player.GetComponent<Skills>().Skill_List[3] = FireAmourLvl2Skill4;
         }
-        else if (HubBehaviour.playerArmourLvl == 3)
+        else if (HubBehaviour.playerArmourLvl == 3 && HubBehaviour.firetype_P)
         {
             player.GetComponent<Skills>().Skill_List[2] = FireAmourLvl3Skill3;
             player.GetComponent<Skills>().Skill_List[3] = FireAmourLvl3Skill4;
         }
-        else if (HubBehaviour.playerArmourLvl == 4)
+        else if (HubBehaviour.playerArmourLvl == 4 && HubBehaviour.firetype_P)
         {
             player.GetComponent<Skills>().Skill_List[2] = FireAmourLvl4Skill3;
             player.GetComponent<Skills>().Skill_List[3] = FireAmourLvl4Skill4;
         }
-        else if (HubBehaviour.playerArmourLvl == 5)
+        else if (HubBehaviour.playerArmourLvl == 5 && HubBehaviour.firetype_P)
         {
             player.GetComponent<Skills>().Skill_List[2] = FireAmourLvl5Skill3;
             player.GetComponent<Skills>().Skill_List[3] = FireAmourLvl5Skill4;
         }
 
         //Water
-        if (HubBehaviour.playerEqLvl == 1 && HubBehaviour.firetype_P)
+        if (HubBehaviour.playerEqLvl == 1 && HubBehaviour.watertype_P)
         {
             player.GetComponent<Skills>().Skill_List[0] = WaterEqLvl1Skill1;
             player.GetComponent<Skills>().Skill_List[1] = WaterEqLvl1Skill2;
         }
-        else if (HubBehaviour.playerEqLvl == 2 && HubBehaviour.firetype_P)
+        else if (HubBehaviour.playerEqLvl == 2 && HubBehaviour.watertype_P)
         {
             player.GetComponent<Skills>().Skill_List[0] = WaterEqLvl2Skill1;
             player.GetComponent<Skills>().Skill_List[1] = WaterEqLvl2Skill2;
         }
-        else if (HubBehaviour.playerEqLvl == 3 && HubBehaviour.firetype_P)
+        else if (HubBehaviour.playerEqLvl == 3 && HubBehaviour.watertype_P)
         {
             player.GetComponent<Skills>().Skill_List[0] = WaterEqLvl3Skill1;
             player.GetComponent<Skills>().Skill_List[1] = WaterEqLvl3Skill2;
         }
-        else if (HubBehaviour.playerEqLvl == 4 && HubBehaviour.firetype_P)
+        else if (HubBehaviour.playerEqLvl == 4 && HubBehaviour.watertype_P)
         {
             player.GetComponent<Skills>().Skill_List[0] = WaterEqLvl4Skill1;
             player.GetComponent<Skills>().Skill_List[1] = WaterEqLvl4Skill2;
         }
-        else if (HubBehaviour.playerEqLvl == 5 && HubBehaviour.firetype_P)
+        else if (HubBehaviour.playerEqLvl == 5 && HubBehaviour.watertype_P)
         {
             player.GetComponent<Skills>().Skill_List[0] = WaterEqLvl5Skill1;
             player.GetComponent<Skills>().Skill_List[1] = WaterEqLvl5Skill2;

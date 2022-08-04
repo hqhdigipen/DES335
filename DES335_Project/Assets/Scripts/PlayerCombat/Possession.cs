@@ -97,6 +97,25 @@ public class Possession : MonoBehaviour
                 enemy2.GetComponent<CharScript>().currentHealth = 0;
             }
 
+            switch(EnemyElementType)
+            {
+                case 0:
+                    HubBehaviour.firetype_P = true;
+                    HubBehaviour.watertype_P = false;
+                    HubBehaviour.earthtype_P = false;
+                    break;
+                case 1:
+                    HubBehaviour.firetype_P = false;
+                    HubBehaviour.watertype_P = true;
+                    HubBehaviour.earthtype_P = false;
+                    break;
+                case 2:
+                    HubBehaviour.firetype_P = false;
+                    HubBehaviour.watertype_P = false;
+                    HubBehaviour.earthtype_P = true;
+                    break;
+            }
+
             /*
             eName.Add(Possessed_Skill_List[i].Name.ToString());
             eDmg.Add(Possessed_Skill_List[i].Damage);
