@@ -21,6 +21,11 @@ public class DialogueBtn : MonoBehaviour
 
     public Vector3 offset;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        popUpCanvas.SetActive(false);
+    }
+
     void Start()
     {
         cBtn = this.gameObject;

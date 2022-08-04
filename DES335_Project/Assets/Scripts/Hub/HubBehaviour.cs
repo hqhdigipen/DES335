@@ -38,6 +38,7 @@ public class HubBehaviour : MonoBehaviour
     public GameObject upgradeMainPanel;
     public TextMeshProUGUI profileMainLv, upgradeMain, mainLv, upgradeMainPrice, witchMainLv;
     public static int playerEqLvl = 1, playerArmourLvl = 1, allyEqLvl = 1, allyAmourLvl = 1;
+    public static bool firetype_P = true, watertype_P = false, earthtype_P = false;
     public static bool firetype = false, watertype = true, earthtype = false;
     public static string s1 = "", s2 = "", s3 = "", s4 = "";
     public static string p1 = "", p2 = "", p3 = "", p4 = "";
@@ -407,14 +408,23 @@ public class HubBehaviour : MonoBehaviour
                         {
                             case 0:
                                 weapon.text = "Fire Orb";
+                                firetype_P = true;
+                                earthtype_P = false;
+                                watertype_P = false;
                                 break;
 
                             case 1:
                                 weapon.text = "Water Orb";
+                                firetype_P = false;
+                                earthtype_P = false;
+                                watertype_P = true;
                                 break;
 
                             case 2:
                                 weapon.text = "Earth Orb";
+                                firetype_P = false;
+                                earthtype_P = true;
+                                watertype_P = false;
                                 break;
 
                         }

@@ -238,7 +238,7 @@ public class GameState : MonoBehaviour
 
     public void ExitButtonPressed()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
         Debug.Log("Quit");
     }

@@ -248,6 +248,114 @@ public class Skills : MonoBehaviour
             player.GetComponent<Skills>().Skill_List[3] = FireAmourLvl5Skill4;
         }
 
+        //Water
+        if (HubBehaviour.playerEqLvl == 1 && HubBehaviour.firetype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[0] = WaterEqLvl1Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = WaterEqLvl1Skill2;
+        }
+        else if (HubBehaviour.playerEqLvl == 2 && HubBehaviour.firetype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[0] = WaterEqLvl2Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = WaterEqLvl2Skill2;
+        }
+        else if (HubBehaviour.playerEqLvl == 3 && HubBehaviour.firetype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[0] = WaterEqLvl3Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = WaterEqLvl3Skill2;
+        }
+        else if (HubBehaviour.playerEqLvl == 4 && HubBehaviour.firetype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[0] = WaterEqLvl4Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = WaterEqLvl4Skill2;
+        }
+        else if (HubBehaviour.playerEqLvl == 5 && HubBehaviour.firetype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[0] = WaterEqLvl5Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = WaterEqLvl5Skill2;
+        }
+
+        //Player Amour
+        if (HubBehaviour.playerArmourLvl == 1 && HubBehaviour.watertype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = WaterAmourLvl1Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = WaterAmourLvl1Skill4;
+        }
+        else if (HubBehaviour.playerArmourLvl == 2 && HubBehaviour.watertype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = WaterAmourLvl2Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = WaterAmourLvl2Skill4;
+        }
+        else if (HubBehaviour.playerArmourLvl == 3 && HubBehaviour.watertype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = WaterAmourLvl3Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = WaterAmourLvl3Skill4;
+        }
+        else if (HubBehaviour.playerArmourLvl == 4 && HubBehaviour.watertype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = WaterAmourLvl4Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = WaterAmourLvl4Skill4;
+        }
+        else if (HubBehaviour.playerArmourLvl == 5 && HubBehaviour.watertype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = WaterAmourLvl5Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = WaterAmourLvl5Skill4;
+        }
+
+        //Earth
+        if (HubBehaviour.playerEqLvl == 1 && HubBehaviour.earthtype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[0] = EarthEqLvl1Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = EarthEqLvl1Skill2;
+        }
+        else if (HubBehaviour.playerEqLvl == 2 && HubBehaviour.earthtype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[0] = EarthEqLvl2Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = EarthEqLvl2Skill2;
+        }
+        else if (HubBehaviour.playerEqLvl == 3 && HubBehaviour.earthtype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[0] = EarthEqLvl3Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = EarthEqLvl3Skill2;
+        }
+        else if (HubBehaviour.playerEqLvl == 4 && HubBehaviour.earthtype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[0] = EarthEqLvl4Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = EarthEqLvl4Skill2;
+        }
+        else if (HubBehaviour.playerEqLvl == 5 && HubBehaviour.earthtype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[0] = EarthEqLvl5Skill1;
+            player.GetComponent<Skills>().Skill_List[1] = EarthEqLvl5Skill2;
+        }
+
+        //Player Amour
+        if (HubBehaviour.playerArmourLvl == 1 && HubBehaviour.earthtype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = EarthAmourLvl1Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = EarthAmourLvl1Skill4;
+        }
+        else if (HubBehaviour.playerArmourLvl == 2 && HubBehaviour.earthtype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = EarthAmourLvl2Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = EarthAmourLvl2Skill4;
+        }
+        else if (HubBehaviour.playerArmourLvl == 3 && HubBehaviour.earthtype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = EarthAmourLvl3Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = EarthAmourLvl3Skill4;
+        }
+        else if (HubBehaviour.playerArmourLvl == 4 && HubBehaviour.earthtype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = EarthAmourLvl4Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = EarthAmourLvl4Skill4;
+        }
+        else if (HubBehaviour.playerArmourLvl == 5 && HubBehaviour.earthtype_P)
+        {
+            player.GetComponent<Skills>().Skill_List[2] = EarthAmourLvl5Skill3;
+            player.GetComponent<Skills>().Skill_List[3] = EarthAmourLvl5Skill4;
+        }
+
         //Ally Water Type
         if (HubBehaviour.allyEqLvl == 1 && HubBehaviour.watertype)
         {
