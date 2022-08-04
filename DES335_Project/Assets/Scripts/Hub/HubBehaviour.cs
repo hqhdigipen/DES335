@@ -95,7 +95,7 @@ public class HubBehaviour : MonoBehaviour
 
         allyCurrLv = 1;
         mainCurrLv = 1;
-        noEquipmentMsg.SetActive(true);
+        //noEquipmentMsg.SetActive(true);
         soulForce = Inventory.inventorySF;
         witchPanel.SetActive(false);
         blacksmithCanvas.SetActive(false);
@@ -252,26 +252,26 @@ public class HubBehaviour : MonoBehaviour
         {
             if (switchID == "")
             {
-                noWeaponPanel.SetActive(true);
-                noArmorPanel.SetActive(true);
+                //noWeaponPanel.SetActive(true);
+                //noArmorPanel.SetActive(true);
             }
             else {
-                noWeaponPanel.SetActive(false);
-                noArmorPanel.SetActive(false);
+                //noWeaponPanel.SetActive(false);
+                //noArmorPanel.SetActive(false);
             }
             if (switchID == "" && !checkLvUpgradeBtn)
             {
-                noEquipmentMsg.SetActive(true);
+                //noEquipmentMsg.SetActive(true);
 
             }
             else
             {
-                noEquipmentMsg.SetActive(false);
+               // noEquipmentMsg.SetActive(false);
             }
         }
         else
         {
-            noEquipmentMsg.SetActive(false);
+            //noEquipmentMsg.SetActive(false);
             /*if (absorbID == "" && !checkLvUpgradeBtn)
             {
                 noEquipmentMsg.SetActive(true);
