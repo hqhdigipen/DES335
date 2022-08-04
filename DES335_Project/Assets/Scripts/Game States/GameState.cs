@@ -153,17 +153,18 @@ public class GameState : MonoBehaviour
         }
     }
 
+    public void LoseBackToHubButtonPressed()
+    {
+        SceneManager.LoadScene("Hub");
+    }
     public void BackToHubButtonPressed()
     {
         Debug.Log("BackToHub Button Pressed");
         //g_state = (int)GameState.state.HUB;
+        Debug.Log("g_state: " + g_state);
 
         //SceneManager.LoadScene("Hub");
-        if (g_state == (int)GameState.state.LOSE)
-        {
-            SceneManager.LoadScene("Hub");
-        }
-        else if (route != (int)Route.Route_4)
+        if (route != (int)Route.Route_4)
         {
             SceneManager.LoadScene("Confirmation Page");
         }
