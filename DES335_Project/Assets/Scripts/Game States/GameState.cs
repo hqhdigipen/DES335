@@ -186,7 +186,11 @@ public class GameState : MonoBehaviour
     {
         Debug.Log("No Button Pressed");
         g_state = (int)GameState.state.COMBAT;
-        SceneManager.LoadScene("Victory");
+
+        if(Possession.possessed)
+            SceneManager.LoadScene("Possess Victory");
+        else
+            SceneManager.LoadScene("Victory");
     }
 
     public void route2Pressed()
