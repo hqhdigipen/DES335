@@ -62,6 +62,8 @@ public class Possession : MonoBehaviour
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         enemy2 = GameObject.FindGameObjectWithTag("Enemy2");
         PossessButton = GameObject.Find("PossessButton");
+        companion = GameObject.FindGameObjectWithTag("Companion");
+
 
         if (PossessButton != null)
         {
