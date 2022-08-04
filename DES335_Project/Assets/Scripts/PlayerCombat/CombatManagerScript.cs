@@ -253,7 +253,7 @@ public class CombatManagerScript : MonoBehaviour
                     }
                 }
             }
-            else if (activeCharacter == "Companion")
+            else if (activeCharacter == "Ally")
             {
                 attack1Text.text = companionEntity.GetComponent<Skills>().Skill_List[0].Name;
                 attack2Text.text = companionEntity.GetComponent<Skills>().Skill_List[1].Name;
@@ -421,7 +421,7 @@ public class CombatManagerScript : MonoBehaviour
                        tempDmgNo.ToString() + " damage to " + enemy.transform.name + ".";
                     }
                     break;
-                case "Companion":
+                case "Ally":
                     switch (activeAttack)
                     {
                         case 0:
@@ -519,18 +519,18 @@ public class CombatManagerScript : MonoBehaviour
                 }
                 else
                 {
-                    activeCharacter = "Companion";
+                    activeCharacter = "Ally";
                 }
             }
             else if (selected.transform.tag == "Companion")
             {
                 if (companionMoved != true)
                 {
-                    activeCharacter = "Companion";
+                    activeCharacter = "Ally";
                 }
                 else
                 {
-                    activeCharacter = "player";
+                    activeCharacter = "Player";
                 }
             }
         }
@@ -636,12 +636,12 @@ public class CombatManagerScript : MonoBehaviour
             }
             else if (companionMoved != true)
             {
-                activeCharacter = "Companion";
+                activeCharacter = "Ally";
                 CheckActiveChar();
             }
         }
 
-        if (activeCharacter == "Companion")
+        if (activeCharacter == "Ally")
         {
             if (companionMoved != true)
             {
@@ -689,7 +689,7 @@ public class CombatManagerScript : MonoBehaviour
                 playerMoved = true;
                 CheckActiveChar();
                 break;
-            case "Companion":
+            case "Ally":
                 companionMoved = true;
                 CheckActiveChar();
                 break;
