@@ -26,7 +26,7 @@ public class HubBehaviour : MonoBehaviour
 
     public GameObject notEnoughSF;
 
-    public GameObject allyWeaponPanel, allyArmorPanel, mainArmorPanel, mainWeaponPanel, noEquipmentMsg, witchPanel;
+    public GameObject allyWeaponPanel, allyArmorPanel, mainArmorPanel, mainWeaponPanel, /*noEquipmentMsg,*/ witchPanel;
     public TextMeshProUGUI allyWeaponLv, allyArmorLv, mainArmorLv, mainWeaponLv;
     public TextMeshProUGUI allyWeaponPrice, allyArmorPrice, mainArmorPrice, mainWeaponPrice;
 
@@ -877,7 +877,7 @@ public class HubBehaviour : MonoBehaviour
     {
         if (blacksmithCanvas.activeSelf)
         {
-            noEquipmentMsg.SetActive(true);
+            //noEquipmentMsg.SetActive(true);
             allyWeaponPanel.SetActive(false);
             allyArmorPanel.SetActive(false);
             mainWeaponPanel.SetActive(false);
@@ -924,6 +924,10 @@ public class HubBehaviour : MonoBehaviour
     public void OpenPlayerDetails() {
         playerInfo.SetActive(true);
         allyInfo.SetActive(false);
+        allyWeaponPanel.SetActive(false);
+        allyArmorPanel.SetActive(false);
+        mainWeaponPanel.SetActive(false);
+        mainArmorPanel.SetActive(false);
     }
 
     public void OpenAllyDetails()
