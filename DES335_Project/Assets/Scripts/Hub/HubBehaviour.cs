@@ -763,7 +763,7 @@ public class HubBehaviour : MonoBehaviour
                     mainCurrLv = int.Parse(upgradeMain.text);
                     foreach (TextMeshProUGUI hp in nyxHP)
                     {
-                        hp.text = (int.Parse(hp.text) * 1.3).ToString();
+                        hp.text = (int.Parse(hp.text) * 1.1).ToString();
                     }
                 }
             }
@@ -782,7 +782,7 @@ public class HubBehaviour : MonoBehaviour
                     allyCurrLv = int.Parse(upgradeAlly.text);
 
                     foreach (TextMeshProUGUI hp in allyHP) { 
-                        hp.text = (int.Parse(hp.text) * 1.3).ToString();
+                        hp.text = (int.Parse(hp.text) * 1.1).ToString();
                     }
                 }
             }
