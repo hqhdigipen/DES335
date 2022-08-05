@@ -77,6 +77,16 @@ public class GameState : MonoBehaviour
             enemy2.GetComponent<CharScript>().currentHealth = 10;
         }
 
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            SceneManager.LoadScene("RickAScene");
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            SceneManager.LoadScene("BossScene");
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
